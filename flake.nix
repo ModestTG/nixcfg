@@ -15,6 +15,7 @@
       profile = "zendikar"; # select a profile defined in the profiles directory
       timezone = "US/Central"; 
       locale = "en_US.UTF-8";
+      nfs-server = "10.0.0.8";
 
       # ---- USER SETTINGS ---- #
       username = "eweishaar";
@@ -29,7 +30,6 @@
       term = "alacritty";
       font = "Fira Code Nerdfont";
       fontPkg = pkgs.fira-code-nerdfont;
-
 
       pkgs = nixpkgs.legacyPackages.${system};
       lib = nixpkgs.lib;
@@ -48,6 +48,7 @@
             inherit font;
             inherit fontPkg;
             inherit wm;
+	    inherit nfs-server;
           };
         };
       };
