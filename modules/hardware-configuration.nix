@@ -5,26 +5,31 @@
 
 {
   imports =
-    [ (modulesPath + "/profiles/qemu-guest.nix")
+    [ (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
-  boot.initrd.availableKernelModules = [ "ahci" "xhci_pci" "virtio_pci" "sr_mod" "virtio_blk" ];
+  boot.initrd.availableKernelModules = [ "xhci_pci" "ehci_pci" "ahci" "usbhid" "sd_mod" "rtsx_pci_sdmmc" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/2811e048-eb3d-47fb-8eb9-03678a1bb62a";
+    { device = "/dev/disk/by-uuid/87373eb5-982f-4849-a97e-09b9b494e1d8";
       fsType = "ext4";
     };
 
+  fileSystems."/efi" =
+    { device = "systemd-1";
+      fsType = "autofs";
+    };
+
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/72F3-F48A";
+    { device = "/dev/disk/by-uuid/9D91-3E07";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/bf357498-227a-45cc-9f07-2be174e793c1"; }
+    [ { device = "/dev/disk/by-uuid/5304a508-2137-4bd6-a32d-e4b4baebc1e5"; }
     ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
@@ -32,7 +37,8 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp1s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp6s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
