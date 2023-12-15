@@ -47,6 +47,7 @@
     curl
     git
     home-manager
+    tldr
     vim
     wget
   ];
