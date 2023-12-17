@@ -25,7 +25,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   ### NETWORKING
-  networking.hostName = hostname; # Define your hostname.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   
   ### TIMEZONE AND LOCALE
@@ -33,10 +32,10 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   ### USERS
-  users.users.${username} = {
+  users.users."eweishaar" = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
-    description = name;
+    description = "Elliot Weishaar";
     uid = 1000;
   };
   

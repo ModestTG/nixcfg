@@ -10,6 +10,8 @@
       inputs.home-manager.nixosModules.default
     ];
 
+
+
   networking.hostName = "zendikar";  
   home-manager = {
     extraSpecialArgs = {inherit inputs; };
