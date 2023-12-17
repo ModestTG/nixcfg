@@ -1,12 +1,6 @@
-{ config, pkgs, username, nfs-server, ... }:
+{ config, pkgs, ... }:
 
 {
-  ### DEFAULT
-  home.username = username;
-  home.homeDirectory = "/home/"+username;
-  programs.home-manager.enable = true;
-  home.stateVersion = "23.11"; # Please read the comment before changing.
-
   ### SSH 
   programs.ssh = {
     enable = true;    

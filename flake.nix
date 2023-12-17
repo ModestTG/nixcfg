@@ -1,57 +1,33 @@
 {
   description = "EWHS Flake";
-  
-  inputs = {
-      nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
 
-      home-manager = { 
-        url = "github:nix-community/home-manager/release-23.11";
-        inputs.nixpkgs.follows = "nixpkgs";
-      };
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ...}@inputs: 
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      lib = nixpkgs.lib;
-    in {
+    in
+    {
       nixosConfigurations = {
-        zendikar = lib.nixosSystem {
-          inherit system;
-          modules = [ (./. + "/profiles/"+("/"+profile)+"/configuration.nix") ];
-          specialArgs = {
-            inherit username;
-            inherit name;
-            inherit hostname;
-            inherit timezone;
-            inherit locale;
-            inherit theme;
-            inherit font;
-            inherit fontPkg;
-            inherit wm;
-	    inherit nfs-server;
-          };
+        zendikar = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;};
+          modules = [ 
+            ./hosts/zendikar/configuration.nix
+          ];
         };
-      };
-      homeConfigurations = {
-        eweishaar = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          modules = [ (./. + "/profiles"+("/"+profile)+"/home.nix") ];
-          extraSpecialArgs = {
-	    inherit username; 
-	    inherit name; 
-	    inherit email; 
-	    inherit dotfilesDir; 
-	    inherit theme; 
-	    inherit wm; 
-	    inherit wmType; 
-	    inherit browser; 
-	    inherit editor; 
-	    inherit term; 
-	    inherit font; 
-	    inherit fontPkg; 
-          }; 
+        dominaria = nixpkgs.lib.nixosSystem {
+          specialArgs = {inherit inputs;};
+          modules = [ 
+            ./hosts/dominaria/configuration.nix
+          ];
         };
       };
     };

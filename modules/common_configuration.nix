@@ -2,12 +2,11 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
 
-{ config, pkgs, username, name, hostname, timezone, locale, wm, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
     [ 
-      ./hardware-configuration.nix
       ./ssh.nix 
       ./firewall.nix
     ];
@@ -51,7 +50,5 @@
     vim
     wget
   ];
-
-  system.stateVersion = "23.11"; # Did you read the comment?
 }
 
