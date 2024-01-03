@@ -4,12 +4,13 @@
   imports =
     [
       ./hardware-configuration.nix 
-      ../../modules/common_configuration.nix
-      ../../modules/wayland.nix
-      ../../modules/nfs-filebrowser.nix
+      ../../modules/nixos/common_configuration.nix
+      ../../modules/nixos/hyprland.nix
+      ../../modules/nixos/nfs-filebrowser.nix
+      ../../modules/nixos/ssh.nix 
+      ../../modules/nixos/firewall.nix
       inputs.home-manager.nixosModules.default
     ];
-
 
   networking.hostName = "zendikar";  
   home-manager = {
@@ -18,5 +19,6 @@
       "eweishaar" = import ./home.nix;
     };
   };
+  system.stateVersion = "23.11";
 }
 

@@ -5,11 +5,6 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ 
-      ./ssh.nix 
-      ./firewall.nix
-    ];
 
   ### NIX FLAKES
   nix.package = pkgs.nixFlakes;
@@ -41,10 +36,13 @@
   
   ### SYSTEM PACKAGES
   environment.systemPackages = with pkgs; [
+    alacritty
     bash
+    brave
     curl
     git
     home-manager
+    neovim
     tldr
     vim
     wget

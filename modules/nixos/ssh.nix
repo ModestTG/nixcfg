@@ -1,4 +1,4 @@
-{ config, pkgs, username, ... }:
+{ config, pkgs, ... }:
 
 let 
   authorizedKeys = builtins.fetchurl {
@@ -24,5 +24,5 @@ in {
       ];
     };
   };
-  users.users.${username}.openssh.authorizedKeys.keyFiles = [ authorizedKeys ];
+  users.users."eweishaar".openssh.authorizedKeys.keyFiles = [ authorizedKeys ];
 }
