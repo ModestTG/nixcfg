@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib,... }:
 
 {
   imports = [
@@ -6,5 +6,7 @@
     ../../modules/home-manager/ssh.nix
     ../../modules/home-manager/hyprland.nix
   ];
+
+  
   home.stateVersion = "23.11";
 }

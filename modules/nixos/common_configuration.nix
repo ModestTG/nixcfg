@@ -40,9 +40,11 @@
     bash
     brave
     curl
+    fira-code-nerdfont
     git
     home-manager
     neovim
+    neofetch
     tldr
     vim
     wget
