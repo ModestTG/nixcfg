@@ -19,6 +19,9 @@
       "eweishaar" = import ./home.nix;
     };
   };
+  environment.systemPackages = with pkgs; [
+    discord
+  ];
   system.stateVersion = "23.11";
 }
 

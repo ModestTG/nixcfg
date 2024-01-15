@@ -1,12 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  programs.alacritty.settings = {
+  programs.alacritty = {
     enable = true;
-    font = {
-      normal = {
-        family = "Fira Code Nerdfont";
-	style = "Regular";
+    settings = {
+      font = {
+        normal = {
+          family = "Fira Code Nerdfont";
+	  style = "Regular";
+        };
       };
     };
   };

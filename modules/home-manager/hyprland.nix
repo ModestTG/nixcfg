@@ -19,7 +19,7 @@
 
       general = {
         "gaps_in" = "5";
-        "gaps_out" = "20";
+        "gaps_out" = "10";
         "border_size" = "1";
         "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.inactive_border" = "rgba(595959aa)";
@@ -28,7 +28,7 @@
       };
 
       decoration = {
-        "rounding" = "0";
+        "rounding" = "2";
         blur = {
           "enabled" = "true";
           "size" = "3";
@@ -76,7 +76,22 @@
 	"$mod SHIFT, 5, movetoworkspace, 5"
 	"$mod, b, exec, brave"
 	"$mod, q, killactive"
+	"$mod, r, exec, wofi --show run"
+	"$mod SHIFT CRTL, q, exec, hyprctl dispatch exit"
       ];
+    };
+  };
+  programs.waybar = {
+    enable = true;
+    settings = {
+      mainBar = {
+        layer = "top";
+	position = "top";
+	height = 30;
+	modules-left = [];
+	modules-center = ["hyprland/workspaces"];
+	modules-right = ["network" "cpu" "disk" "temperature" "pulseaudio" "backlight/slider" "battery" "clock"];
+      };
     };
   };
 }

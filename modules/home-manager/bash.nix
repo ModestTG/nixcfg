@@ -6,6 +6,7 @@
     shellAliases = {
       ll = "ls -alh";
       vim = "nvim";
+      cat = "bat";
     };
   };
 }

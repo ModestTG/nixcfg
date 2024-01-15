@@ -33,14 +33,19 @@
     description = "Elliot Weishaar";
     uid = 1000;
   };
-  
+ 
+  ### FONTS 
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "FiraCode" ]; })
+  ];
+
   ### SYSTEM PACKAGES
   environment.systemPackages = with pkgs; [
     alacritty
     bash
+    bat
     brave
     curl
-    fira-code-nerdfont
     git
     home-manager
     neovim
