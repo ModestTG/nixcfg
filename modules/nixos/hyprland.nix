@@ -20,6 +20,7 @@
   environment.systemPackages = with pkgs; [
     greetd.greetd
     waybar
+    wofi
     dunst
     libnotify
     swww
