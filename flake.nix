@@ -23,12 +23,6 @@
             ./hosts/zendikar/configuration.nix
           ];
         };
-        dominaria = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
-          modules = [ 
-            ./hosts/dominaria/configuration.nix
-          ];
-        };
       };
     };
 }
