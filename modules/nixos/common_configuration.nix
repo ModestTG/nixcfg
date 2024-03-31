@@ -59,6 +59,7 @@
     home-manager
     neovim
     neofetch
+    pulseaudio
     tldr
     vim
     wget
