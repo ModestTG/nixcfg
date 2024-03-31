@@ -33,7 +33,15 @@
     description = "Elliot Weishaar";
     uid = 1000;
   };
- 
+  ### SOUND
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
   ### FONTS 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
