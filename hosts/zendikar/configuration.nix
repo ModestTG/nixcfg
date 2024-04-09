@@ -5,10 +5,11 @@
     [
       ./hardware-configuration.nix 
       ../../modules/nixos/common_configuration.nix
-      ../../modules/nixos/hyprland.nix
+#      ../../modules/nixos/hyprland.nix
       ../../modules/nixos/nfs-filebrowser.nix
       ../../modules/nixos/ssh.nix 
       ../../modules/nixos/firewall.nix
+      ../../modules/nixos/sway.nix
       inputs.home-manager.nixosModules.default
     ];
 

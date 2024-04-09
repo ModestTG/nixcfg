@@ -61,6 +61,7 @@
     neofetch
     pulseaudio
     tldr
+    tmux
     vim
     wget
   ];
