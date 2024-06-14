@@ -57,6 +57,7 @@
     curl
     git
     home-manager
+    lazygit
     neovim
     neofetch
     pulseaudio
@@ -64,6 +65,7 @@
     tmux
     vim
     wget
+    xfce.thunar
   ];
 }
 
