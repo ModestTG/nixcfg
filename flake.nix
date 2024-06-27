@@ -10,17 +10,26 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      userSettings = {
+        username = "eweishaar";
+      };
     in
     {
       nixosConfigurations = {
         zendikar = nixpkgs.lib.nixosSystem {
           specialArgs = {inherit inputs;};
           modules = [ 
-            ./hosts/zendikar/configuration.nix
+            ./hosts/zendikar
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = inputs;
+              home-manager.users.${userSettings.username} = import ./home;
+            }
           ];
         };
       };
