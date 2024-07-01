@@ -21,13 +21,19 @@
     {
       nixosConfigurations = {
         zendikar = nixpkgs.lib.nixosSystem {
-          specialArgs = {inherit inputs;};
+          specialArgs = {
+            inherit inputs;
+            inherit userSettings;
+          };
           modules = [ 
             ./hosts/zendikar
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = inputs;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit userSettings;
+              };
               home-manager.users.${userSettings.username} = import ./home;
             }
           ];

@@ -1,4 +1,4 @@
-{config, pkgs, ...}:
+{config, pkgs, userSettings, ...}:
 
 {
   imports = [
@@ -8,9 +8,9 @@
     ./sway
   ];
 
-  home = {
-    username = "eweishaar";
-    homeDirectory = "/home/eweishaar";
+  home = rec {
+    username = "${userSettings.username}";
+    homeDirectory = "/home/${username}";
     stateVersion = "23.11";
   };
 

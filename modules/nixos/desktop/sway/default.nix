@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, userSettings, home-manager, ... }:
 
 {
   security.polkit.enable = true;  
@@ -9,7 +9,7 @@
     settings = rec {
       initial_session = {
         command = "${pkgs.sway}/bin/sway";
-        user = "eweishaar";
+        user = "${userSettings.username}";
       };
       default_session = initial_session;
     };
