@@ -56,11 +56,13 @@
     neovim
     neofetch
     pulseaudio
+    python3Packages.pynvim
     ripgrep
     tldr
     tmux
     vim
     wget
+    wl-clipboard
     xfce.thunar
   ];
 }
