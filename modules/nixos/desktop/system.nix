@@ -1,4 +1,4 @@
-{ config, pkgs, userSettings, ... }:
+{ pkgs, lib, userSettings, ... }:
 
 {
   ### NIX FLAKES
@@ -6,6 +6,12 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
+
+  nix.gc = {
+    automatic = lib.mkDefault true;
+    dates = lib.mkDefault "weekly";
+    options = lib.mkDefault "--delete-older-than 7d";
+  };
 
   ### UNFREE
   nixpkgs.config.allowUnfree = true;
