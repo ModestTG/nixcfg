@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, userSettings, ... }:
 
 {
   ### NIX FLAKES
@@ -16,16 +16,16 @@
 
   ### NETWORKING
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.firewall.enable = false;
   
   ### TIMEZONE AND LOCALE
   time.timeZone = "US/Central";
   i18n.defaultLocale = "en_US.UTF-8";
 
   ### USERS
-  users.users."eweishaar" = {
+  users.users."${userSettings.username}" = {
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" ];
-    description = "Elliot Weishaar";
     uid = 1000;
   };
   ### SOUND
@@ -43,26 +43,56 @@
     (nerdfonts.override { fonts = [ "FiraCode" ]; })
   ];
 
+  ### SSH
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+    settings = {
+      PasswordAuthentication = false;
+      PermitRootLogin = "no";
+      KexAlgorithms = [
+        "sntrup761x25519-sha512@openssh.com"
+        "curve25519-sha256"
+        "curve25519-sha256@libssh.org"
+        "diffie-hellman-group18-sha512"
+        "diffie-hellman-group-exchange-sha256"
+        "diffie-hellman-group14-sha256"
+      ];
+    };
+  };
+
   ### SYSTEM PACKAGES
   environment.systemPackages = with pkgs; [
+    #Nix
+    home-manager
+
+    # Terminals
     alacritty
+
+    #Shells
     bash
+
+    #Utilities
     bat
-    brave
     curl
     git
-    home-manager
     lazygit
-    neovim
-    neofetch
-    pulseaudio
-    python3Packages.pynvim
     ripgrep
     tldr
     tmux
-    vim
     wget
     wl-clipboard
+
+    #Editors
+    neovim
+    python3Packages.pynvim
+    vim
+
+    #Browsers
+    brave
+
+    neofetch
+    pulseaudio
     xfce.thunar
   ];
 }
