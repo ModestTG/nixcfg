@@ -4,7 +4,7 @@
   imports =
     [
       ./hardware-configuration.nix 
-      ../../modules/nixos/desktop
+      ../../modules/nixos/desktop.nix
     ];
 
   networking.hostName = "zendikar";  

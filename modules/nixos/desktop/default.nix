@@ -1,8 +1,5 @@
-{ config, pkgs, ... }:
+{ userlib, ... }:
 
 {
-  imports = [
-    ./sway
-    ./system.nix
-  ];
+  imports = userlib.scanPaths ./.;
 }

@@ -1,0 +1,8 @@
+{lib, ...}:
+
+{
+  imports = [
+    ./base
+    ./desktop
+  ];
+}

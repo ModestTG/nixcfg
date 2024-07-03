@@ -12,9 +12,10 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
+      inherit (inputs.nixpkgs) lib;
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      userlib = import ./lib {inherit nixpkgs;};
+      userlib = import ./lib {inherit lib;};
       userSettings = {
         username = "eweishaar";
       };

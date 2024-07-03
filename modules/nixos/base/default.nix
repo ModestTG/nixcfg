@@ -1,5 +1,5 @@
 {userlib, ...}:
 
 {
-	userlib.scanPaths ./.;
+  imports = userlib.scanPaths ./.;
 }
