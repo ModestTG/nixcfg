@@ -14,6 +14,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      userlib = import ./lib {inherit nixpkgs;};
       userSettings = {
         username = "eweishaar";
       };
@@ -24,6 +25,7 @@
           specialArgs = {
             inherit inputs;
             inherit userSettings;
+            inherit userlib;
           };
           modules = [ 
             ./hosts/zendikar
@@ -33,6 +35,7 @@
               home-manager.extraSpecialArgs = {
                 inherit inputs;
                 inherit userSettings;
+                inherit userlib;
               };
               home-manager.users.${userSettings.username} = import ./home;
             }
