@@ -7,6 +7,7 @@
       ll = "ls -alh";
       vim = "nvim";
       cat = "bat";
+      sudo = "doas";
     };
   };
 }
