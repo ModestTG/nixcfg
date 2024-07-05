@@ -16,11 +16,16 @@
     curl
     git
     lazygit
+    p7zip
     ripgrep
     tldr
     tmux
+    unzipNLS
     wget
     wl-clipboard
+    xz
+    zip
+    zstd
 
     #Editors
     neovim
