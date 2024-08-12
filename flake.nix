@@ -16,7 +16,8 @@
       system = "x86_64-linux";
       # pkgs = nixpkgs.legacyPackages.${system};
       userlib = import ./lib {inherit lib;};
-      specialArgs = { inherit inputs userlib; };
+      uservars = import ./vars {inherit lib;};
+      specialArgs = { inherit inputs userlib uservars; };
     in
     {
 
