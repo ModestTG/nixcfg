@@ -4,8 +4,9 @@
   programs.ssh = {
     enable = true;    
     extraConfig = ''
-      Identityfile ~/.ssh/id-laptop
+      IdentityFile = ~/.ssh/id_dominaria
     '';
+    addKeysToAgent = "yes";
   }; 
-  services.ssh-agent.enable = true;
+
 }

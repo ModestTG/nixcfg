@@ -1,4 +1,4 @@
-{ config, pkgs, userSettings, home-manager, ... }:
+{ config, pkgs, home-manager, ... }:
 
 {
   security.polkit.enable = true;  
@@ -9,12 +9,13 @@
     settings = rec {
       initial_session = {
         command = "${pkgs.sway}/bin/sway";
-        user = "${userSettings.username}";
+        user = "eweishaar";
       };
       default_session = initial_session;
     };
   };
   environment.systemPackages = with pkgs; [
+    alacritty
     sway
     wayland
     xdg-utils
