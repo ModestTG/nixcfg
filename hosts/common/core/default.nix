@@ -7,11 +7,11 @@
     git
     bash
     coreutils
-    glibcLocales
     doas
     file
     findutils
     fzf
+    gcc
     jq
     p7zip
     pciutils
@@ -30,8 +30,4 @@
     vim
     just
   ];
-
-  environment.variables = {
-    LOCALE_ARCHIVE = lib.mkDefault "${pkgs.glibcLocales}/lib/locale/locale-archive";
-  };
 }
