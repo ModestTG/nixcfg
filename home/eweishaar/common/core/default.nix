@@ -16,42 +16,21 @@
       TERM = "alacritty";
       TERMINAL = "alacritty";
       EDITOR = "nvim";
-      # MANPAGER = "batman"; # see ./cli/bat.nix
+      MANPAGER = "batman"; # see ./cli/bat.nix
     };
   };
 
   home.packages = with pkgs; [
-      btop # resource monitor
-      coreutils # basic gnu utils
-      curl
-      findutils # find
-      fzf # fuzzy search
-      jq # JSON pretty printer and manipulator
-      nix-tree # nix package tree viewer
-      ncdu # TUI disk usage
-      pciutils
-      pfetch # system info
-      pre-commit # git hooks
-      p7zip # compression & encryption
-      ripgrep # better grep
-      usbutils
-      tree # cli dir tree viewer
-      unzip # zip extraction
-      unrar # rar extraction
-      wget # downloader
-      zip
-      bash
       bat
+      btop # resource monitor
       lazygit
-      tldr
-      tmux
-      unzipNLS
-      wl-clipboard
-      zstd
-      neovim
-      python3Packages.pynvim
-      doas
+      ncdu # TUI disk usage
       neofetch
+      neovim
+      nix-tree # nix package tree viewer
+      python3Packages.pynvim
+      ripgrep # better grep
+      wl-clipboard
       xfce.thunar
   ];
 
