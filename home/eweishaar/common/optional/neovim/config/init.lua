@@ -559,8 +559,9 @@ require('lazy').setup({
         -- tsserver = {},
         
         -- nix
-        rnix = {};
-        
+        nil_ls = {
+          cmd = {'nil'}
+        },  
         -- Lua
         lua_ls = {
           -- cmd = {...},
