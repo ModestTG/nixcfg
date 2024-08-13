@@ -4,6 +4,7 @@ default:
   @just --list
 
 rebuild-pre:
+  find . -type f -name "*.nix" -exec nixfmt {} \;
   git add . 
 
 rebuild: rebuild-pre
