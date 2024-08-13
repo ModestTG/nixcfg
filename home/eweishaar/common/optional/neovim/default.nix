@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     neovim
-    nixpkgs-fmt
+    nixfmt
   ];
 
   home.file.".config/nvim/" = {
