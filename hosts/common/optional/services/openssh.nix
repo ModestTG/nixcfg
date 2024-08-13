@@ -1,6 +1,6 @@
 { lib, ... }:
 
-{  
+{
   services.openssh = {
     enable = true;
     openFirewall = true;
@@ -17,7 +17,5 @@
       ];
     };
   };
-  security.pam = {
-    sshAgentAuth.enable = true;
-  };
+  security.pam = { sshAgentAuth.enable = true; };
 }

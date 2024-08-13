@@ -1,17 +1,14 @@
 { lib, userlib, inputs, ... }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix 
-    ] ++ (map userlib.relativeToRoot [
-      "hosts/common/core"
-      "hosts/common/optional/sway.nix"
-      "hosts/common/optional/pipewire.nix"
-      "hosts/common/optional/services/openssh.nix"
-      "hosts/common/optional/nfs.nix"
-      "hosts/common/users/eweishaar"
-      ]);
+  imports = [ ./hardware-configuration.nix ] ++ (map userlib.relativeToRoot [
+    "hosts/common/core"
+    "hosts/common/optional/sway.nix"
+    "hosts/common/optional/pipewire.nix"
+    "hosts/common/optional/services/openssh.nix"
+    "hosts/common/optional/nfs.nix"
+    "hosts/common/users/eweishaar"
+  ]);
 
   boot.loader = {
     systemd-boot = {

@@ -1,9 +1,7 @@
-{pkgs, uservars, ...}:
+{ pkgs, uservars, ... }:
 
 {
-  environment.systemPackages = with pkgs; [
-    nfs-utils
-  ];
+  environment.systemPackages = with pkgs; [ nfs-utils ];
 
   fileSystems = {
     "/mnt/filebrowser" = {
@@ -26,5 +24,5 @@
       device = "${uservars.nfsServer}:/mnt/PlexPool";
       fsType = "nfs";
     };
-  };    
+  };
 }

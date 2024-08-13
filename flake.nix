@@ -15,20 +15,18 @@
       inherit (inputs.nixpkgs) lib;
       system = "x86_64-linux";
       # pkgs = nixpkgs.legacyPackages.${system};
-      userlib = import ./lib {inherit lib;};
-      uservars = import ./vars {inherit lib;};
+      userlib = import ./lib { inherit lib; };
+      uservars = import ./vars { inherit lib; };
       specialArgs = { inherit inputs userlib uservars; };
-    in
-    {
+    in {
 
       nixosConfigurations = {
         dominaria = lib.nixosSystem {
           inherit specialArgs;
-          modules = [ 
+          modules = [
             ./hosts/dominaria
-            home-manager.nixosModules.home-manager {
-              home-manager.extraSpecialArgs = specialArgs;
-            }
+            home-manager.nixosModules.home-manager
+            { home-manager.extraSpecialArgs = specialArgs; }
           ];
         };
       };

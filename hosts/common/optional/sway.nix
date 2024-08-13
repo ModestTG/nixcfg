@@ -1,8 +1,8 @@
 { config, pkgs, home-manager, ... }:
 
 {
-  security.polkit.enable = true;  
-  
+  security.polkit.enable = true;
+
   services.dbus.enable = true;
   services.greetd = {
     enable = true;
@@ -28,6 +28,6 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 }

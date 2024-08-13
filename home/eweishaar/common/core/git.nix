@@ -1,4 +1,4 @@
-{pkgs, lib, ...}:
+{ pkgs, lib, ... }:
 
 {
   programs.git = {
@@ -6,8 +6,6 @@
     package = pkgs.gitAndTools.gitFull;
     userName = "ModestTG";
     userEmail = "ssh@mailserver.com";
-    extraConfig = {
-      init.defaultBranch = "main";
-    };
+    extraConfig = { init.defaultBranch = "main"; };
   };
 }

@@ -1,9 +1,9 @@
-{pkgs, userlib, lib, ...}:
+{ pkgs, userlib, lib, ... }:
 
 {
   imports = userlib.scanPaths ./.;
 
-  environment.systemPackages = with pkgs;[
+  environment.systemPackages = with pkgs; [
     git
     bash
     coreutils

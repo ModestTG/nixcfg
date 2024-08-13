@@ -10,10 +10,7 @@
       min-free = 128000000; # 128MB
       max-free = 1000000000; # 1GB
       warn-dirty = false;
-      experimental-features = [
-      	"nix-command"
-	"flakes"
-      ];
+      experimental-features = [ "nix-command" "flakes" ];
     };
     gc = {
       automatic = lib.mkDefault true;

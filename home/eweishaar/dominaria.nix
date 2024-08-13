@@ -1,4 +1,4 @@
-{config, pkgs, userlib, ...}:
+{ config, pkgs, userlib, ... }:
 
 {
   imports = map userlib.relativeToRoot [
