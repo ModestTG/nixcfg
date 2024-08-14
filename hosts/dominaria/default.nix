@@ -1,4 +1,4 @@
-{ lib, userlib, inputs, ... }:
+{ userlib, ... }:
 
 {
   imports = [ ./hardware-configuration.nix ] ++ (map userlib.relativeToRoot [
@@ -11,12 +11,17 @@
   ]);
 
   boot.loader = {
-    systemd-boot = {
-      enable = lib.mkDefault true;
-      configurationLimit = lib.mkDefault 20;
-      consoleMode = lib.mkDefault "max";
+    systemd-boot.enable = false;
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
     };
-    efi.canTouchEfiVariables = true;
+    grub = {
+      enable = true;
+      device = "nodev";
+      useOSProber = true;
+      efiSupport = true;
+    };
   };
   networking = {
     hostName = "dominaria";
