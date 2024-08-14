@@ -14,7 +14,7 @@
       TERM = "alacritty";
       TERMINAL = "alacritty";
       EDITOR = "nvim";
-      (if (lib.elem "pkgs.kubectl" config.home.packages) then "KUBECONFIG = ''\"/home/eweishaar/jace-cluster/kubeconfig''\"" else "");
+      KUBECONFIG = "/home/eweishaar/jace-cluster/kubeconfig";
     };
   };
 
