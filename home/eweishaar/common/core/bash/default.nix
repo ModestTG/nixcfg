@@ -1,13 +1,15 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
   programs.bash = {
     enable = true;
     shellAliases = {
-      ll = "ls -alh";
-      vim = "nvim";
       cat = "bat";
+      k = "kubectl";
+      ll = "ls -alh";
       sudo = "doas";
+      vim = "nvim";
+      v = "nvim";
     };
   };
 }
