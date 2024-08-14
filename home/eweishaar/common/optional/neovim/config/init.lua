@@ -300,7 +300,6 @@ require('lazy').setup({
       }
     end,
   },
-
   -- NOTE: Plugins can specify dependencies.
   --
   -- The dependencies are proper plugin specifications as well - anything
@@ -412,7 +411,6 @@ require('lazy').setup({
       end, { desc = '[S]earch [N]eovim files' })
     end,
   },
-
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -560,7 +558,6 @@ require('lazy').setup({
         
         -- nix
         nil_ls = {
-          cmd = {'nil'}
         },  
         -- Lua
         lua_ls = {
@@ -638,6 +635,7 @@ require('lazy').setup({
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
         -- javascript = { { "prettierd", "prettier" } },
+        nix = { 'nixfmt' },
       },
     },
   },
