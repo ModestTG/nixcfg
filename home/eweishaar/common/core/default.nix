@@ -14,12 +14,13 @@
       TERM = "alacritty";
       TERMINAL = "alacritty";
       EDITOR = "nvim";
-      MANPAGER = "batman"; # see ./cli/bat.nix
+      (if (lib.elem "pkgs.kubectl" config.home.packages) then "KUBECONFIG = ''\"/home/eweishaar/jace-cluster/kubeconfig''\"" else "");
     };
   };
 
   home.packages = with pkgs; [
     bat
+    bat-extras.batman
     btop # resource monitor
     lazygit
     ncdu # TUI disk usage
