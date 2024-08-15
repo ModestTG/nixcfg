@@ -1,7 +1,12 @@
-{ userlib, ... }:
+{ userlib, inputs, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ] ++ (map userlib.relativeToRoot [
+  imports = [
+    ./hardware-configuration.nix
+    inputs.hardware.nixosModules.common-cpu-amd
+    inputs.hardware.nixosModules.common-gpu-amd
+    inputs.hardware.nixosModules.common-pc-ssd
+  ] ++ (map userlib.relativeToRoot [
     "hosts/common/core"
     "hosts/common/optional/sway.nix"
     "hosts/common/optional/pipewire.nix"

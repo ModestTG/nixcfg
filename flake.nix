@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
+    hardware.url = "github:nixos/nixos-hardware";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,7 +14,7 @@
     let
       inherit (inputs.nixpkgs) lib;
       system = "x86_64-linux";
-      # pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = nixpkgs.legacyPackages.${system};
       userlib = import ./lib { inherit lib; };
       uservars = import ./vars { inherit lib; };
       specialArgs = { inherit inputs userlib uservars; };
