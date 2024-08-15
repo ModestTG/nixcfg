@@ -1,4 +1,4 @@
-{ config, pkgs, home-manager, ... }:
+{ pkgs, ... }:
 
 {
   security.polkit.enable = true;
@@ -16,10 +16,16 @@
   };
   environment.systemPackages = with pkgs; [
     alacritty
-    sway
-    wayland
-    xdg-utils
     glib
+    sway
+    swaybg
+    swayidle
+    swayimg
+    swaylock
+    waybar
+    wayland
+    wofi
+    xdg-utils
   ];
   programs.sway = {
     enable = true;

@@ -1,11 +1,7 @@
-{ config, pkgs, ... }:
+{ pkgs, userlib, ... }:
 
 {
-  wayland.windowManager.sway = {
-    enable = true;
-    config = rec {
-      modifier = "Mod4";
-      terminal = "alacritty";
-    };
-  };
+  imports = userlib.scanPaths ./.;
+
+  home.packages = with pkgs; [ brave discord feh spotify ];
 }
