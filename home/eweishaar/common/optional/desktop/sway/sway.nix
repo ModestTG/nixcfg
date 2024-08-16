@@ -1,7 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  # xdg.configFile."sway/config".enable = false;
   wayland.windowManager.sway = {
     enable = true;
     config = {
@@ -87,7 +86,7 @@
         # "${mod}+9" = "workspace number 9";
         # "${mod}+Down" = "focus down";
         # "${mod}+Left" = "focus left";
-        "${mod}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
+        "${mod}+Return" = "exec alacritty";
         # "${mod}+Right" = "focus right";
         # "${mod}+Shift+0" = "move container to workspace number 10";
         # "${mod}+Shift+1" = "move container to workspace number 1";
@@ -115,8 +114,9 @@
         # "${mod}+Shift+space" = "floating toggle";
         # "${mod}+Up" = "focus up";
         # "${mod}+a" = "focus parent";
-        # "${mod}+b" = "splith";
-        "${mod}+r" = "exec ${pkgs.wofi}/bin/wofi";
+        "${mod}+b" = "exec brave";
+        "${mod}+d" = "nop";
+        "${mod}+r" = "exec wofi --show drun";
         # "${mod}+e" = "layout toggle split";
         # "${mod}+f" = "fullscreen toggle";
         # "${mod}+h" = "focus left";
@@ -129,8 +129,17 @@
         # "${mod}+space" = "focus mode_toggle";
         # "${mod}+v" = "splitv";
         # "${mod}+w" = "layout tabbed";
+        "${mod}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
       };
-      bars = [{ command = "${pkgs.waybar}/bin/waybar"; }];
+      bars = [{
+        command = "${pkgs.waybar}/bin/waybar";
+        fonts = config.wayland.windowManager.sway.config.fonts;
+      }];
+      assigns = {
+        "2" = [{ class = "Brave"; }];
+        "3" = [{ class = "^Spotify$"; }];
+        "4" = [{ class = "^discord$"; }];
+      };
     };
   };
 }
