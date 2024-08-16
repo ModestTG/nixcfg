@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 let
   theme_tokyonight = pkgs.fetchFromGitHub {
@@ -12,7 +12,7 @@ in {
     enable = true;
     settings = {
       import = [ "${theme_tokyonight}/extras/alacritty/tokyonight_night.toml" ];
-      font = {
+      font = lib.mkDefault {
         normal = {
           family = "Fira Code Nerdfont";
           style = "Regular";
