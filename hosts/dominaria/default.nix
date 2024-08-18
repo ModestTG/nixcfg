@@ -12,6 +12,7 @@
     "hosts/common/optional/pipewire.nix"
     "hosts/common/optional/services/openssh.nix"
     "hosts/common/optional/nfs.nix"
+    "hosts/common/optional/epsonscan2.nix"
     "hosts/common/users/eweishaar"
   ]);
 
