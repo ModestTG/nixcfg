@@ -3,7 +3,7 @@
 {
   imports = map userlib.relativeToRoot [
     "home/eweishaar/common/core"
-    "home/eweishaar/common/optional/desktop/sway"
+    "home/eweishaar/common/optional/desktop"
     "home/eweishaar/common/optional/neovim"
     "home/eweishaar/common/optional/kubernetes.nix"
   ];
