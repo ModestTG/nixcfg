@@ -13,6 +13,7 @@
     "hosts/common/optional/services/openssh.nix"
     "hosts/common/optional/nfs.nix"
     "hosts/common/optional/epsonscan2.nix"
+    "hosts/common/optional/services/printing.nix"
     "hosts/common/users/eweishaar"
   ]);
 
