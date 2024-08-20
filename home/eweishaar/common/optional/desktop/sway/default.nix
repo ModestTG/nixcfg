@@ -3,7 +3,7 @@
 {
   imports = [
     inputs.base16.homeManagerModule
-    { scheme = "${inputs.tt-themes}/base16/tokyo-night-terminal-dark.yaml"; }
+    { scheme = (userlib.relativeToRoot "config/tokyonight-night-base16.yaml"); }
   ] ++ (userlib.scanPaths ./.);
 
   home.packages = with pkgs; [
