@@ -20,7 +20,6 @@
       bat
       bat-extras.batman
       btop # resource monitor
-      lazygit
       ncdu # TUI disk usage
       neofetch
       nix-tree # nix package tree viewer
