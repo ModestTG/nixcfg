@@ -90,7 +90,24 @@
         "base16": "base16",
         "hardware": "hardware",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "theme_tokyonight": "theme_tokyonight"
+      }
+    },
+    "theme_tokyonight": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721799929,
+        "narHash": "sha256-Fxakkz4+BTbvDLjRggZUVVhVEbg1b/MuuIC1rGrCwVA=",
+        "owner": "folke",
+        "repo": "tokyonight.nvim",
+        "rev": "b0e7c7382a7e8f6456f2a95655983993ffda745e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "tokyonight.nvim",
+        "type": "github"
       }
     }
   },

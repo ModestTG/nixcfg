@@ -24,7 +24,6 @@
       ncdu # TUI disk usage
       neofetch
       nix-tree # nix package tree viewer
-      python3Packages.pynvim
       ripgrep # better grep
       wl-clipboard
       xfce.thunar
