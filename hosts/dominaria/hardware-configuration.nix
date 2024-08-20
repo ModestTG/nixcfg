@@ -11,6 +11,7 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [ "pcie_port_pm=off" ];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/3b290d30-5602-4b04-8855-ac05eaabc28e";
