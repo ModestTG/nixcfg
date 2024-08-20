@@ -1,4 +1,4 @@
-{ config, lib, pkgs, outputs, userlib, ... }:
+{ config, lib, pkgs, userlib, ... }:
 
 {
   imports = userlib.scanPaths ./.;
@@ -16,21 +16,20 @@
       EDITOR = "nvim";
       KUBECONFIG = "/home/eweishaar/jace-cluster/kubeconfig";
     };
+    packages = with pkgs; [
+      bat
+      bat-extras.batman
+      btop # resource monitor
+      lazygit
+      ncdu # TUI disk usage
+      neofetch
+      nix-tree # nix package tree viewer
+      python3Packages.pynvim
+      ripgrep # better grep
+      wl-clipboard
+      xfce.thunar
+    ];
   };
-
-  home.packages = with pkgs; [
-    bat
-    bat-extras.batman
-    btop # resource monitor
-    lazygit
-    ncdu # TUI disk usage
-    neofetch
-    nix-tree # nix package tree viewer
-    python3Packages.pynvim
-    ripgrep # better grep
-    wl-clipboard
-    xfce.thunar
-  ];
 
   nixpkgs.config.allowUnfree = true;
 
