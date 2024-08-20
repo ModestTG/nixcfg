@@ -1,18 +1,21 @@
-{ pkgs, userlib, lib, ... }:
+{ pkgs, userlib, ... }:
 
 {
   imports = userlib.scanPaths ./.;
 
   environment.systemPackages = with pkgs; [
-    git
     bash
     coreutils
+    curl
+    dig
     doas
     file
     findutils
     fzf
     gcc
+    git
     jq
+    just
     p7zip
     pciutils
     pfetch
@@ -23,11 +26,9 @@
     unrar
     unzip
     usbutils
+    vim
+    wget
     zip
     zstd
-    wget
-    curl
-    vim
-    just
   ];
 }
