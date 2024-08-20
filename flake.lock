@@ -90,24 +90,7 @@
         "base16": "base16",
         "hardware": "hardware",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs",
-        "tt-themes": "tt-themes"
-      }
-    },
-    "tt-themes": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1718992165,
-        "narHash": "sha256-9i9IjZcjvinb/214x5YShUDBZBC2189HYs26uGy/Hck=",
-        "owner": "tinted-theming",
-        "repo": "schemes",
-        "rev": "ef9a4c3c384624694608adebf0993d7a3bed3cf2",
-        "type": "github"
-      },
-      "original": {
-        "owner": "tinted-theming",
-        "repo": "schemes",
-        "type": "github"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
