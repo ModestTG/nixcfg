@@ -12,6 +12,7 @@
     feh
     grim
     kolourpaint
+    obsidian
     slurp
     spotify
     swappy
