@@ -116,7 +116,7 @@
         # "${mod}+a" = "focus parent";
         "${mod}+b" = "exec brave";
         "${mod}+d" = "nop";
-        "${mod}+r" = "exec wofi --show drun";
+        "${mod}+r" = "exec wofi --show run";
         # "${mod}+e" = "layout toggle split";
         # "${mod}+f" = "fullscreen toggle";
         # "${mod}+h" = "focus left";
