@@ -14,6 +14,7 @@
     "hosts/common/optional/nfs.nix"
     "hosts/common/optional/epsonscan2.nix"
     "hosts/common/optional/services/printing.nix"
+    "hosts/common/optional/gaming"
     "hosts/common/users/eweishaar"
   ]);
 
