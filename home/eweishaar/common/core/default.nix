@@ -14,7 +14,10 @@
       TERM = "alacritty";
       TERMINAL = "alacritty";
       EDITOR = "nvim";
-      KUBECONFIG = "/home/eweishaar/jace-cluster/kubeconfig";
+      KUBECONFIG = if config.programs.k9s.enable then
+        "/home/eweishaar/jace-cluster/kubeconfig"
+      else
+        "";
     };
     packages = with pkgs; [
       bat

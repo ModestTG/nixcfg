@@ -1,7 +1,7 @@
 { pkgs, userlib, ... }:
 
 {
-  home.packages = with pkgs; [ neovim nixfmt rustc cargo ];
+  home.packages = with pkgs; [ neovim nixfmt-rfc-style rustc cargo ];
 
   xdg.configFile."nvim" = {
     source =
