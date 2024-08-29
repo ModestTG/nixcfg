@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   programs.git = {
@@ -8,6 +8,7 @@
     userEmail = "ssh@mailserver.com";
     extraConfig = {
       init.defaultBranch = "main";
+      safe.directory = "/home/eweishaar/nixcfg/.git";
     };
   };
 }
