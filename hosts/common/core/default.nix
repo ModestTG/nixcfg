@@ -5,6 +5,7 @@
 
   environment.systemPackages = with pkgs; [
     bash
+    bc
     coreutils
     curl
     dig
