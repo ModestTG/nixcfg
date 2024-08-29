@@ -6,6 +6,7 @@
     shellAliases = {
       cat = "bat";
       k = "kubectl";
+      lg = "lazygit";
       ll = "ls -alh";
       man = "batman";
       sudo = "doas";
