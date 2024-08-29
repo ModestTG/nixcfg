@@ -1,7 +1,17 @@
-{ pkgs, config, lib, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 
 {
-  home.packages = with pkgs; [ kubectl k9s go-task fluxcd ];
+  home.packages = with pkgs; [
+    kubectl
+    k9s
+    go-task
+    fluxcd
+  ];
 
   programs.k9s = {
     enable = true;
@@ -58,10 +68,10 @@
           };
 
           status = {
-            newColor = base08-hex;
+            newColor = base0C-hex;
             modifyColor = base0C-hex;
             addColor = base09-hex;
-            errorColor = base0D-hex;
+            errorColor = base08-hex;
             highlightcolor = base0A-hex;
             killColor = base03-hex;
             completedColor = base03-hex;
@@ -79,8 +89,14 @@
         views = {
           charts = {
             bgColor = "default";
-            defaultDialColors = [ base0C-hex base0D-hex ];
-            defaultChartColors = [ base0C-hex base0D-hex ];
+            defaultDialColors = [
+              base0C-hex
+              base0D-hex
+            ];
+            defaultChartColors = [
+              base0C-hex
+              base0D-hex
+            ];
           };
 
           table = {
