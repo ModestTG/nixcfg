@@ -1,4 +1,9 @@
-{ pkgs, userlib, inputs, ... }:
+{
+  pkgs,
+  userlib,
+  inputs,
+  ...
+}:
 
 {
   imports = [
