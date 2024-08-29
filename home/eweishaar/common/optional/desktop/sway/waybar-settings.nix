@@ -11,8 +11,12 @@
         # "width" =  1280, # Waybar width
         spacing = 4; # Gaps between modules (4px)
         # Choose the order of the modules
-        modules-left =
-          [ "sway/workspaces" "sway/mode" "sway/scratchpad" "custom/media" ];
+        modules-left = [
+          "sway/workspaces"
+          "sway/mode"
+          "sway/scratchpad"
+          "custom/media"
+        ];
         modules-center = [ "sway/window" ];
         modules-right = [
           "mpd"
@@ -58,29 +62,38 @@
             unlocked = "";
           };
         };
-        "sway/mode" = { format = ''<span style="italic">{}</span>''; };
+        "sway/mode" = {
+          format = ''<span style="italic">{}</span>'';
+        };
         "sway/scratchpad" = {
           format = "{icon} {count}";
           show-empty = false;
-          format-icons = [ "" "" ];
+          format-icons = [
+            ""
+            ""
+          ];
           tooltip = true;
           tooltip-format = "{app} =  {title}";
         };
         mpd = {
-          format =
-            "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime = %M = %S}/{totalTime = %M = %S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ";
+          format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime = %M = %S}/{totalTime = %M = %S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ";
           format-disconnected = "Disconnected ";
-          format-stopped =
-            "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
+          format-stopped = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
           unknown-tag = "N/A";
           interval = 5;
-          "consume-icons" = { on = " "; };
+          "consume-icons" = {
+            on = " ";
+          };
           "random-icons" = {
             off = ''<span color="#f53c3c"></span> '';
             on = " ";
           };
-          "repeat-icons" = { on = " "; };
-          "single-icons" = { on = "1 "; };
+          "repeat-icons" = {
+            on = " ";
+          };
+          "single-icons" = {
+            on = "1 ";
+          };
           "state-icons" = {
             paused = "";
             playing = "";
@@ -110,19 +123,35 @@
           format = "{usage}% ";
           tooltip = false;
         };
-        memory = { format = "{}% "; };
+        memory = {
+          format = "{}% ";
+        };
         temperature = {
           # "thermal-zone" =  2
           # "hwmon-path" =  "/sys/class/hwmon/hwmon2/temp1_input"
           critical-threshold = 80;
           # "format-critical" =  "{temperatureC}°C {icon}"
           format = "{temperatureC}°C {icon}";
-          format-icons = [ "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+          ];
         };
         backlight = {
           # "device" =  "acpi_video1"
           format = "{percent}% {icon}";
-          format-icons = [ "" "" "" "" "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
         battery = {
           states = {
@@ -137,9 +166,17 @@
           format-alt = "{time} {icon}";
           # "format-good" =  "", # An empty format will hide the module
           # "format-full" =  ""
-          format-icons = [ "" "" "" "" "" ];
+          format-icons = [
+            ""
+            ""
+            ""
+            ""
+            ""
+          ];
         };
-        "battery#bat2" = { bat = "BAT2"; };
+        "battery#bat2" = {
+          bat = "BAT2";
+        };
         power-profiles-daemon = {
           format = "{icon}";
           tooltip-format = ''
@@ -177,7 +214,11 @@
             phone = "";
             portable = "";
             car = "";
-            default = [ "" "" "" ];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
           on-click = "pavucontrol";
         };
@@ -190,8 +231,7 @@
             default = "🎜";
           };
           escape = true;
-          exec =
-            "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; # Script in resources folder;
+          exec = "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; # Script in resources folder;
           # exec =  "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" # Filter player based on name;
         };
         "custom/power" = {

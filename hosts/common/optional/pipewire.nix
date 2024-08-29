@@ -12,5 +12,9 @@
     jack.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [ pulseaudio pamixer pavucontrol ];
+  environment.systemPackages = with pkgs; [
+    pulseaudio
+    pamixer
+    pavucontrol
+  ];
 }

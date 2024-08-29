@@ -1,11 +1,20 @@
-{ pkgs, lib, inputs, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
   system.autoUpgrade = {
     enable = true;
     dates = "01:00";
     flake = inputs.self.outPath;
-    flags = [ "--update-input" "nixpkgs" "-L" ];
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "-L"
+    ];
     randomizedDelaySec = "30min";
   };
   nix = {
@@ -16,7 +25,10 @@
       min-free = 128000000; # 128MB
       max-free = 1000000000; # 1GB
       warn-dirty = false;
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
 
     };
     gc = {

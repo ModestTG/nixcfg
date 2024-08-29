@@ -1,4 +1,10 @@
-{ config, lib, pkgs, userlib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  userlib,
+  ...
+}:
 
 {
   imports = userlib.scanPaths ./.;
@@ -14,10 +20,7 @@
       TERM = "alacritty";
       TERMINAL = "alacritty";
       EDITOR = "nvim";
-      KUBECONFIG = if config.programs.k9s.enable then
-        "/home/eweishaar/jace-cluster/kubeconfig"
-      else
-        "";
+      KUBECONFIG = if config.programs.k9s.enable then "/home/eweishaar/jace-cluster/kubeconfig" else "";
     };
     packages = with pkgs; [
       bat
@@ -34,7 +37,9 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  programs = { home-manager.enable = true; };
+  programs = {
+    home-manager.enable = true;
+  };
 
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
