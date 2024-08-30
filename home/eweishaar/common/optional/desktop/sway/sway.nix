@@ -6,150 +6,161 @@
 }:
 
 {
-  wayland.windowManager.sway = {
-    enable = true;
-    config = {
+  wayland.windowManager.sway =
+    let
       modifier = "Mod4";
-      defaultWorkspace = "workspace number 1";
-      workspaceLayout = "default";
-      workspaceAutoBackAndForth = false;
-      fonts = {
-        names = [ "FiraCodeNerdFont" ];
-        style = "Medium";
-        size = 10.0;
-      };
-      gaps = {
-        inner = 6;
-        outer = 2;
-      };
-      window = {
-        border = 2;
-        titlebar = false;
-        hideEdgeBorders = "none";
-      };
-      floating = {
-        modifier = config.wayland.windowManager.sway.config.modifier;
-        border = config.wayland.windowManager.sway.config.window.border;
-        titlebar = config.wayland.windowManager.sway.config.window.titlebar;
-      };
-      focus = {
-        wrapping = "no";
-        followMouse = "yes";
-        newWindow = "smart";
-        mouseWarping = "output";
-      };
-      colors = {
-        background = "#ffffff";
-        placeholder = {
-          border = "#000000";
-          background = "#0c0c0c";
-          text = "#ffffff";
-          indicator = "#000000";
-          childBorder = "#ffffff";
+      border = 2;
+      titlebar = false;
+      fontName = "FiraCodeNerdFont";
+    in
+    {
+      enable = true;
+      config = {
+        inherit modifier;
+        defaultWorkspace = "workspace number 1";
+        workspaceLayout = "default";
+        workspaceAutoBackAndForth = false;
+        fonts = {
+          names = [ fontName ];
+          style = "Medium";
+          size = 10.0;
         };
-        urgent = {
-          border = "#2f343a";
-          background = "#900000";
-          text = "#ffffff";
-          indicator = "#900000";
-          childBorder = "#900000";
+        gaps = {
+          inner = 6;
+          outer = 2;
         };
-        unfocused = {
-          border = "#333333";
-          background = "#222222";
-          text = "#888888";
-          indicator = "#292d2e";
-          childBorder = "#222222";
+        window = {
+          inherit border titlebar;
+          hideEdgeBorders = "none";
         };
-        focusedInactive = {
-          border = "#333333";
-          background = "#5f676a";
-          text = "#ffffff";
-          indicator = "#484e50";
-          childBorder = "#5f676a";
+        floating = {
+          inherit modifier border titlebar;
+          criteria = [
+            {
+              app_id = "org.pulseaudio.pavucontrol";
+            }
+          ];
         };
-        focused = {
-          border = "#4c7899";
-          background = "#285577";
-          text = "#ffffff";
-          indicator = "#2e9ef4";
-          childBorder = "#285577";
+        focus = {
+          wrapping = "no";
+          followMouse = "yes";
+          newWindow = "smart";
+          mouseWarping = "output";
         };
-      };
 
-      keybindings =
-        let
-          mod = config.wayland.windowManager.sway.config.modifier;
-        in
-        lib.mkOptionDefault {
-          # "${mod}+0" = "workspace number 10";
-          # "${mod}+1" = "workspace number 1";
-          # "${mod}+2" = "workspace number 2";
-          # "${mod}+3" = "workspace number 3";
-          # "${mod}+4" = "workspace number 4";
-          # "${mod}+5" = "workspace number 5";
-          # "${mod}+6" = "workspace number 6";
-          # "${mod}+7" = "workspace number 7";
-          # "${mod}+8" = "workspace number 8";
-          # "${mod}+9" = "workspace number 9";
-          # "${mod}+Down" = "focus down";
-          # "${mod}+Left" = "focus left";
-          "${mod}+Return" = "exec alacritty";
-          # "${mod}+Right" = "focus right";
-          # "${mod}+Shift+0" = "move container to workspace number 10";
-          # "${mod}+Shift+1" = "move container to workspace number 1";
-          # "${mod}+Shift+2" = "move container to workspace number 2";
-          # "${mod}+Shift+3" = "move container to workspace number 3";
-          # "${mod}+Shift+4" = "move container to workspace number 4";
-          # "${mod}+Shift+5" = "move container to workspace number 5";
-          # "${mod}+Shift+6" = "move container to workspace number 6";
-          # "${mod}+Shift+7" = "move container to workspace number 7";
-          # "${mod}+Shift+8" = "move container to workspace number 8";
-          # "${mod}+Shift+9" = "move container to workspace number 9";
-          # "${mod}+Shift+Down" = "move down";
-          # "${mod}+Shift+Left" = "move left";
-          # "${mod}+Shift+Right" = "move right";
-          # "${mod}+Shift+Up" = "move up";
-          "${mod}+Shift+q" = "reload";
-          # "${mod}+Shift+e" =
+        colors =
+          with config.scheme.withHashtag;
+          let
+            text = base05;
+            urgent = base08;
+            focused = base0D;
+            unfocused = base03;
+            background = base00;
+            indicator = base0B;
+          in
+          {
+            inherit background;
+            urgent = {
+              inherit background indicator text;
+              border = urgent;
+              childBorder = urgent;
+            };
+            focused = {
+              inherit background indicator text;
+              border = focused;
+              childBorder = focused;
+            };
+            focusedInactive = {
+              inherit background indicator text;
+              border = unfocused;
+              childBorder = unfocused;
+            };
+            unfocused = {
+              inherit background indicator text;
+              border = unfocused;
+              childBorder = unfocused;
+            };
+            placeholder = {
+              inherit background indicator text;
+              border = unfocused;
+              childBorder = unfocused;
+            };
+          };
+        keybindings = lib.mkOptionDefault {
+          # "${modifier}+0" = "workspace number 10";
+          # "${modifier}+1" = "workspace number 1";
+          # "${modifier}+2" = "workspace number 2";
+          # "${modifier}+3" = "workspace number 3";
+          # "${modifier}+4" = "workspace number 4";
+          # "${modifier}+5" = "workspace number 5";
+          # "${modifier}+6" = "workspace number 6";
+          # "${modifier}+7" = "workspace number 7";
+          # "${modifier}+8" = "workspace number 8";
+          # "${modifier}+9" = "workspace number 9";
+          # "${modifier}+Down" = "focus down";
+          # "${modifier}+Left" = "focus left";
+          "${modifier}+Return" = "exec alacritty";
+          # "${modifier}+Right" = "focus right";
+          # "${modifier}+Shift+0" = "move container to workspace number 10";
+          # "${modifier}+Shift+1" = "move container to workspace number 1";
+          # "${modifier}+Shift+2" = "move container to workspace number 2";
+          # "${modifier}+Shift+3" = "move container to workspace number 3";
+          # "${modifier}+Shift+4" = "move container to workspace number 4";
+          # "${modifier}+Shift+5" = "move container to workspace number 5";
+          # "${modifier}+Shift+6" = "move container to workspace number 6";
+          # "${modifier}+Shift+7" = "move container to workspace number 7";
+          # "${modifier}+Shift+8" = "move container to workspace number 8";
+          # "${modifier}+Shift+9" = "move container to workspace number 9";
+          # "${modifier}+Shift+Down" = "move down";
+          # "${modifier}+Shift+Left" = "move left";
+          # "${modifier}+Shift+Right" = "move right";
+          # "${modifier}+Shift+Up" = "move up";
+          "${modifier}+Shift+q" = "reload";
+          # "${modifier}+Shift+e" =
           #   "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
-          # "${mod}+Shift+h" = "move left";
-          # "${mod}+Shift+j" = "move down";
-          # "${mod}+Shift+k" = "move up";
-          # "${mod}+Shift+l" = "move right";
-          # "${mod}+Shift+minus" = "move scratchpad";
-          "${mod}+q" = "kill";
-          # "${mod}+Shift+space" = "floating toggle";
-          # "${mod}+Up" = "focus up";
-          # "${mod}+a" = "focus parent";
-          "${mod}+b" = "exec brave";
-          "${mod}+d" = "nop";
-          "${mod}+r" = "exec wofi --show run";
-          # "${mod}+e" = "layout toggle split";
-          # "${mod}+f" = "fullscreen toggle";
-          # "${mod}+h" = "focus left";
-          # "${mod}+j" = "focus down";
-          # "${mod}+k" = "focus up";
-          # "${mod}+l" = "focus right";
-          # "${mod}+minus" = "scratchpad show";
-          # "${mod}+Shift+r" = "mode resize";
-          # "${mod}+s" = "layout stacking";
-          # "${mod}+space" = "focus mode_toggle";
-          # "${mod}+v" = "splitv";
-          # "${mod}+w" = "layout tabbed";
-          "${mod}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
+          # "${modifier}+Shift+h" = "move left";
+          # "${modifier}+Shift+j" = "move down";
+          # "${modifier}+Shift+k" = "move up";
+          # "${modifier}+Shift+l" = "move right";
+          # "${modifier}+Shift+minus" = "move scratchpad";
+          "${modifier}+q" = "kill";
+          # "${modifier}+Shift+space" = "floating toggle";
+          # "${modifier}+Up" = "focus up";
+          # "${modifier}+a" = "focus parent";
+          "${modifier}+b" = "exec brave";
+          "${modifier}+d" = "nop";
+          "${modifier}+r" = "exec wofi --show run";
+          # "${modifier}+e" = "layout toggle split";
+          # "${modifier}+f" = "fullscreen toggle";
+          # "${modifier}+h" = "focus left";
+          # "${modifier}+j" = "focus down";
+          # "${modifier}+k" = "focus up";
+          # "${modifier}+l" = "focus right";
+          # "${modifier}+minus" = "scratchpad show";
+          # "${modifier}+Shift+r" = "mode resize";
+          # "${modifier}+s" = "layout stacking";
+          # "${modifier}+space" = "focus mode_toggle";
+          # "${modifier}+v" = "splitv";
+          # "${modifier}+w" = "layout tabbed";
+          "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
         };
-      bars = [
-        {
-          command = "${pkgs.waybar}/bin/waybar";
-          fonts = config.wayland.windowManager.sway.config.fonts;
-        }
-      ];
-      assigns = {
-        "2" = [ { class = "Brave"; } ];
-        "3" = [ { class = "^Spotify$"; } ];
-        "4" = [ { class = "^discord$"; } ];
+        bars = [
+          {
+            command = "${pkgs.waybar}/bin/waybar";
+            fonts = config.wayland.windowManager.sway.config.fonts;
+          }
+        ];
+        assigns = {
+          "2" = [ { class = "Brave"; } ];
+          "3" = [ { class = "^Spotify$"; } ];
+          "4" = [ { class = "^discord$"; } ];
+        };
+        startup = [
+          {
+            command = "autotiling";
+            always = true;
+          }
+        ];
       };
     };
-  };
 }
