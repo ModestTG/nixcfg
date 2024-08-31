@@ -2,6 +2,7 @@
   config,
   pkgs,
   lib,
+  userlib,
   ...
 }:
 
@@ -158,6 +159,10 @@
         startup = [
           {
             command = "autotiling";
+            always = true;
+          }
+          {
+            command = "swaybg -i " + (userlib.relativeToRoot "config/wallpapers/2560x1440/wp_0004.png");
             always = true;
           }
         ];
