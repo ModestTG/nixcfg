@@ -12,42 +12,41 @@
         spacing = 4; # Gaps between modules (4px)
         # Choose the order of the modules
         modules-left = [
+          "custom/media"
+        ];
+        modules-center = [
           "sway/workspaces"
         ];
-        modules-center = [ "sway/window" ];
         modules-right = [
-          "custom/media"
           "pulseaudio"
-          "cpu"
-          "memory"
           "tray"
           "clock"
           "custom/power"
         ];
         # Modules configuration
-        # "sway/workspaces" =  {
-        #     "disable-scroll" =  true
-        #     "all-outputs" =  true
-        #     "warp-on-scroll" =  false
-        #     "format" =  "{name} =  {icon}"
-        #     "format-icons" =  {
-        #         "1" =  ""
-        #         "2" =  ""
-        #         "3" =  ""
-        #         "4" =  ""
-        #         "5" =  ""
-        #         "urgent" =  ""
-        #         "focused" =  ""
-        #         "default" =  ""
-        #     }
-        # }
+        "sway/workspaces" = {
+          disable-scroll = true;
+          all-outputs = true;
+          warp-on-scroll = false;
+          format = "{icon}";
+          format-icons = {
+            "1" = "";
+            "2" = "";
+            "3" = "";
+            "4" = "";
+            "5" = "";
+            # urgent = "";
+            # focused = "";
+            # default = "";
+          };
+        };
         tray = {
           # "icon-size" =  21
           spacing = 10;
         };
         clock = {
           interval = 1;
-          format = "{:%D %T}";
+          format = "{:%R}";
           tooltip-format = "<tt><small>{calendar}</small></tt>";
           calendar = {
             mode = "year";
@@ -55,13 +54,6 @@
             weeks-pos = "right";
             on-scroll = 1;
           };
-        };
-        cpu = {
-          format = "{usage}% ";
-          tooltip = false;
-        };
-        memory = {
-          format = "{}% ";
         };
         pulseaudio = {
           # scroll-step =  1, # %, can be a float;
