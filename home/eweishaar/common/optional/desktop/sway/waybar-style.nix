@@ -33,6 +33,8 @@
           font-family: FiraCodeNerdFont-Medium;
           font-size: 16px;
           border-radius: 4px;
+          background-color: transparent;
+          color: @base0E;
       }
 
       window#waybar {
@@ -81,13 +83,10 @@
 
       /* you can set a style on hover for any module like this */
       #pulseaudio:hover {
-          background-color: #a37800;
       }
 
       #workspaces button {
-          padding: 0 0.4em;
-          background-color: transparent;
-          color: #ffffff;
+          padding: 0.4em 0.4em;
       }
 
       #workspaces button:hover {
@@ -95,12 +94,12 @@
       }
 
       #workspaces button.focused {
-          background-color: #64727D;
+          background-color: @base03;
           box-shadow: inset 0 -3px #ffffff;
       }
 
       #workspaces button.urgent {
-          background-color: #eb4d4b;
+          background-color: @base08;
       }
 
       #mode {
@@ -143,10 +142,6 @@
       /* If workspaces is the rightmost module, omit right margin */
       .modules-right > widget:last-child > #workspaces {
           margin-right: 0;
-      }
-
-      #clock {
-          background-color: #64727D;
       }
 
       #battery {
@@ -225,16 +220,6 @@
           background-color: #f53c3c;
       }
 
-      #pulseaudio {
-          background-color: #f1c40f;
-          color: #000000;
-      }
-
-      #pulseaudio.muted {
-          background-color: #90b1b1;
-          color: #2a5c45;
-      }
-
       #wireplumber {
           background-color: #fff0f5;
           color: #000000;
@@ -245,17 +230,16 @@
       }
 
       #custom-media {
-          background-color: #66cc99;
-          color: #2a5c45;
+          background-color: @base0B;
           min-width: 100px;
       }
 
       #custom-media.custom-spotify {
-          background-color: #66cc99;
+          background-color: @base0B;
       }
 
       #custom-media.custom-vlc {
-          background-color: #ffa000;
+          background-color: @base09;
       }
 
       #temperature {
@@ -264,10 +248,6 @@
 
       #temperature.critical {
           background-color: #eb4d4b;
-      }
-
-      #tray {
-          background-color: #2980b9;
       }
 
       #tray > .passive {
