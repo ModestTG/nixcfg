@@ -30,7 +30,7 @@
       @define-color base0C ${base0C}; @define-color base0D ${base0D}; @define-color base0E ${base0E}; @define-color base0F ${base0F};
       * {
           /* `otf-font-awesome` is required to be installed for icons */
-          font-family: FiraCodeNerdFont-Medium;
+          font-family: "Fira Code Nerd Font Med", FontAwesome;
           border: none;
           border-radius: 0px;
       }
@@ -93,18 +93,16 @@
         opacity: 0.8;
         font-size: 16px;
         color: @base0E;
-        margin: 0 4px;
+        margin: 4px 4px;
       }
 
       #workspaces button {
-        padding: 0px 5px;
-        margin: 4px 3px;
-        border-radius: 15px;
-        border: 0px;
+        padding: 0;
+        margin: 8px;
+        border: none;
         color: @base0E;
-        background-color: @base00;
+        background-color: transparent;
         transition: all 0.3s ease-in-out;
-        opacity: 0.8;
       }
 
       #workspaces button:hover {
@@ -113,7 +111,6 @@
 
       #workspaces button.focused {
           background-color: @base03;
-          box-shadow: inset 0 -3px #ffffff;
       }
 
       #workspaces button.urgent {
@@ -134,15 +131,20 @@
           color: @base0E;
       }
 
-      #pulseaudio, #clock, #tray, #custom-media {
+      #clock, #tray, #pulseaudio, #custom-media, #custom-power {
         background-color: @base00;
         font-size: 16px;
         color: @base0E;
         border-radius: 15px;
         padding: 1px 10px 0px 10px;
-        margin: 3px 15px 3px 0px;
+        margin: 3px;
         opacity:0.8;
         border:3px solid @base05;
+      }
+
+      #custom-space {
+        padding: 0;
+        background-color: transparent;
       }
 
       #tray > .passive {

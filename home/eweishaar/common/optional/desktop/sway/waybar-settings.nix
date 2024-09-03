@@ -12,6 +12,7 @@
         spacing = 4; # Gaps between modules (4px)
         # Choose the order of the modules
         modules-left = [
+          "custom/space"
           "custom/media"
         ];
         modules-center = [
@@ -22,6 +23,7 @@
           "tray"
           "clock"
           "custom/power"
+          "custom/space"
         ];
         # Modules configuration
         "sway/workspaces" = {
@@ -30,14 +32,16 @@
           warp-on-scroll = false;
           format = "{icon}";
           format-icons = {
-            "1" = "";
-            "2" = "";
-            "3" = "󰝚";
-            "4" = "󰭹";
-            "5" = "";
-            # urgent = "";
-            # focused = "";
-            # default = "";
+            urgent = "";
+            focused = "";
+            default = "";
+          };
+          persistent-workspaces = {
+            "1" = [ ];
+            "2" = [ ];
+            "3" = [ ];
+            "4" = [ ];
+            "5" = [ ];
           };
         };
         tray = {
@@ -78,6 +82,10 @@
           };
           on-click = "pavucontrol";
         };
+        "custom/space" = {
+          format = " ";
+          tooltip = false;
+        };
         "custom/media" = {
           format = "{}";
           max-length = 40;
@@ -89,7 +97,7 @@
           exec = ''playerctl -p spotify metadata -f "{{artist}} - {{title}}" -F'';
         };
         "custom/power" = {
-          format = "⏻ ";
+          format = "⏻";
           tooltip = false;
           menu = "on-click";
           menu-file = pkgs.writeText "power_menu.xml" ''
