@@ -10,4 +10,4 @@ rbs: rebuild-pre
   scripts/system-flake-rebuild-switch.sh
 
 rbt: rebuild-pre
-  scripts/system-flake-rebuild-switch.sh
+  scripts/system-flake-rebuild-test.sh
