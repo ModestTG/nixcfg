@@ -5,12 +5,10 @@
     enable = true;
     settings = {
       mainBar = {
-        # "layer" =  "top", # Waybar at top layer
         position = "top"; # Waybar position (top|bottom|left|right)
-        height = 30; # Waybar height (to be removed for auto height)
+        # height = 30; # Waybar height (to be removed for auto height)
         # "width" =  1280, # Waybar width
         spacing = 4; # Gaps between modules (4px)
-        # Choose the order of the modules
         modules-left = [
           "custom/space"
           "custom/media"
@@ -32,9 +30,14 @@
           warp-on-scroll = false;
           format = "{icon}";
           format-icons = {
-            urgent = "";
-            focused = "";
-            default = "";
+            "1" = "";
+            "2" = "󰖟";
+            "3" = "";
+            "4" = "";
+            "5" = "󰊗";
+            # urgent = "";
+            # focused = "";
+            # default = "";
           };
           persistent-workspaces = {
             "1" = [ ];
@@ -45,7 +48,7 @@
           };
         };
         tray = {
-          # "icon-size" =  21
+          icon-size = 18;
           spacing = 10;
         };
         clock = {
@@ -61,7 +64,7 @@
         };
         pulseaudio = {
           # scroll-step =  1, # %, can be a float;
-          format = "{volume}% {icon} {format_source}";
+          format = "{volume}% {icon}  {format_source}";
           format-bluetooth = "{volume}% {icon} {format_source}";
           format-bluetooth-muted = " {icon} {format_source}";
           format-muted = " {format_source}";
@@ -83,7 +86,7 @@
           on-click = "pavucontrol";
         };
         "custom/space" = {
-          format = " ";
+          format = "";
           tooltip = false;
         };
         "custom/media" = {
@@ -97,7 +100,7 @@
           exec = ''playerctl -p spotify metadata -f "{{artist}} - {{title}}" -F'';
         };
         "custom/power" = {
-          format = "⏻";
+          format = "";
           tooltip = false;
           menu = "on-click";
           menu-file = pkgs.writeText "power_menu.xml" ''

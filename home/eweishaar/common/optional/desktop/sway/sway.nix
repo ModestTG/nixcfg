@@ -28,7 +28,7 @@
         };
         gaps = {
           inner = 6;
-          outer = 2;
+          top = -6;
         };
         window = {
           inherit border titlebar;
@@ -88,16 +88,16 @@
             };
           };
         keybindings = lib.mkOptionDefault {
-          # "${modifier}+0" = "workspace number 10";
+          "${modifier}+0" = "nop";
           "${modifier}+1" = "workspace number 1";
           "${modifier}+2" = "workspace number 2";
           "${modifier}+3" = "workspace number 3";
           "${modifier}+4" = "workspace number 4";
           "${modifier}+5" = "workspace number 5";
-          # "${modifier}+6" = "workspace number 6";
-          # "${modifier}+7" = "workspace number 7";
-          # "${modifier}+8" = "workspace number 8";
-          # "${modifier}+9" = "workspace number 9";
+          "${modifier}+6" = "nop";
+          "${modifier}+7" = "nop";
+          "${modifier}+8" = "nop";
+          "${modifier}+9" = "nop";
           # "${modifier}+Down" = "focus down";
           # "${modifier}+Left" = "focus left";
           "${modifier}+Return" = "exec alacritty";
@@ -144,6 +144,9 @@
           # "${modifier}+v" = "splitv";
           # "${modifier}+w" = "layout tabbed";
           "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
+          "${modifier}+p" = "playerctl play-pause";
+          "${modifier}+Ctrl+Right" = "playerctl next";
+          "${modifier}+Ctrl+Left" = "playerctl previous";
         };
         bars = [
           {
@@ -152,7 +155,7 @@
           }
         ];
         assigns = {
-          "2" = [ { class = "Brave"; } ];
+          "2" = [ { app_id = "brave-browser"; } ];
           "3" = [ { class = "^Spotify$"; } ];
           "4" = [ { class = "^discord$"; } ];
         };

@@ -30,94 +30,47 @@
       @define-color base0C ${base0C}; @define-color base0D ${base0D}; @define-color base0E ${base0E}; @define-color base0F ${base0F};
       * {
           /* `otf-font-awesome` is required to be installed for icons */
-          font-family: "Fira Code Nerd Font Med", FontAwesome;
+          font-family: "FiraCode Nerd Font Propo Med", FontAwesome;
           border: none;
           border-radius: 0px;
       }
 
+      /* WINDOW */
+
       window#waybar {
-          background-color: rgba(0,0,0,0.8);
-          border-bottom: 0px solid #FFFFFF;
-          color: @base05;
-          background: transparent;
-          transition-property: background-color;
-          transition-duration: .5s;
+        background-color: transparent;
       }
 
-      window#waybar.hidden {
-          opacity: 0.2;
-      }
-
-      /*
-      window#waybar.empty {
-          background-color: transparent;
-      }
-      window#waybar.solo {
-          background-color: #FFFFFF;
-      }
-      */
-
-      window#waybar.termite {
-          background-color: #3F3F3F;
-      }
-
-      window#waybar.chromium {
-          background-color: #000000;
-          border: none;
-      }
-
-      button {
-          /* Use box-shadow instead of border so the text isn't offset */
-          box-shadow: inset 0 -3px transparent;
-          /* Avoid rounded borders under each button name */
-          border: none;
-          border-radius: 0;
-      }
-
-      /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-      button:hover {
-          background: inherit;
-          box-shadow: inset 0 -3px #ffffff;
-      }
-
-      ###WORKSPACES
-
-      #workspaces {
-        background: @base00;
-        margin: 2px 1px 3px 1px;
-        padding: 0px 1px;
-        border-radius: 15px;
-        border: 0px;
-        font-weight: bold;
-        font-style: normal;
-        opacity: 0.8;
-        font-size: 16px;
-        color: @base0E;
-        margin: 4px 4px;
-      }
+      /* WORKSPACES */
 
       #workspaces button {
+        font-size: 18px;
         padding: 0;
-        margin: 8px;
+        margin: 4px;
+        padding: 4px;
         border: none;
         color: @base0E;
         background-color: transparent;
-        transition: all 0.3s ease-in-out;
-      }
-
-      #workspaces button:hover {
-        border-radius: 15px;
+        transition: all 0.2s ease-in-out;
       }
 
       #workspaces button.focused {
-          background-color: @base03;
+          color: @base09;
       }
 
       #workspaces button.urgent {
-          background-color: @base08;
+          color: @base08;
       }
 
-      ### TOOLTIPS
+      /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+      #workspaces button:hover {
+        box-shadow: inherit;
+        text-shadow: inherit;
+        color: @base0B;
+        background-color: transparent;
+      }
+
+      /* TOOLTIPS */
 
       tooltip {
           border-radius: 10px;
@@ -133,17 +86,18 @@
 
       #clock, #tray, #pulseaudio, #custom-media, #custom-power {
         background-color: @base00;
-        font-size: 16px;
+        font-size: 18px;
         color: @base0E;
         border-radius: 15px;
-        padding: 1px 10px 0px 10px;
-        margin: 3px;
+        padding: 4px 6px;
+        margin: 4px;
         opacity:0.8;
-        border:3px solid @base05;
+        border: 2px solid @base01;
       }
 
       #custom-space {
-        padding: 0;
+        padding: 0px;
+        margin: 0px;
         background-color: transparent;
       }
 

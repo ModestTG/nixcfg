@@ -15,15 +15,18 @@
     };
   };
   environment.systemPackages = with pkgs; [
-    alacritty
+    autotiling
+    dunst
     glib
+    playerctl
     sway
     swaybg
     swayidle
-    swayimg
     swaylock
+    swww
     waybar
     wayland
+    wlogout
     wofi
     xdg-utils
   ];
