@@ -2,22 +2,23 @@
 
 {
   security.polkit.enable = true;
-
   services.dbus.enable = true;
   services.greetd = {
     enable = true;
-    settings = rec {
-      initial_session = {
-        command = "${pkgs.sway}/bin/sway";
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --time --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' --cmd ${pkgs.sway}/bin/sway";
         user = "eweishaar";
       };
-      default_session = initial_session;
     };
   };
+
   environment.systemPackages = with pkgs; [
     autotiling
+    dconf
     dunst
     glib
+    libnotify
     playerctl
     sway
     swaybg
@@ -30,13 +31,8 @@
     wofi
     xdg-utils
   ];
-  programs.sway = {
+
+  programs.dconf = {
     enable = true;
-    wrapperFeatures.gtk = true;
-  };
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 }

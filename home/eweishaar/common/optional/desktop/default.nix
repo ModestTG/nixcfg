@@ -1,6 +1,7 @@
 {
   userlib,
   pkgs,
+  pkgs-stable,
   ...
 }:
 
@@ -38,12 +39,12 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Tokyonight-Dark-hdpi";
-      package = pkgs.tokyonight-gtk-theme;
+      name = "Tokyonight-Storm";
+      package = pkgs-stable.tokyonight-gtk-theme;
     };
     iconTheme = {
-      name = "Vimix-Amethyst-dark";
-      package = pkgs.vimix-icon-theme;
+      name = "Tokyonight-Dark";
+      package = pkgs-stable.tokyonight-gtk-theme;
     };
   };
 }

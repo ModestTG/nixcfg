@@ -102,43 +102,7 @@
         "custom/power" = {
           format = "";
           tooltip = false;
-          menu = "on-click";
-          menu-file = pkgs.writeText "power_menu.xml" ''
-            <?xml version="1.0" encoding="UTF-8"?>
-            <interface>
-              <object class="GtkMenu" id="menu">
-                <child>
-            		<object class="GtkMenuItem" id="suspend">
-            			<property name="label">Suspend</property>
-                    </object>
-            	</child>
-            	<child>
-                    <object class="GtkMenuItem" id="hibernate">
-            			<property name="label">Hibernate</property>
-                    </object>
-            	</child>
-                <child>
-                    <object class="GtkMenuItem" id="shutdown">
-            			<property name="label">Shutdown</property>
-                    </object>
-                </child>
-                <child>
-                  <object class="GtkSeparatorMenuItem" id="delimiter1"/>
-                </child>
-                <child>
-            		<object class="GtkMenuItem" id="reboot">
-            			<property name="label">Reboot</property>
-            		</object>
-                </child>
-              </object>
-            </interface>
-          ''; # Menu file in resources folder;
-          menu-actions = {
-            shutdown = "shutdown";
-            reboot = "reboot";
-            suspend = "systemctl suspend";
-            hibernate = "systemctl hibernate";
-          };
+          on-click = "wlogout -p layer-shell";
         };
       };
     };

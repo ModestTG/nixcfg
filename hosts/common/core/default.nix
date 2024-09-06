@@ -17,6 +17,7 @@
     git
     jq
     just
+    nix-prefetch-github
     p7zip
     pciutils
     pfetch

@@ -7,6 +7,12 @@
 }:
 
 {
+  xdg.portal = {
+    enable = true;
+    configPackages = [ pkgs.xdg-desktop-portal-wlr ];
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   wayland.windowManager.sway =
     let
       modifier = "Mod4";
@@ -14,8 +20,12 @@
       titlebar = false;
       fontName = "FiraCodeNerdFont";
     in
+    # schema = pkgs.gsettings-desktop-schemas;
+    # datadir = "${schema}/share/gsettings-schemas/${schema.name}";
     {
       enable = true;
+      wrapperFeatures.gtk = true;
+      # extraSessionCommands = ''XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS'';
       config = {
         inherit modifier;
         defaultWorkspace = "workspace number 1";
@@ -131,7 +141,7 @@
           "${modifier}+b" = "exec brave";
           "${modifier}+d" = "nop";
           "${modifier}+r" = "exec wofi --show run";
-          # "${modifier}+e" = "layout toggle split";
+          "${modifier}+e" = "exec thunar";
           # "${modifier}+f" = "fullscreen toggle";
           # "${modifier}+h" = "focus left";
           # "${modifier}+j" = "focus down";
@@ -144,9 +154,9 @@
           # "${modifier}+v" = "splitv";
           # "${modifier}+w" = "layout tabbed";
           "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
-          "${modifier}+p" = "playerctl play-pause";
-          "${modifier}+Ctrl+Right" = "playerctl next";
-          "${modifier}+Ctrl+Left" = "playerctl previous";
+          "${modifier}+p" = "exec playerctl -p spotify play-pause";
+          "${modifier}+Ctrl+Right" = "exec playerctl -p spotify next";
+          "${modifier}+Ctrl+Left" = "exec playerctl -p spotify previous";
         };
         bars = [
           {
