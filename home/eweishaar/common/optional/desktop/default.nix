@@ -35,4 +35,15 @@
       size = 22;
     };
   };
+  gtk = {
+    enable = true;
+    theme = {
+      name = "Tokyonight-Dark-hdpi";
+      package = pkgs.tokyonight-gtk-theme;
+    };
+    iconTheme = {
+      name = "Vimix-Amethyst-dark";
+      package = pkgs.vimix-icon-theme;
+    };
+  };
 }

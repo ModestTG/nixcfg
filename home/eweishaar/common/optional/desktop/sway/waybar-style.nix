@@ -68,6 +68,7 @@
         text-shadow: inherit;
         color: @base0B;
         background-color: transparent;
+        background: transparent;
       }
 
       /* TOOLTIPS */
