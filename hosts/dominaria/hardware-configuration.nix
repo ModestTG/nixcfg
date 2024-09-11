@@ -20,10 +20,16 @@
     "sd_mod"
   ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
+  boot.kernelModules = [
+    "kvm-amd"
+    "tcp_bbr"
+  ];
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "pcie_port_pm=off" ];
 
+  # Enable BBR congestion control
+  boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
+  boot.kernel.sysctl."net.core.default_qdisc" = "fq"; # see https://news.ycombinator.com/item?id=14814530
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/3b290d30-5602-4b04-8855-ac05eaabc28e";
     fsType = "ext4";
