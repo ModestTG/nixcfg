@@ -142,6 +142,7 @@
           "${modifier}+d" = "nop";
           "${modifier}+r" = "exec wofi --show run";
           "${modifier}+e" = "exec thunar";
+          "${modifier}+c" = "exec ${pkgs.alacritty}/bin/alacritty --title Alacritty-BC -e ${pkgs.bc}/bin/bc -q";
           # "${modifier}+f" = "fullscreen toggle";
           # "${modifier}+h" = "focus left";
           # "${modifier}+j" = "focus down";
@@ -180,6 +181,7 @@
           }
         ];
       };
+      extraConfig = ''for_window [title="Alacritty-BC"] floating enable, resize set 600 800'';
     };
   systemd.user =
     let
