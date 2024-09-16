@@ -555,10 +555,9 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
-        
         -- nix
-        nil_ls = {
-        },  
+        nil_ls = {},
+
         -- Lua
         lua_ls = {
           -- cmd = {...},
@@ -815,6 +814,13 @@ require('lazy').setup({
       --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
+  },
+  {
+    'jmbuhr/otter.nvim',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
+    opts = {},
   },
   {
     'stevearc/oil.nvim',
