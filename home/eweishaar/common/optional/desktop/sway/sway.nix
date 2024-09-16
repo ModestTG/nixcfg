@@ -194,8 +194,8 @@
         text = # bash
           ''
             PIC=$(find ${dir} | shuf -n 1 | xargs realpath)
-            swww query || swww-daemon
             swww img "''${PIC}" --transition-type simple 
+            swww query
           '';
       };
     in
