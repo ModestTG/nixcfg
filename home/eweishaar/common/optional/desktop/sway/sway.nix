@@ -171,14 +171,56 @@
         };
         startup = [
           {
-            command = "autotiling";
+            command = "${pkgs.autotiling}/bin/autotiling";
             always = true;
           }
           {
-            command = "swaybg -i " + (userlib.relativeToRoot "config/wallpapers/2560x1440/wp_0004.png");
+            command = "${pkgs.swww}/bin/swww-daemon";
             always = true;
           }
         ];
+      };
+    };
+  systemd.user =
+    let
+      dir = userlib.relativeToRoot "config/wallpapers/2560x1440";
+      rndWallpaper = pkgs.writeShellApplication {
+        name = "rndWallpaper";
+        runtimeInputs = [
+          pkgs.coreutils
+          pkgs.findutils
+          pkgs.swww
+        ];
+        text = # bash
+          ''
+            PIC=$(find ${dir} | shuf -n 1 | xargs realpath)
+            swww query || swww-daemon
+            swww img "''${PIC}" --transition-type simple 
+          '';
+      };
+    in
+    {
+      services.wallpaper-daemon = {
+        Unit = {
+          Description = "Wallpaper Daemon";
+        };
+        Service = {
+          Type = "oneshot";
+          ExecStart = ''${rndWallpaper}/bin/rndWallpaper'';
+        };
+        Install = {
+          WantedBy = [ "default.target" ];
+        };
+      };
+      timers.wallpaper-daemon = {
+        Timer = {
+          Unit = "wallpaper-daemon.service";
+          OnCalendar = "*:0/10";
+          Persistent = true;
+        };
+        Install = {
+          WantedBy = [ "timers.target" ];
+        };
       };
     };
 }
