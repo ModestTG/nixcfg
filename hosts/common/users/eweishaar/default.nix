@@ -19,6 +19,7 @@
         "networkmanager"
         "wheel"
         "eweishaar"
+        "docker"
       ];
       uid = 1000;
       shell = pkgs.bash;
@@ -29,10 +30,17 @@
         })
       ];
     };
-    groups.eweishaar = {
-      gid = 1000;
-      name = "eweishaar";
-      members = [ "eweishaar" ];
+    groups = {
+      eweishaar = {
+        gid = 1000;
+        name = "eweishaar";
+        members = [ "eweishaar" ];
+      };
+      mattermost = {
+        gid = 2000;
+        name = "mattermost";
+        members = [ "eweishaar" ];
+      };
     };
   };
 }
