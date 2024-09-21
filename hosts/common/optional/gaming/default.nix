@@ -22,5 +22,8 @@ in
 
   programs.steam.enable = true;
 
-  environment.systemPackages = [ xmage-latest ];
+  environment.systemPackages = [
+    xmage-latest
+    pkgs.prismlauncher
+  ];
 }

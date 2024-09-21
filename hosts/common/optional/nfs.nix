@@ -4,20 +4,24 @@
   environment.systemPackages = with pkgs; [ nfs-utils ];
 
   fileSystems = {
-    "/mnt/filebrowser" = {
-      device = "${uservars.nfsServer}:/mnt/AuxPool/K8S-NFS/filebrowser";
-      fsType = "nfs";
-    };
-    "/mnt/immich-photos" = {
-      device = "${uservars.nfsServer}:/mnt/AuxPool/K8S-NFS/immich-photos";
-      fsType = "nfs";
-    };
-    "/mnt/audiobookshelf" = {
-      device = "${uservars.nfsServer}:/mnt/AuxPool/K8S-NFS/audiobookshelf";
-      fsType = "nfs";
-    };
-    "/mnt/paperless-ngx" = {
-      device = "${uservars.nfsServer}:/mnt/AuxPool/K8S-NFS/paperless-ngx";
+    # "/mnt/filebrowser" = {
+    #   device = "${uservars.nfsServer}:/mnt/AuxPool/K8S-NFS/filebrowser";
+    #   fsType = "nfs";
+    # };
+    # "/mnt/immich-photos" = {
+    #   device = "${uservars.nfsServer}:/mnt/AuxPool/K8S-NFS/immich-photos";
+    #   fsType = "nfs";
+    # };
+    # "/mnt/audiobookshelf" = {
+    #   device = "${uservars.nfsServer}:/mnt/AuxPool/K8S-NFS/audiobookshelf";
+    #   fsType = "nfs";
+    # };
+    # "/mnt/paperless-ngx" = {
+    #   device = "${uservars.nfsServer}:/mnt/AuxPool/K8S-NFS/paperless-ngx";
+    #   fsType = "nfs";
+    # };
+    "/mnt/k8s-nfs" = {
+      device = "${uservars.nfsServer}:/mnt/AuxPool/K8S-NFS";
       fsType = "nfs";
     };
     "/mnt/plexpool" = {
