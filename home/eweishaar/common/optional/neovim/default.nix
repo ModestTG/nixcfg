@@ -2,6 +2,11 @@
 
 {
   home.packages = with pkgs; [
+    go
+    gopls
+    gofumpt
+    goimports-reviser
+    golines
     neovim
     nixfmt-rfc-style
     rustc
