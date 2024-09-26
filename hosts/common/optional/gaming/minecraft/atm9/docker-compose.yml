@@ -19,3 +19,6 @@ services:
     volumes:
       # attach a directory relative to the directory containing this compose file
       - ./minecraft-data:/data
+      # - /mnt/k8s-nfs/backups/minecraft/atm9:/data/backups
+    labels:
+      - "compose2nix.settings.autoStart=false"
