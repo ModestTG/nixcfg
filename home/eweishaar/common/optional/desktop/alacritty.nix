@@ -6,7 +6,7 @@
 {
   programs.alacritty =
     let
-      family = "FiraCode Nerd Font Mono";
+      family = "FiraCode Nerd Font Propo";
     in
     {
       enable = true;

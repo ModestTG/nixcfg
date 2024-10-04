@@ -1,17 +1,18 @@
 { pkgs, userlib, ... }:
 
 {
-  home.packages = with pkgs; [
-    go
-    gopls
-    gofumpt
-    goimports-reviser
-    golines
-    neovim
-    nixfmt-rfc-style
-    rustc
-    cargo
-  ];
+  programs.neovim = {
+    enable = true;
+    extraPackages = with pkgs; [
+      gopls
+      gofumpt
+      goimports-reviser
+      golines
+      neovim
+      nixfmt-rfc-style
+      nil
+    ];
+  };
 
   xdg.configFile."nvim" = {
     source = userlib.relativeToRoot "home/eweishaar/common/optional/neovim/config";
