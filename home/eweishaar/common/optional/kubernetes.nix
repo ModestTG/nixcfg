@@ -8,6 +8,7 @@
 {
   home.packages = with pkgs; [
     kubectl
+    kubectl-cnpg
     k9s
     go-task
     fluxcd
