@@ -1,0 +1,5 @@
+{userlib, ...}:
+
+{
+  imports = userlib.scanPaths ./.;
+}
