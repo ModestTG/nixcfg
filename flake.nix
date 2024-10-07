@@ -14,6 +14,10 @@
       url = "github:folke/tokyonight.nvim";
       flake = false;
     };
+    nvim-nix = {
+      url = "github:ModestTG/nvim-nix";
+      inputs.nixpkgs.follows = "nixpkgs"
+    };
   };
 
   outputs =

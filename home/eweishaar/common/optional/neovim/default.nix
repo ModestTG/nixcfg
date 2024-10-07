@@ -1,21 +1,6 @@
-{ pkgs, userlib, ... }:
+{ inputs, ... }:
 
 {
-  programs.neovim = {
-    enable = true;
-    extraPackages = with pkgs; [
-      gopls
-      gofumpt
-      goimports-reviser
-      golines
-      neovim
-      nixfmt-rfc-style
-      nil
-    ];
-  };
-
-  xdg.configFile."nvim" = {
-    source = userlib.relativeToRoot "home/eweishaar/common/optional/neovim/config";
-    recursive = true;
-  };
+  nixpkgs.overlays = [ inputs.nvim-nix.overlays.default ];
+  environment.systemPackages = with pkgs; [ nvim-pkg ];
 }
