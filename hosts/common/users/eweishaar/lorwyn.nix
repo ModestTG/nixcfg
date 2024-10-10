@@ -5,7 +5,7 @@
 }:
 
 {
-  home-manager.users.eweishaar = import (userlib.relativeToRoot "home/eweishaar/dominaria.nix");
+  home-manager.users.eweishaar = import (userlib.relativeToRoot "home/eweishaar/lorwyn.nix");
 
   users = {
     mutableUsers = false;

@@ -18,11 +18,16 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
     {
       self,
+      disko,
       nixpkgs,
       home-manager,
       nixpkgs-stable,
@@ -48,9 +53,18 @@
 
       nixosConfigurations = {
         dominaria = lib.nixosSystem {
-          inherit specialArgs;
+          inherit specialArgs system;
           modules = [
             ./hosts/dominaria
+            home-manager.nixosModules.home-manager
+            { home-manager.extraSpecialArgs = specialArgs; }
+          ];
+        };
+        lorwyn = lib.nixosSystem {
+          inherit specialArgs system;
+          modules = [
+            ./hosts/lorwyn
+            disko.nixosModules.disko
             home-manager.nixosModules.home-manager
             { home-manager.extraSpecialArgs = specialArgs; }
           ];
