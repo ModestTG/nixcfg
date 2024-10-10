@@ -19,7 +19,7 @@
     jq
     just
     nix-ld
-    nix-prefetch-github
+    nurl
     p7zip
     pciutils
     pfetch
