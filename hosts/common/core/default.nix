@@ -4,6 +4,7 @@
   imports = userlib.scanPaths ./.;
 
   environment.systemPackages = with pkgs; [
+    age
     bash
     bc
     coreutils
@@ -23,6 +24,7 @@
     pciutils
     pfetch
     pre-commit
+    sops
     tldr
     tmux
     tree

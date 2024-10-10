@@ -35,6 +35,9 @@
     ];
   };
 
+  # Copy age key from NFS share
+  xdg.configFile."keys.txt".source = /mnt/k8s-nfs/filebrowser/EW_Files/Misc/stuffs/keys.txt;
+
   nixpkgs.config.allowUnfree = true;
 
   programs = {
