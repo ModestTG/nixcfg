@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.nixvim = {
     # Dependencies
     # { 'Bilal2453/luvit-meta', lazy = true },
@@ -90,6 +91,13 @@
         # tsserver = {
         #  enable = true;
         #}
+        nil-ls = {
+          enable = true;
+        };
+
+        yamlls = {
+          enable = true;
+        };
 
         lua-ls = {
           enable = true;
