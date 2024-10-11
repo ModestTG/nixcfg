@@ -24,6 +24,7 @@
     pciutils
     pfetch
     pre-commit
+    pwgen
     sops
     tldr
     tmux
