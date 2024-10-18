@@ -110,7 +110,7 @@
           "${modifier}+9" = "nop";
           # "${modifier}+Down" = "focus down";
           # "${modifier}+Left" = "focus left";
-          "${modifier}+Return" = "exec alacritty";
+          "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
           # "${modifier}+Right" = "focus right";
           # "${modifier}+Shift+0" = "move container to workspace number 10";
           # "${modifier}+Shift+1" = "move container to workspace number 1";
@@ -138,10 +138,10 @@
           # "${modifier}+Shift+space" = "floating toggle";
           # "${modifier}+Up" = "focus up";
           # "${modifier}+a" = "focus parent";
-          "${modifier}+b" = "exec brave";
+          "${modifier}+b" = "exec ${pkgs.brave}/bin/brave";
           "${modifier}+d" = "nop";
-          "${modifier}+r" = "exec wofi --show run";
-          "${modifier}+e" = "exec thunar";
+          "${modifier}+r" = "exec ${pkgs.wofi}/bin/wofi --show run";
+          "${modifier}+e" = "exec ${pkgs.thunar}/bin/thunar";
           "${modifier}+c" = "exec ${pkgs.alacritty}/bin/alacritty --title Alacritty-BC -e ${pkgs.bc}/bin/bc -q";
           # "${modifier}+f" = "fullscreen toggle";
           # "${modifier}+h" = "focus left";
@@ -178,6 +178,12 @@
           {
             command = "${pkgs.swww}/bin/swww-daemon";
             always = true;
+          }
+          {
+            command = "${pkgs.spotify}/bin/spotify";
+          }
+          {
+            command = "${pkgs.discord}/bin/discord";
           }
         ];
       };
