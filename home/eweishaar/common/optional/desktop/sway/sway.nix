@@ -24,7 +24,9 @@
     # datadir = "${schema}/share/gsettings-schemas/${schema.name}";
     {
       enable = true;
+      package = pkgs.swayfx;
       wrapperFeatures.gtk = true;
+      checkConfig = false;
       # extraSessionCommands = ''XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS'';
       config = {
         inherit modifier;
@@ -141,7 +143,7 @@
           "${modifier}+b" = "exec ${pkgs.brave}/bin/brave";
           "${modifier}+d" = "nop";
           "${modifier}+r" = "exec ${pkgs.wofi}/bin/wofi --show run";
-          "${modifier}+e" = "exec ${pkgs.thunar}/bin/thunar";
+          "${modifier}+e" = "exec ${pkgs.xfce.thunar}/bin/thunar";
           "${modifier}+c" = "exec ${pkgs.alacritty}/bin/alacritty --title Alacritty-BC -e ${pkgs.bc}/bin/bc -q";
           # "${modifier}+f" = "fullscreen toggle";
           # "${modifier}+h" = "focus left";
@@ -168,7 +170,7 @@
         assigns = {
           "2" = [ { app_id = "brave-browser"; } ];
           "3" = [ { class = "^Spotify$"; } ];
-          "4" = [ { class = "^discord$"; } ];
+          "4" = [ { class = "^discord$"; } { class = "^vesktop$"; }];
         };
         startup = [
           {
@@ -183,7 +185,7 @@
             command = "${pkgs.spotify}/bin/spotify";
           }
           {
-            command = "${pkgs.discord}/bin/discord";
+            command = "${pkgs.vesktop}/bin/vesktop";
           }
         ];
       };

@@ -18,6 +18,7 @@
     packages = with pkgs; [
       brave
       discord
+      vesktop
       feh
       grim
       kolourpaint

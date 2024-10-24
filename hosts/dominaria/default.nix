@@ -16,6 +16,7 @@
       "hosts/common/optional/nfs.nix"
       "hosts/common/optional/epsonscan2.nix"
       "hosts/common/optional/services/printing.nix"
+      "hosts/common/optional/services/tailscale.nix"
       "hosts/common/optional/gaming/core"
       "hosts/common/optional/gaming/minecraft/atm9"
       "hosts/common/users/eweishaar/dominaria.nix"
