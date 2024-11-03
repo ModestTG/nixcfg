@@ -170,7 +170,10 @@
         assigns = {
           "2" = [ { app_id = "brave-browser"; } ];
           "3" = [ { class = "^Spotify$"; } ];
-          "4" = [ { class = "^discord$"; } { class = "^vesktop$"; }];
+          "4" = [
+            { class = "^discord$"; }
+            { class = "^vesktop$"; }
+          ];
         };
         startup = [
           {
@@ -204,6 +207,7 @@
         text = # bash
           ''
             PIC=$(find ${dir} | shuf -n 1 | xargs realpath)
+            swww-daemon
             swww img "''${PIC}" --transition-type simple 
             swww query
           '';

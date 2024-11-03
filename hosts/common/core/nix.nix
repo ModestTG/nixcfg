@@ -18,7 +18,7 @@
     randomizedDelaySec = "30min";
   };
   nix = {
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     settings = {
       connect-timeout = 5;
       log-lines = 25;

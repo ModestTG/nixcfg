@@ -11,7 +11,7 @@
     {
       enable = true;
       settings = {
-        import = [ "${inputs.theme_tokyonight}/extras/alacritty/tokyonight_night.toml" ];
+        general.import = [ "${inputs.theme_tokyonight}/extras/alacritty/tokyonight_night.toml" ];
         font = {
           normal = {
             inherit family;

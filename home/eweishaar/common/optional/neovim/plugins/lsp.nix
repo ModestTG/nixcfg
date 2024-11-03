@@ -91,7 +91,7 @@
         # tsserver = {
         #  enable = true;
         #}
-        nil-ls = {
+        nil_ls = {
           enable = true;
         };
 
@@ -99,7 +99,7 @@
           enable = true;
         };
 
-        lua-ls = {
+        lua_ls = {
           enable = true;
 
           # cmd = {
