@@ -18,13 +18,12 @@
     packages = with pkgs; [
       brave
       discord
+      (flameshot.override { enableWlrSupport = true; })
       vesktop
       feh
-      grim
       kolourpaint
       obsidian
       python3
-      slurp
       spotify
       swappy
       xfce.thunar

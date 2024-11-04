@@ -156,7 +156,7 @@
           # "${modifier}+space" = "focus mode_toggle";
           # "${modifier}+v" = "splitv";
           # "${modifier}+w" = "layout tabbed";
-          "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
+          "${modifier}+Shift+s" = "exec flameshot gui";
           "${modifier}+p" = "exec playerctl -p spotify play-pause";
           "${modifier}+Ctrl+Right" = "exec playerctl -p spotify next";
           "${modifier}+Ctrl+Left" = "exec playerctl -p spotify previous";
