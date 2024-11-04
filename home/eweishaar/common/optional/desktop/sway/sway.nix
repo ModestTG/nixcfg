@@ -198,11 +198,17 @@
         runtimeInputs = with pkgs; [
           coreutils
           findutils
+          procps
           swww
         ];
         text = # bash
           ''
-            swww-daemon 2> /dev/null
+            if pgrep -x "swww-daemon" > /dev/null 2>&1; then
+              :
+            else
+              echo "starting swww-daemon"
+              swww-daemon
+            fi
             swww img "$(find ${dir} | shuf -n 1 | xargs realpath)" --transition-type simple;
           '';
       };
