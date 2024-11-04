@@ -181,10 +181,6 @@
             always = true;
           }
           {
-            command = "${pkgs.swww}/bin/swww-daemon";
-            always = true;
-          }
-          {
             command = "${pkgs.spotify}/bin/spotify";
           }
           {
@@ -199,17 +195,15 @@
       dir = userlib.relativeToRoot "config/wallpapers/2560x1440";
       rndWallpaper = pkgs.writeShellApplication {
         name = "rndWallpaper";
-        runtimeInputs = [
-          pkgs.coreutils
-          pkgs.findutils
-          pkgs.swww
+        runtimeInputs = with pkgs; [
+          coreutils
+          findutils
+          swww
         ];
         text = # bash
           ''
-            PIC=$(find ${dir} | shuf -n 1 | xargs realpath)
-            swww-daemon
-            swww img "''${PIC}" --transition-type simple 
-            swww query
+            swww-daemon 2> /dev/null
+            swww img "$(find ${dir} | shuf -n 1 | xargs realpath)" --transition-type simple;
           '';
       };
     in
