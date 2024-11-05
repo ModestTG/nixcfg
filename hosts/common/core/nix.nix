@@ -31,15 +31,16 @@
       ];
 
     };
-    gc = {
-      automatic = true;
-      dates = "02:00";
-      options = "--delete-older-than 14d";
-      randomizedDelaySec = "10min";
-    };
     optimise = {
       automatic = true;
       dates = [ "03:00" ];
+    };
+  };
+  programs.nh = {
+    enable = true;
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 10d --keep 3";
     };
   };
   nixpkgs.config.allowUnfree = lib.mkForce true;

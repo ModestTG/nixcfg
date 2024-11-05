@@ -18,6 +18,8 @@
     git
     jq
     just
+    nh
+    nix-index
     nix-ld
     nurl
     p7zip
@@ -33,6 +35,7 @@
     unzip
     usbutils
     vim
+    vulnix
     wget
     zip
     zstd
