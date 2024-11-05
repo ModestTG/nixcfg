@@ -2,4 +2,4 @@
 
 [[ ! -z $1 ]] && export HOST=$1 || export HOST=$(hostname)
 
-nh os test -H $HOST
+doas nh os test -R -H $HOST .
