@@ -203,12 +203,6 @@
         ];
         text = # bash
           ''
-            if pgrep -x "swww-daemon" > /dev/null 2>&1; then
-              :
-            else
-              echo "starting swww-daemon"
-              swww-daemon
-            fi
             swww img "$(find ${dir} | shuf -n 1 | xargs realpath)" --transition-type simple;
           '';
       };
@@ -217,13 +211,14 @@
       services.wallpaper-daemon = {
         Unit = {
           Description = "Wallpaper Daemon";
+          Requires = [ "swww-daemon.service" ];
         };
         Service = {
           Type = "oneshot";
           ExecStart = ''${rndWallpaper}/bin/rndWallpaper'';
         };
         Install = {
-          WantedBy = [ "default.target" ];
+          WantedBy = [ "graphical.target" ];
         };
       };
       timers.wallpaper-daemon = {
@@ -234,6 +229,18 @@
         };
         Install = {
           WantedBy = [ "timers.target" ];
+        };
+      };
+      services.swww-daemon = {
+        Unit = {
+          Description = "SWWW Daemon";
+        };
+        Service = {
+          Type = "simple";
+          ExecStart = "${pkgs.swww}/bin/swww-daemon";
+        };
+        Install = {
+          WantedBy = [ "graphical.target" ];
         };
       };
     };
