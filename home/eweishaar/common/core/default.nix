@@ -26,8 +26,8 @@
       bat
       bat-extras.batman
       btop # resource monitor
+      macchina # Neofetch replacement
       ncdu # TUI disk usage
-      neofetch
       nix-tree # nix package tree viewer
       ripgrep # better grep
       wl-clipboard
