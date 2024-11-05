@@ -24,6 +24,7 @@
     "kvm-amd"
     "tcp_bbr"
   ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "pcie_port_pm=off" ];
 
