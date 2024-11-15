@@ -13,6 +13,7 @@
     flags = [
       "--update-input"
       "nixpkgs"
+      "--commit-lock-file"
       "-L"
     ];
     randomizedDelaySec = "30min";

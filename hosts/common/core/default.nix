@@ -21,6 +21,7 @@
     nh
     nix-index
     nix-ld
+    nix-output-monitor
     nurl
     p7zip
     pciutils
