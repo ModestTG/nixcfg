@@ -73,9 +73,9 @@
         # clangd = {
         #  enable = true;
         #}
-        # gopls = {
-        #  enable = true;
-        #}
+        gopls = {
+          enable = true;
+        };
         # pyright = {
         #  enable = true;
         #}

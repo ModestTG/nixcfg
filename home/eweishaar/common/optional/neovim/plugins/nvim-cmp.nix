@@ -11,6 +11,9 @@
     # Autocompletion
     # See `:help cmp`
     # https://nix-community.github.io/nixvim/plugins/cmp/index.html
+    plugins.luasnip = {
+      enable = true;
+    };
     plugins.cmp = {
       enable = true;
 

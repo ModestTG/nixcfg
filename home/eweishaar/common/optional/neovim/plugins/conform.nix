@@ -6,8 +6,9 @@
     # https://nix-community.github.io/nixvim/NeovimOptions/index.html?highlight=extraplugins#extrapackages
     extraPackages = with pkgs; [
       # Used to format Lua code
-      stylua
+      gofumpt
       nixfmt-rfc-style
+      stylua
     ];
 
     # Autoformat
@@ -30,7 +31,8 @@
         '';
         formatters_by_ft = {
           lua = [ "stylua" ];
-          nix = ["nixfmt"];
+          nix = [ "nixfmt" ];
+          go = [ "gofumpt" ];
           # Conform can also run multiple formatters sequentially
           # python = [ "isort "black" ];
           #
