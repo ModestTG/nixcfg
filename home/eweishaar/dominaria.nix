@@ -13,5 +13,10 @@
     username = "eweishaar";
     homeDirectory = "/home/${username}";
   };
-
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "calc.desktop";
+    };
+  };
 }

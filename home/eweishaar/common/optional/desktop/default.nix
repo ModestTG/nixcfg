@@ -22,6 +22,7 @@
       vesktop
       feh
       kolourpaint
+      libreoffice
       obsidian
       python3
       spotify
