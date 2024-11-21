@@ -23,6 +23,7 @@
   boot.kernelModules = [
     "kvm-amd"
     "tcp_bbr"
+    "sg" # need for USB CDROM support
   ];
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.extraModulePackages = [ ];

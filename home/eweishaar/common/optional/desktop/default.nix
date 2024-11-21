@@ -23,6 +23,7 @@
       feh
       kolourpaint
       libreoffice
+      makemkv
       obsidian
       python3
       spotify
