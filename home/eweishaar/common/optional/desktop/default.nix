@@ -21,6 +21,7 @@
       feh
       (flameshot.override { enableWlrSupport = true; })
       handbrake
+      jellyfin-media-player
       kolourpaint
       libreoffice
       makemkv
