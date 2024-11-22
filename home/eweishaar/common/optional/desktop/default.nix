@@ -18,9 +18,9 @@
     packages = with pkgs; [
       brave
       discord
-      (flameshot.override { enableWlrSupport = true; })
-      vesktop
       feh
+      (flameshot.override { enableWlrSupport = true; })
+      handbrake
       kolourpaint
       libreoffice
       makemkv
@@ -28,6 +28,7 @@
       python3
       spotify
       swappy
+      vesktop
       xfce.thunar
       zathura
     ];

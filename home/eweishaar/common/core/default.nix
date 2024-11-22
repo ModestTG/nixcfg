@@ -28,6 +28,7 @@
       btop # resource monitor
       ffmpeg
       macchina # Neofetch replacement
+      mpv
       ncdu # TUI disk usage
       nix-tree # nix package tree viewer
       ripgrep # better grep
