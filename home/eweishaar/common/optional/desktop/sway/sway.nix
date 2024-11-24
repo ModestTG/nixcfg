@@ -149,7 +149,7 @@
           # "${modifier}+h" = "focus left";
           # "${modifier}+j" = "focus down";
           # "${modifier}+k" = "focus up";
-          # "${modifier}+l" = "focus right";
+          "${modifier}+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock";
           # "${modifier}+minus" = "scratchpad show";
           # "${modifier}+Shift+r" = "mode resize";
           # "${modifier}+s" = "layout stacking";

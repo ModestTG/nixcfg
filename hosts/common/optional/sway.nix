@@ -21,8 +21,6 @@
     libnotify
     playerctl
     swayfx
-    swayidle
-    swaylock
     swww
     waybar
     wayland
