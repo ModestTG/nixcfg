@@ -142,7 +142,7 @@
           # "${modifier}+a" = "focus parent";
           "${modifier}+b" = "exec ${pkgs.brave}/bin/brave";
           "${modifier}+d" = "nop";
-          "${modifier}+r" = "exec ${pkgs.wofi}/bin/wofi --show run";
+          "${modifier}+r" = "exec ${pkgs.wofi}/bin/wofi";
           "${modifier}+e" = "exec ${pkgs.xfce.thunar}/bin/thunar";
           "${modifier}+c" = "exec ${pkgs.alacritty}/bin/alacritty --title Alacritty-BC -e ${pkgs.bc}/bin/bc -q";
           # "${modifier}+f" = "fullscreen toggle";
