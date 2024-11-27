@@ -55,6 +55,7 @@ in
 
         #entry:selected {
             background-color: @base0E;
+            color: @base00;
             background: linear-gradient(90deg, @base0E, @base0D);
         }
 
