@@ -1,7 +1,7 @@
-{ pkgs, ... }:
+{ pkgs-stable, ... }:
 {
   fonts.fontconfig.enable = true;
-  home.packages = with pkgs; [
+  home.packages = with pkgs-stable; [
     noto-fonts
     font-awesome
     fira-code-nerdfont
