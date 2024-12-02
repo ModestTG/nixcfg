@@ -27,10 +27,10 @@ in
     enableBashIntegration = true;
     settings = {
       format = ''
-        [░▒▓](${base06})[ 󱄅 ](bg:${base06} fg:${base00})[](bg:${base0E} fg:${base06})$directory[](fg:${base0E} bg:${base03})$git_branch$git_status[](fg:${base03} bg:${base02})$nodejs$rust$golang$php[](fg:${base02})$time
+        [░▒▓](${base06})[ 󱄅 ](bg:${base06} fg:${base00})[](bg:${base0D} fg:${base06})$directory[](fg:${base0D} bg:${base03})$git_branch$git_status[](fg:${base03} bg:${base02})$nodejs$rust$golang$php[](fg:${base02})$time
         $character'';
       directory = {
-        style = "fg:${base07} bg:${base0E}";
+        style = "fg:${base07} bg:${base0D}";
         format = "[ $path ]($style)";
         truncation_length = 3;
         truncation_symbol = "…/";
@@ -52,22 +52,22 @@ in
       };
       nodejs = {
         symbol = "";
-        style = "bg:#${base02}";
+        style = "bg:${base02}";
         format = ''[[ $symbol ($version) ](fg:${base0E} bg:#${base02})]($style)'';
       };
       rust = {
         symbol = "";
-        style = "bg:#${base02}";
+        style = "bg:${base02}";
         format = ''[[ $symbol ($version) ](fg:${base0E} bg:#${base02})]($style)'';
       };
       golang = {
         symbol = "";
-        style = "bg:#${base02}";
+        style = "bg:${base02}";
         format = ''[[ $symbol ($version) ](fg:${base0E} bg:#${base02})]($style)'';
       };
       php = {
         symbol = "";
-        style = "bg:#${base02}";
+        style = "bg:${base02}";
         format = ''[[ $symbol ($version) ](fg:${base0E} bg:#${base02})]($style)'';
       };
       time = {
