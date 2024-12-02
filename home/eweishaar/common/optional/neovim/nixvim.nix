@@ -322,6 +322,9 @@
       kickstart-highlight-yank = {
         clear = true;
       };
+      golang-indent = {
+        clear = true;
+      };
     };
 
     # [[ Basic Autocommands ]]
@@ -340,6 +343,19 @@
             vim.highlight.on_yank()
           end
         '';
+      }
+      {
+        event = [ "FileType" ];
+        desc = "Set golang shiftwidth to 2 instead of 8";
+        group = "golang-indent";
+        callback.__raw = # lua
+          ''
+            function()
+              vim.bo.tabstop = 2
+              vim.bo.shiftwidth = 2
+              vim.bo.expandtab = false
+              end
+          '';
       }
     ];
 
