@@ -27,7 +27,7 @@ in
     enableBashIntegration = true;
     settings = {
       format = ''
-        [░▒▓](${base06})[ 󱄅 ](bg:${base06} fg:${base00})[](bg:${base0E} fg:${base06})$directory[](fg:${base0E} bg:${base03})$git_branch$git_status[](fg:${base03} bg:${base02})$nodejs$rust$golang$php[](fg:${base02} bg:${base01})$time[  ](fg:${base01})
+        [░▒▓](${base06})[ 󱄅 ](bg:${base06} fg:${base00})[](bg:${base0E} fg:${base06})$directory[](fg:${base0E} bg:${base03})$git_branch$git_status[](fg:${base03} bg:${base02})$nodejs$rust$golang$php[](fg:${base02})$time
         $character'';
       directory = {
         style = "fg:${base07} bg:${base0E}";
@@ -43,38 +43,37 @@ in
       };
       git_branch = {
         symbol = "";
-        style = "bg:#394260";
-        format = ''[[ $symbol $branch ](fg:#769ff0 bg:#394260)]($style)'';
+        style = "bg:${base03}";
+        format = ''[[ $symbol $branch ](fg:${base0E} bg:${base03})]($style)'';
       };
       git_status = {
-        style = "bg:#394260";
-        format = ''[[($all_status$ahead_behind )](fg:#769ff0 bg:#394260)]($style)'';
+        style = "bg:${base03}";
+        format = ''[[($all_status$ahead_behind )](fg:${base0E} bg:${base03})]($style)'';
       };
       nodejs = {
         symbol = "";
-        style = "bg:#${base0E}";
-        format = ''[[ $symbol ($version) ](fg:#769ff0 bg:#${base0E})]($style)'';
+        style = "bg:#${base02}";
+        format = ''[[ $symbol ($version) ](fg:${base0E} bg:#${base02})]($style)'';
       };
       rust = {
         symbol = "";
-        style = "bg:#${base0E}";
-        format = ''[[ $symbol ($version) ](fg:#769ff0 bg:#${base0E})]($style)'';
+        style = "bg:#${base02}";
+        format = ''[[ $symbol ($version) ](fg:${base0E} bg:#${base02})]($style)'';
       };
       golang = {
         symbol = "";
-        style = "bg:#${base0E}";
-        format = ''[[ $symbol ($version) ](fg:#769ff0 bg:#${base0E})]($style)'';
+        style = "bg:#${base02}";
+        format = ''[[ $symbol ($version) ](fg:${base0E} bg:#${base02})]($style)'';
       };
       php = {
         symbol = "";
-        style = "bg:#${base0E}";
-        format = ''[[ $symbol ($version) ](fg:#769ff0 bg:#${base0E})]($style)'';
+        style = "bg:#${base02}";
+        format = ''[[ $symbol ($version) ](fg:${base0E} bg:#${base02})]($style)'';
       };
       time = {
         disabled = false;
         time_format = "%R"; # Hour:Minute Format;
-        style = "bg:#1d2230";
-        format = ''[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'';
+        format = ''[[  $time ](fg:${base07})]($style)'';
       };
     };
   };
