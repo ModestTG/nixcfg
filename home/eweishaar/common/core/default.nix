@@ -26,8 +26,8 @@
       bat
       bat-extras.batman
       btop # resource monitor
+      fastfetch # Neofetch replacement
       ffmpeg
-      macchina # Neofetch replacement
       mpv
       ncdu # TUI disk usage
       nix-tree # nix package tree viewer
