@@ -1,7 +1,6 @@
 {
   userlib,
   pkgs,
-  pkgs-stable,
   ...
 }:
 
@@ -44,11 +43,11 @@
     enable = true;
     theme = {
       name = "Tokyonight-Dark-B-LB";
-      package = pkgs-stable.tokyonight-gtk-theme;
+      package = pkgs.tokyonight-gtk-theme;
     };
     iconTheme = {
       name = "Tokyonight-Dark";
-      package = pkgs-stable.tokyonight-gtk-theme;
+      package = pkgs.tokyonight-gtk-theme;
     };
   };
 }
