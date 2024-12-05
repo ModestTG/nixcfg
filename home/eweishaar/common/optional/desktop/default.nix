@@ -4,6 +4,11 @@
   ...
 }:
 
+let
+  tokyonight-gtk-icon-theme = pkgs.tokyonight-gtk-theme.override {
+    iconVariants = [ "Dark" ];
+  };
+in
 {
   imports = (
     map userlib.relativeToRoot [
@@ -42,12 +47,12 @@
   gtk = {
     enable = true;
     theme = {
-      name = "Tokyonight-Dark-B-LB";
+      name = "Tokyonight-Dark";
       package = pkgs.tokyonight-gtk-theme;
     };
     iconTheme = {
       name = "Tokyonight-Dark";
-      package = pkgs.tokyonight-gtk-theme;
+      package = tokyonight-gtk-icon-theme;
     };
   };
 }
