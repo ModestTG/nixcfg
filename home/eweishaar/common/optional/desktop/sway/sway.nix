@@ -212,6 +212,7 @@
         Unit = {
           Description = "Wallpaper Daemon";
           Requires = [ "swww-daemon.service" ];
+          After = "swww-daemon.service";
         };
         Service = {
           Type = "oneshot";
