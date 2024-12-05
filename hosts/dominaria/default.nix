@@ -1,4 +1,9 @@
-{ userlib, inputs, ... }:
+{
+  lib,
+  userlib,
+  inputs,
+  ...
+}:
 
 {
   imports =
@@ -41,5 +46,10 @@
     networkmanager.enable = true;
     enableIPv6 = false;
   };
-  system.stateVersion = "24.05";
+
+  # https://github.com/NixOS/nixpkgs/issues/180175
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
+  systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
+
+  system.stateVersion = "24.11";
 }
