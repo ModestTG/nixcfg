@@ -12,7 +12,7 @@
   home = {
     username = lib.mkDefault "eweishaar";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
-    stateVersion = "24.05";
+    stateVersion = "24.11";
     sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
       FLAKE = "$HOME/nixcfg";
@@ -26,6 +26,8 @@
       bat
       bat-extras.batman
       btop # resource monitor
+      exiftool # image metadata manipulation
+      exiv2
       fastfetch # Neofetch replacement
       ffmpeg
       mpv
