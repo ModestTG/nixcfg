@@ -34,6 +34,7 @@
       ncdu # TUI disk usage
       nix-tree # nix package tree viewer
       ripgrep # better grep
+      signal-desktop # signal desktop client
       wl-clipboard
       xfce.thunar
     ];
