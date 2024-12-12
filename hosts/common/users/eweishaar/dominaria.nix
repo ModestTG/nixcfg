@@ -16,10 +16,11 @@
       home = "/home/eweishaar";
       isNormalUser = true;
       extraGroups = [
+        "dialout"
+        "docker"
+        "eweishaar"
         "networkmanager"
         "wheel"
-        "eweishaar"
-        "docker"
       ];
       uid = 1000;
       shell = pkgs.bash;
