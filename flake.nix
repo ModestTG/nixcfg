@@ -69,6 +69,15 @@
             { home-manager.extraSpecialArgs = specialArgs; }
           ];
         };
+        mirrodin = lib.nixosSystem {
+          inherit specialArgs system;
+          modules = [
+            ./hosts/mirrodin
+            disko.nixosModules.disko
+            home-manager.nixosModules.home-manager
+            { home-manager.extraSpecialArgs = specialArgs; }
+          ];
+        };
       };
     };
 }
