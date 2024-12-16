@@ -13,23 +13,22 @@
     ]);
 
   boot.loader = {
-    systemd-boot.enable = false;
+    systemd-boot = {
+      enable = true;
+      configurationLimit = 20;
+    };
+    grub.enable = false;
     efi = {
       canTouchEfiVariables = true;
       efiSysMountPoint = "/boot";
     };
-    grub = {
-      enable = true;
-      device = "nodev";
-      useOSProber = true;
-      efiSupport = true;
-    };
   };
+
   networking = {
     hostName = "lorwyn";
     firewall.enable = false;
     networkmanager.enable = true;
     enableIPv6 = false;
   };
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }
