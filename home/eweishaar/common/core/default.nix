@@ -16,7 +16,6 @@
     sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
       FLAKE = "$HOME/nixcfg";
-      SHELL = "${pkgs.bash}/bin/bash";
       TERM = "alacritty";
       TERMINAL = "alacritty";
       EDITOR = "nvim";
