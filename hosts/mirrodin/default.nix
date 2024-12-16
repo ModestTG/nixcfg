@@ -13,12 +13,14 @@
     ]);
 
   boot.loader = {
-    systemd-boot.enable = false;
-    grub = {
+    grub.enable = false;
+    systemd-boot = {
       enable = true;
-      device = "nodev";
-      useOSProber = true;
-      efiSupport = true;
+      configurationLimit = 20;
+    };
+    efi = {
+      canTouchEfiVariables = true;
+      efiSysMountPoint = "/boot";
     };
   };
   networking = {
