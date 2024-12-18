@@ -21,6 +21,7 @@ in
   home = {
     packages = with pkgs; [
       brave
+      copyq # needed for flameshot bug https://github.com/flameshot-org/flameshot/issues/3329
       discord
       feh
       (flameshot.override { enableWlrSupport = true; })
