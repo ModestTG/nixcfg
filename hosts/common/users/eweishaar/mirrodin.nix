@@ -4,6 +4,18 @@
   ...
 }:
 
+let
+  sshKeys = builtins.filter (x: x != [ ] && x != "") (
+    builtins.split "\n" (
+      builtins.readFile (
+        builtins.fetchurl {
+          url = "https://github.com/ModestTG.keys";
+          sha256 = "1dckb5ixmx76m4q7kry5c9ba1ynciszza15dgl0v9993wi8jhxp7";
+        }
+      )
+    )
+  );
+in
 {
   home-manager.users.eweishaar = import (userlib.relativeToRoot "home/eweishaar/mirrodin.nix");
 
@@ -22,12 +34,7 @@
       ];
       uid = 1000;
       shell = pkgs.bash;
-      openssh.authorizedKeys.keys = [
-        (builtins.fetchurl {
-          url = "https://github.com/ModestTG.keys";
-          sha256 = "1dckb5ixmx76m4q7kry5c9ba1ynciszza15dgl0v9993wi8jhxp7";
-        })
-      ];
+      openssh.authorizedKeys.keys = sshKeys;
     };
     groups = {
       eweishaar = {
