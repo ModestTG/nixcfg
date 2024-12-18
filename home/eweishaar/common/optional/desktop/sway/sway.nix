@@ -144,7 +144,8 @@
           "${modifier}+d" = "nop";
           "${modifier}+r" = "exec ${pkgs.wofi}/bin/wofi";
           "${modifier}+e" = "exec ${pkgs.xfce.thunar}/bin/thunar";
-          "${modifier}+c" = "exec ${pkgs.alacritty}/bin/alacritty --title Alacritty-BC -e ${pkgs.bc}/bin/bc -q";
+          "${modifier}+c" =
+            "exec ${pkgs.alacritty}/bin/alacritty --title Alacritty-BC -e ${pkgs.bc}/bin/bc -q";
           # "${modifier}+f" = "fullscreen toggle";
           # "${modifier}+h" = "focus left";
           # "${modifier}+j" = "focus down";
@@ -156,7 +157,10 @@
           # "${modifier}+space" = "focus mode_toggle";
           # "${modifier}+v" = "splitv";
           # "${modifier}+w" = "layout tabbed";
-          "${modifier}+Shift+s" = "exec flameshot gui";
+
+          # Workaround for https://github.com/flameshot-org/flameshot/issues/3329
+          "${modifier}+Shift+s" =
+            "exec ${pkgs.flameshot}/bin/flameshot gui --raw > /tmp/screenshot.png && ${pkgs.wl-clipboard}/bin/wl-copy < /tmp/screenshot.png";
           "${modifier}+p" = "exec playerctl -p spotify play-pause";
           "${modifier}+Ctrl+Right" = "exec playerctl -p spotify next";
           "${modifier}+Ctrl+Left" = "exec playerctl -p spotify previous";
