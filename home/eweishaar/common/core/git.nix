@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   programs.git = {
@@ -11,4 +11,7 @@
       safe.directory = "/home/eweishaar/nixcfg";
     };
   };
+  home.packages = with pkgs; [ lazygit ];
+  xdg.configFile."lazygit/config.yml".source =
+    "${inputs.theme_tokyonight}/extras/lazygit/tokyonight_night.yml";
 }
