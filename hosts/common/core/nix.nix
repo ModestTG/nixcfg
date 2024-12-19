@@ -15,6 +15,7 @@
       "nixpkgs"
       "--commit-lock-file"
       "-L"
+      "--write-to-file ${inputs.self.outPath}/flake.lock"
     ];
     randomizedDelaySec = "30min";
   };
