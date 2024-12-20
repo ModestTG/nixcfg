@@ -1,2 +1,5 @@
 **/minecraft-data/
+
+# Docker
 *.secret.txt
+**/home-assistant/config

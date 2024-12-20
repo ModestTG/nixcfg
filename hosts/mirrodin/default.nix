@@ -9,6 +9,7 @@
     ++ (map userlib.relativeToRoot [
       "hosts/common/core"
       "hosts/common/optional/services/openssh.nix"
+      "hosts/common/optional/docker"
       "hosts/common/users/eweishaar/mirrodin.nix"
     ]);
 
