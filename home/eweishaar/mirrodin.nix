@@ -1,4 +1,4 @@
-{ userlib, ... }:
+{ pkgs, userlib, ... }:
 
 {
   imports = map userlib.relativeToRoot [
@@ -9,6 +9,7 @@
   home = rec {
     username = "eweishaar";
     homeDirectory = "/home/${username}";
+    packages = with pkgs; [ compose2nix ];
   };
   programs.ssh = {
     extraConfig = ''
