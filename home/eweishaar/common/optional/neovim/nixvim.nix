@@ -325,6 +325,9 @@
       golang-indent = {
         clear = true;
       };
+      yaml-spaces = {
+        clear = true;
+      };
     };
 
     # [[ Basic Autocommands ]]
@@ -346,6 +349,7 @@
       }
       {
         event = [ "FileType" ];
+        pattern = [ "go" ];
         desc = "Set golang shiftwidth to 2 instead of 8";
         group = "golang-indent";
         callback.__raw = # lua
@@ -354,6 +358,18 @@
               vim.bo.tabstop = 2
               vim.bo.shiftwidth = 2
               vim.bo.expandtab = false
+              end
+          '';
+      }
+      {
+        event = [ "FileType" ];
+        pattern = [ "yaml" ];
+        desc = "Set yaml files to use spaces";
+        group = "yaml-spaces";
+        callback.__raw = # lua
+          ''
+            function()
+              vim.bo.expandtab = true
               end
           '';
       }
