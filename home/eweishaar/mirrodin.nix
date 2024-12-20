@@ -10,5 +10,9 @@
     username = "eweishaar";
     homeDirectory = "/home/${username}";
   };
-
+  programs.ssh = {
+    extraConfig = ''
+      IdentityFile = ~/.ssh/id_mirrodin
+    '';
+  };
 }
