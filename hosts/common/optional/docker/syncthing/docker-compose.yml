@@ -1,0 +1,27 @@
+name: syncthing
+services:
+  syncthing:
+    container_name: syncthing
+    image: "syncthing/syncthing:1.28"
+    hostname: my-syncthing
+    environment:
+      - PUID=1000
+      - PGID=1000
+    volumes:
+      - syncthing-config:/var/syncthing
+      - /mnt/k8s-nfs:/data
+    ports:
+      - 8384:8384 # Web UI
+      - 22000:22000/tcp # TCP file transfers
+      - 22000:22000/udp # QUIC file transfers
+      - 21027:21027/udp # Receive local discovery broadcasts
+    restart: unless-stopped
+    healthcheck:
+      test: curl -fkLsS -m 2 127.0.0.1:8384/rest/noauth/health | grep -o --color=never OK || exit 1
+      interval: 1m
+      timeout: 10s
+      retries: 3
+      
+volumes:
+  syncthing-config:
+
