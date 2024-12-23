@@ -10,7 +10,7 @@ let
       builtins.readFile (
         builtins.fetchurl {
           url = "https://github.com/ModestTG.keys";
-          sha256 = "1346p3k2f58fj93x45bc1c8s9k3v3mwk6kf92sf4h1knr1bzl64l";
+          sha256 = "1y4qsphg6ysqx055zwmfa7a87r5kyvzwcbr0lydd1mng8q1knkav";
         }
       )
     )
