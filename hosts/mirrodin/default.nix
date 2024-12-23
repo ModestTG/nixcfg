@@ -6,7 +6,7 @@
       ./hardware-configuration.nix
       ./disko-config.nix
       inputs.hardware.nixosModules.common-cpu-intel
-      inputs.hardware.nixosModules.common-gpu-nvidia
+      inputs.hardware.nixosModules.common-gpu-nvidia-nonprime
       inputs.hardware.nixosModules.common-pc-ssd
     ]
     ++ (map userlib.relativeToRoot [
@@ -17,7 +17,7 @@
       "hosts/common/optional/services/syncthing.nix"
       "hosts/common/users/eweishaar/mirrodin.nix"
     ]);
-
+  hardware.nvidia.open = true;
   boot.loader = {
     grub.enable = false;
     systemd-boot = {
