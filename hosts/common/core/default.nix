@@ -22,6 +22,7 @@
     nix-index
     nix-ld
     nix-output-monitor
+    nmap
     nurl
     p7zip
     pciutils
