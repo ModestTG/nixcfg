@@ -15,15 +15,15 @@
     ]
     ++ (map userlib.relativeToRoot [
       "hosts/common/core"
-      "hosts/common/optional/sway.nix"
-      "hosts/common/optional/pipewire.nix"
-      "hosts/common/optional/services/openssh.nix"
-      "hosts/common/optional/nfs.nix"
       "hosts/common/optional/epsonscan2.nix"
-      "hosts/common/optional/services/printing.nix"
-      "hosts/common/optional/services/tailscale.nix"
       "hosts/common/optional/gaming/core"
       "hosts/common/optional/gaming/minecraft/atm9"
+      "hosts/common/optional/nfs.nix"
+      "hosts/common/optional/pipewire.nix"
+      "hosts/common/optional/services/openssh.nix"
+      "hosts/common/optional/services/printing.nix"
+      "hosts/common/optional/services/tailscale.nix"
+      "hosts/common/optional/sway.nix"
       "hosts/common/users/eweishaar/dominaria.nix"
     ]);
 
