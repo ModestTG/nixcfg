@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   pkgs,
   lib,
@@ -112,7 +113,8 @@
           "${modifier}+9" = "nop";
           # "${modifier}+Down" = "focus down";
           # "${modifier}+Left" = "focus left";
-          "${modifier}+Return" = "exec ${pkgs.alacritty}/bin/alacritty";
+          "${modifier}+Return" =
+            "exec ${inputs.ghostty.packages.x86_64-linux.ghostty-releasefast}/bin/ghostty";
           # "${modifier}+Right" = "focus right";
           # "${modifier}+Shift+0" = "move container to workspace number 10";
           # "${modifier}+Shift+1" = "move container to workspace number 1";
@@ -144,8 +146,7 @@
           "${modifier}+d" = "nop";
           "${modifier}+r" = "exec ${pkgs.wofi}/bin/wofi";
           "${modifier}+e" = "exec ${pkgs.xfce.thunar}/bin/thunar";
-          "${modifier}+c" =
-            "exec ${pkgs.alacritty}/bin/alacritty --title Alacritty-BC -e ${pkgs.bc}/bin/bc -q";
+          # "${modifier}+c" = "exec ${pkgs.ghostty}/bin/ghostty --title ghostty-BC -e ${pkgs.bc}/bin/bc -q";
           # "${modifier}+f" = "fullscreen toggle";
           # "${modifier}+h" = "focus left";
           # "${modifier}+j" = "focus down";
@@ -192,7 +193,7 @@
           }
         ];
       };
-      extraConfig = ''for_window [title="Alacritty-BC"] floating enable, resize set 600 800'';
+      extraConfig = ''for_window [title="ghostty-BC"] floating enable, resize set 600 800'';
     };
   systemd.user =
     let
