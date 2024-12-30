@@ -14,7 +14,6 @@
       "hosts/common/optional/docker"
       "hosts/common/optional/nfs.nix"
       "hosts/common/optional/services/openssh.nix"
-      "hosts/common/optional/services/syncthing.nix"
       "hosts/common/users/eweishaar/mirrodin.nix"
     ]);
   hardware.nvidia.open = true;
