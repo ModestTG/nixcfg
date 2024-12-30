@@ -23,7 +23,8 @@ in
   programs.steam.enable = true;
 
   environment.systemPackages = [
-    xmage-latest
     pkgs.prismlauncher
+    pkgs.r2modman
+    xmage-latest
   ];
 }
