@@ -24,6 +24,7 @@
     swww
     waybar
     wayland
+    wl-clipboard
     wlogout
     wofi
     xdg-utils

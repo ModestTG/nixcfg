@@ -24,6 +24,7 @@ in
       feh
       (flameshot.override { enableWlrSupport = true; })
       handbrake
+      immich-go
       jellyfin-media-player
       kolourpaint
       libreoffice
