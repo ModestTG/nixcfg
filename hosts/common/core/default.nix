@@ -1,7 +1,12 @@
-{ pkgs, userlib, ... }:
+{
+  pkgs,
+  userlib,
+  inputs,
+  ...
+}:
 
 {
-  imports = userlib.scanPaths ./.;
+  imports = [ inputs.nix-index-database.nixosModules.nix-index ] ++ (userlib.scanPaths ./.);
 
   environment.systemPackages = with pkgs; [
     age
@@ -19,7 +24,6 @@
     jq
     just
     nh
-    nix-index
     nix-ld
     nix-output-monitor
     nmap
