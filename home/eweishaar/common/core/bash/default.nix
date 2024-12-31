@@ -4,7 +4,6 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      ctn = "compose2nix --output default.nix";
       cat = "bat";
       k = "kubectl";
       lg = "lazygit";
