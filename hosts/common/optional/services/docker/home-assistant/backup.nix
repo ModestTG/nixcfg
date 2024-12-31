@@ -29,7 +29,7 @@ in
     serviceConfig = {
       Type = "oneshot";
       ExecStart = "${rsync-backup-ha}/bin/rsync-backup-ha";
-      User = "root";
+      User = "eweishaar";
     };
   };
 

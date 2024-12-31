@@ -1,5 +1,5 @@
 # Auto-generated using compose2nix v0.3.1.
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Runtime
@@ -21,12 +21,13 @@
 
   # Containers
   virtualisation.oci-containers.containers."home-assistant" = {
-    image = "ghcr.io/home-assistant/home-assistant:stable";
+    image = "ghcr.io/onedr0p/home-assistant:2024.12.4";
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
-      "/home/eweishaar/nixcfg/hosts/common/optional/docker/home-assistant/config:/config:rw"
+      "/home/eweishaar/nixcfg/hosts/common/optional/services/docker/home-assistant/config:/config:rw"
       "/run/dbus:/run/dbus:ro"
     ];
+    user = "1000:100";
     log-driver = "journald";
     extraOptions = [
       "--network=host"

@@ -11,8 +11,9 @@
     ]
     ++ (map userlib.relativeToRoot [
       "hosts/common/core"
-      "hosts/common/optional/docker"
       "hosts/common/optional/nfs.nix"
+      "hosts/common/optional/services/caddy.nix"
+      "hosts/common/optional/services/docker"
       "hosts/common/optional/services/openssh.nix"
       "hosts/common/users/eweishaar/mirrodin.nix"
     ]);
