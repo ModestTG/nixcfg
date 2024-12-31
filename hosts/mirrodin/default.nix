@@ -15,6 +15,7 @@
       "hosts/common/optional/services/caddy.nix"
       "hosts/common/optional/services/docker"
       "hosts/common/optional/services/openssh.nix"
+      "hosts/common/optional/sops.nix"
       "hosts/common/users/eweishaar/mirrodin.nix"
     ]);
   hardware.nvidia.open = true;
