@@ -20,6 +20,35 @@
   virtualisation.oci-containers.backend = "podman";
 
   # Containers
+  virtualisation.oci-containers.containers."esphome" = {
+    image = "ghcr.io/esphome/esphome:2024.12.2";
+    volumes = [
+      "/etc/localtime:/etc/localtime:ro"
+      "home-assistant_esphome-config:/config:rw"
+    ];
+    log-driver = "journald";
+    extraOptions = [
+      "--network=host"
+      "--privileged"
+    ];
+  };
+  systemd.services."podman-esphome" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "always";
+    };
+    after = [
+      "podman-volume-home-assistant_esphome-config.service"
+    ];
+    requires = [
+      "podman-volume-home-assistant_esphome-config.service"
+    ];
+    partOf = [
+      "podman-compose-home-assistant-root.target"
+    ];
+    wantedBy = [
+      "podman-compose-home-assistant-root.target"
+    ];
+  };
   virtualisation.oci-containers.containers."home-assistant" = {
     image = "ghcr.io/onedr0p/home-assistant:2024.12.4";
     volumes = [
@@ -44,6 +73,20 @@
     wantedBy = [
       "podman-compose-home-assistant-root.target"
     ];
+  };
+
+  # Volumes
+  systemd.services."podman-volume-home-assistant_esphome-config" = {
+    path = [ pkgs.podman ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      podman volume inspect home-assistant_esphome-config || podman volume create home-assistant_esphome-config
+    '';
+    partOf = [ "podman-compose-home-assistant-root.target" ];
+    wantedBy = [ "podman-compose-home-assistant-root.target" ];
   };
 
   # Root service
