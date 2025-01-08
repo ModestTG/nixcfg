@@ -15,11 +15,11 @@
     stateVersion = "24.11";
     sessionPath = [ "$HOME/.local/bin" ];
     sessionVariables = {
+      EDITOR = "nvim";
       FLAKE = "$HOME/nixcfg";
+      KUBECONFIG = if config.programs.k9s.enable then "/home/eweishaar/jace-cluster/kubeconfig" else "";
       TERM = "alacritty";
       TERMINAL = "alacritty";
-      EDITOR = "nvim";
-      KUBECONFIG = if config.programs.k9s.enable then "/home/eweishaar/jace-cluster/kubeconfig" else "";
     };
     packages = with pkgs; [
       bat

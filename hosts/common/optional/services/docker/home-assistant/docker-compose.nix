@@ -74,6 +74,58 @@
       "podman-compose-home-assistant-root.target"
     ];
   };
+  virtualisation.oci-containers.containers."node-red" = {
+    image = "nodered/node-red:4.0.8";
+    environment = {
+      "TZ" = "America/Chicago";
+    };
+    volumes = [
+      "home-assistant_node-red-config:/data:rw"
+    ];
+    ports = [
+      "1880:1880/tcp"
+    ];
+    user = "1000:100";
+    log-driver = "journald";
+    extraOptions = [
+      "--network-alias=node-red"
+      "--network=home-assistant_default"
+    ];
+  };
+  systemd.services."podman-node-red" = {
+    serviceConfig = {
+      Restart = lib.mkOverride 90 "always";
+    };
+    after = [
+      "podman-network-home-assistant_default.service"
+      "podman-volume-home-assistant_node-red-config.service"
+    ];
+    requires = [
+      "podman-network-home-assistant_default.service"
+      "podman-volume-home-assistant_node-red-config.service"
+    ];
+    partOf = [
+      "podman-compose-home-assistant-root.target"
+    ];
+    wantedBy = [
+      "podman-compose-home-assistant-root.target"
+    ];
+  };
+
+  # Networks
+  systemd.services."podman-network-home-assistant_default" = {
+    path = [ pkgs.podman ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStop = "podman network rm -f home-assistant_default";
+    };
+    script = ''
+      podman network inspect home-assistant_default || podman network create home-assistant_default
+    '';
+    partOf = [ "podman-compose-home-assistant-root.target" ];
+    wantedBy = [ "podman-compose-home-assistant-root.target" ];
+  };
 
   # Volumes
   systemd.services."podman-volume-home-assistant_esphome-config" = {
@@ -84,6 +136,18 @@
     };
     script = ''
       podman volume inspect home-assistant_esphome-config || podman volume create home-assistant_esphome-config
+    '';
+    partOf = [ "podman-compose-home-assistant-root.target" ];
+    wantedBy = [ "podman-compose-home-assistant-root.target" ];
+  };
+  systemd.services."podman-volume-home-assistant_node-red-config" = {
+    path = [ pkgs.podman ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+    };
+    script = ''
+      podman volume inspect home-assistant_node-red-config || podman volume create home-assistant_node-red-config
     '';
     partOf = [ "podman-compose-home-assistant-root.target" ];
     wantedBy = [ "podman-compose-home-assistant-root.target" ];

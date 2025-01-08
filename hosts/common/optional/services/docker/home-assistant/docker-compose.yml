@@ -20,6 +20,18 @@ services:
     restart: always
     privileged: true
     network_mode: host
+  node-red:
+    container_name: node-red
+    image: nodered/node-red:4.0.8
+    user: 1000:100
+    volumes:
+      - node-red-config:/data
+    restart: unless-stopped
+    ports:
+      - 1880:1880
+    environment:
+      TZ: America/Chicago
 
 volumes:
   esphome-config:
+  node-red-config:

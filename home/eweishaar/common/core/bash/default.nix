@@ -9,6 +9,7 @@
       lg = "lazygit";
       ll = "ls -alh";
       man = "batman";
+      s = "systemctl";
       sudo = "doas";
       vim = "nvim";
       v = "nvim";

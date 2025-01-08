@@ -1,45 +1,26 @@
-{ pkgs, ... }:
-let
-  rsync-backup-ha = pkgs.writeShellApplication {
-    name = "rsync-backup-ha";
-    runtimeInputs = [
-      pkgs.rsync
-      pkgs.util-linux
-    ];
-    text = # bash
-      ''
-        # Source and destination directories
-        SRC_DIR="/home/eweishaar/nixcfg/hosts/common/optional/docker/home-assistant/config/"
-        DEST_DIR="/mnt/k8s-nfs/backups/home-assistant/"
-
-        # Ensure directories exist
-        if [ ! -d "$SRC_DIR" ] || [ ! -d "$DEST_DIR" ]; then
-          echo "Error: Source or destination directory does not exist"
-          exit 1
-        fi
-
-        # Perform the sync with root permissions preserved
-        rsync -av --no-perms --no-owner --no-group "$SRC_DIR/" "$DEST_DIR/"
-      '';
-  };
-in
+{ config, pkgs, ... }:
 {
-  systemd.services.rsync-backup-ha = {
-    description = "Backup Service: Home Assistant";
-    serviceConfig = {
-      Type = "oneshot";
-      ExecStart = "${rsync-backup-ha}/bin/rsync-backup-ha";
-      User = "eweishaar";
-    };
+  sops.secrets.restic-repo-password = {
+    owner = config.users.users.eweishaar.name;
   };
-
-  systemd.timers.rsync-backup-ha = {
-    description = "Timer for Backup Service: Home Assistant service";
-    wantedBy = [ "timers.target" ];
-    timerConfig = {
-      OnBootSec = "5min";
-      OnUnitActiveSec = "15min";
-      Unit = "rsync-backup-ha.service";
+  environment.systemPackages = [ pkgs.restic ];
+  services.restic.backups = {
+    home-assistant = {
+      user = config.users.users.eweishaar.name;
+      repository = "/mnt/k8s-nfs/backups/home-assistant";
+      initialize = true;
+      passwordFile = config.sops.secrets.restic-repo-password.path;
+      paths = [ "/home/eweishaar/nixcfg/hosts/common/optional/services/docker/home-assistant/config" ];
+      timerConfig = {
+        OnCalendar = "hourly";
+      };
+      pruneOpts = [
+        "--keep-hourly 6"
+        "--keep-daily 7"
+        "--keep-weekly 5"
+        "--keep-monthly 12"
+        "--keep-yearly 5"
+      ];
     };
   };
 }
