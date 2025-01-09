@@ -22,6 +22,9 @@
   # Containers
   virtualisation.oci-containers.containers."esphome" = {
     image = "ghcr.io/esphome/esphome:2024.12.2";
+    environment = {
+      "ESPHOME_DASHBOARD_USE_PING" = "true";
+    };
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "home-assistant_esphome-config:/config:rw"

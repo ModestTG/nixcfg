@@ -18,6 +18,8 @@ services:
       - esphome-config:/config
       - /etc/localtime:/etc/localtime:ro
     restart: always
+    environment:
+      ESPHOME_DASHBOARD_USE_PING: true
     privileged: true
     network_mode: host
   node-red:
