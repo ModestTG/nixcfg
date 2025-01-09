@@ -34,6 +34,7 @@ in
       spotify
       swappy
       vesktop
+      wireshark
       xfce.thunar
       zathura
     ];

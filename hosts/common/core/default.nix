@@ -9,51 +9,42 @@
 {
   imports = [ inputs.nix-index-database.nixosModules.nix-index ] ++ (userlib.scanPaths ./.);
 
-  environment = {
-    variables = {
-      RESTIC_PASSWORD_FILE =
-        if (builtins.pathExists config.sops.secrets.restic-repo-password.path) then
-          (builtins.toString config.sops.secrets.restic-repo-password.path)
-        else
-          "";
-    };
-    systemPackages = with pkgs; [
-      age
-      bash
-      bc
-      coreutils
-      curl
-      dig
-      doas
-      file
-      findutils
-      fzf
-      gcc
-      git
-      jq
-      just
-      nh
-      nix-ld
-      nix-output-monitor
-      nmap
-      nurl
-      p7zip
-      pciutils
-      pfetch
-      pre-commit
-      pwgen
-      sops
-      tldr
-      tmux
-      tree
-      unrar
-      unzip
-      usbutils
-      vim
-      vulnix
-      wget
-      zip
-      zstd
-    ];
-  };
+  environment.systemPackages = with pkgs; [
+    age
+    bash
+    bc
+    coreutils
+    curl
+    dig
+    doas
+    file
+    findutils
+    fzf
+    gcc
+    git
+    jq
+    just
+    nh
+    nix-ld
+    nix-output-monitor
+    nmap
+    nurl
+    p7zip
+    pciutils
+    pfetch
+    pre-commit
+    pwgen
+    sops
+    tldr
+    tmux
+    tree
+    unrar
+    unzip
+    usbutils
+    vim
+    vulnix
+    wget
+    zip
+    zstd
+  ];
 }
