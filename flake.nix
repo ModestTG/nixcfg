@@ -35,18 +35,24 @@
 
   outputs =
     {
-      self,
       disko,
-      nixpkgs,
       home-manager,
+      nixpkgs,
       nixpkgs-stable,
+      self,
       ...
     }@inputs:
     let
       inherit (inputs.nixpkgs) lib;
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      pkgs-stable = nixpkgs-stable.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      };
+      pkgs-stable = import nixpkgs-stable {
+        inherit system;
+        config.allowUnfree = true;
+      };
       userlib = import ./lib { inherit lib; };
       uservars = import ./vars { inherit lib; };
       specialArgs = {

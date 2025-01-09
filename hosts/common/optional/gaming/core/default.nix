@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-stable, ... }:
 
 let
   xmage-latest = pkgs.xmage.overrideAttrs (old: rec {
@@ -20,7 +20,12 @@ let
 in
 {
 
-  programs.steam.enable = true;
+  programs.steam = {
+    enable = true;
+    extraPackages = with pkgs; [
+      gamescope
+    ];
+  };
 
   environment.systemPackages = [
     pkgs.prismlauncher
