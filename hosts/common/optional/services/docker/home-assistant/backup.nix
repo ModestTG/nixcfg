@@ -22,5 +22,39 @@
         "--keep-yearly 5"
       ];
     };
+    node-red = {
+      user = config.users.users.root.name;
+      repository = "/mnt/k8s-nfs/backups/node-red";
+      initialize = true;
+      passwordFile = config.sops.secrets.restic-repo-password.path;
+      paths = [ "/var/lib/containers/storage/volumes/home-assistant_node-red-config/_data" ];
+      timerConfig = {
+        OnCalendar = "hourly";
+      };
+      pruneOpts = [
+        "--keep-hourly 6"
+        "--keep-daily 7"
+        "--keep-weekly 5"
+        "--keep-monthly 12"
+        "--keep-yearly 5"
+      ];
+    };
+    esphome = {
+      user = config.users.users.root.name;
+      repository = "/mnt/k8s-nfs/backups/esphome";
+      initialize = true;
+      passwordFile = config.sops.secrets.restic-repo-password.path;
+      paths = [ "/var/lib/containers/storage/volumes/home-assistant_esphome-config/_data" ];
+      timerConfig = {
+        OnCalendar = "hourly";
+      };
+      pruneOpts = [
+        "--keep-hourly 6"
+        "--keep-daily 7"
+        "--keep-weekly 5"
+        "--keep-monthly 12"
+        "--keep-yearly 5"
+      ];
+    };
   };
 }
