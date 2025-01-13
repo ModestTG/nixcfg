@@ -1,4 +1,13 @@
 { config, pkgs, ... }:
+let
+  pruneOpts = [
+    "--keep-hourly 6"
+    "--keep-daily 7"
+    "--keep-weekly 5"
+    "--keep-monthly 12"
+    "--keep-yearly 5"
+  ];
+in
 {
   sops.secrets.restic-repo-password = {
     owner = config.users.users.eweishaar.name;
@@ -14,13 +23,7 @@
       timerConfig = {
         OnCalendar = "hourly";
       };
-      pruneOpts = [
-        "--keep-hourly 6"
-        "--keep-daily 7"
-        "--keep-weekly 5"
-        "--keep-monthly 12"
-        "--keep-yearly 5"
-      ];
+      inherit pruneOpts;
     };
     node-red = {
       user = config.users.users.root.name;
@@ -31,13 +34,7 @@
       timerConfig = {
         OnCalendar = "hourly";
       };
-      pruneOpts = [
-        "--keep-hourly 6"
-        "--keep-daily 7"
-        "--keep-weekly 5"
-        "--keep-monthly 12"
-        "--keep-yearly 5"
-      ];
+      inherit pruneOpts;
     };
     esphome = {
       user = config.users.users.root.name;
@@ -48,13 +45,7 @@
       timerConfig = {
         OnCalendar = "hourly";
       };
-      pruneOpts = [
-        "--keep-hourly 6"
-        "--keep-daily 7"
-        "--keep-weekly 5"
-        "--keep-monthly 12"
-        "--keep-yearly 5"
-      ];
+      inherit pruneOpts;
     };
   };
 }
