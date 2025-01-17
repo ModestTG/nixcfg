@@ -1,4 +1,10 @@
-{ userlib, inputs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  userlib,
+  ...
+}:
 
 {
   imports =
@@ -12,12 +18,27 @@
     ++ (map userlib.relativeToRoot [
       "hosts/common/core"
       "hosts/common/optional/nfs.nix"
+      "hosts/common/optional/services/ai"
       "hosts/common/optional/services/docker"
       "hosts/common/optional/services/openssh.nix"
       "hosts/common/optional/sops.nix"
       "hosts/common/users/eweishaar/mirrodin.nix"
     ]);
-  hardware.nvidia.open = true;
+  hardware = {
+    nvidia = {
+      open = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        cudatoolkit
+      ];
+    };
+  };
+  environment.systemPackages = with pkgs; [
+    cudatoolkit
+  ];
   boot.loader = {
     grub.enable = false;
     systemd-boot = {
