@@ -18,6 +18,7 @@
     enable = true;
     defaultApplications = {
       "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "calc.desktop";
+      "inode/directory" = "thunar.desktop"; # File Browser
     };
   };
   programs.ssh = {
