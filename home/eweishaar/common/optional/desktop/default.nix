@@ -32,6 +32,7 @@ in
       makemkv
       obsidian
       python3
+      qflipper
       spotify
       swappy
       vesktop

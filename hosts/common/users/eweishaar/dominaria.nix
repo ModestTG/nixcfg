@@ -31,6 +31,7 @@ in
         "docker"
         "eweishaar"
         "networkmanager"
+        "plugdev"
         "wheel"
       ];
       uid = 1000;
@@ -50,4 +51,8 @@ in
       };
     };
   };
+  # Add udev rules for Flipper Zero
+  services.udev.extraRules = ''
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE="0666", GROUP="plugdev"
+  '';
 }
