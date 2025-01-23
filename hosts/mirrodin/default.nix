@@ -1,4 +1,10 @@
-{ userlib, inputs, ... }:
+{
+  config,
+  inputs,
+  pkgs,
+  userlib,
+  ...
+}:
 
 {
   imports =
@@ -18,7 +24,21 @@
       "hosts/common/optional/sops.nix"
       "hosts/common/users/eweishaar/mirrodin.nix"
     ]);
-  hardware.nvidia.open = true;
+  hardware = {
+    nvidia = {
+      open = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        cudatoolkit
+      ];
+    };
+  };
+  environment.systemPackages = with pkgs; [
+    cudatoolkit
+  ];
   boot.loader = {
     grub.enable = false;
     systemd-boot = {
