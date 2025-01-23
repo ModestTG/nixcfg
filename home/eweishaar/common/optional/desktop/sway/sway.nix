@@ -113,8 +113,7 @@
           "${modifier}+9" = "nop";
           # "${modifier}+Down" = "focus down";
           # "${modifier}+Left" = "focus left";
-          "${modifier}+Return" =
-            "exec ${inputs.ghostty.packages.x86_64-linux.ghostty-releasefast}/bin/ghostty";
+          "${modifier}+Return" = "exec ${pkgs.ghostty}/bin/ghostty";
           # "${modifier}+Right" = "focus right";
           # "${modifier}+Shift+0" = "move container to workspace number 10";
           # "${modifier}+Shift+1" = "move container to workspace number 1";

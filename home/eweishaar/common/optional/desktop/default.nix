@@ -23,6 +23,7 @@ in
       discord
       feh
       (flameshot.override { enableWlrSupport = true; })
+      ghostty
       handbrake
       immich-go
       jellyfin-media-player
