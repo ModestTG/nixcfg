@@ -44,6 +44,7 @@
     vim
     vulnix
     wget
+    yq
     zip
     zstd
   ];
