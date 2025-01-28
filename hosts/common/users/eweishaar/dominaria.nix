@@ -18,6 +18,7 @@ let
 in
 {
   home-manager.users.eweishaar = import (userlib.relativeToRoot "home/eweishaar/dominaria.nix");
+  home-manager.backupFileExtension = "hmbackup";
 
   users = {
     mutableUsers = false;

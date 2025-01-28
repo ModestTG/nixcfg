@@ -17,6 +17,7 @@
     ]
     ++ (map userlib.relativeToRoot [
       "hosts/common/core"
+      "hosts/common/optional/bluetooth.nix"
       "hosts/common/optional/epsonscan2.nix"
       "hosts/common/optional/gaming/core"
       "hosts/common/optional/gaming/minecraft/atm9"
