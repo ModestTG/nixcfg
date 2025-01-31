@@ -38,6 +38,7 @@ in
       vesktop
       wireshark
       xfce.thunar
+      yt-dlp
       zathura
     ];
     pointerCursor = {
