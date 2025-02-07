@@ -26,6 +26,7 @@ in
       gamescope
     ];
   };
+  hardware.xone.enable = true;
 
   environment.systemPackages = [
     pkgs.prismlauncher
