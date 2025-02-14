@@ -1,24 +1,28 @@
+# Generate docker-compose.nix with `compose2nix --env_files=.env --include_env_files=true`
 name: atm9
 services:
   mc:
-    image: itzg/minecraft-server:latest
+    image: itzg/minecraft-server
     ports:
-      - 25565:25565
+      - "25565:25565"
+    user: 1000:1000
     environment:
-      - EULA=TRUE
-      - TYPE=FORGE
-      - VERSION=1.20.1
-      - FORGE_INSTALLER=forge-1.20.1-47.3.7-installer.jar
-      - OVERRIDE_SERVER_PROPERTIES=TRUE
-      - TZ=America/Chicago
-      - MEMORY=8G
-      - DIFFICULTY=normal
-        # tty: true
-        #stdin_open: true
-    restart: unless-stopped
+      EULA: "true"
+      MODPACK_PLATFORM: AUTO_CURSEFORGE
+      CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/all-the-mods-9
+      # Optional: select a specific version/file
+      CF_FILENAME_MATCHER: "1.0.4"
+      CURSEFORGE_FILES: |
+        simple-backups:5658734
+      MEMORY: 8G
+      DIFFICULTY: normal
+      TZ: America/Chicago
     volumes:
-      # attach a directory relative to the directory containing this compose file
-      - ./minecraft-data:/data
-      # - /mnt/k8s-nfs/backups/minecraft/atm9:/data/backups
+      - mc-data:/data
+      - /mnt/k8s-nfs/backups/minecraft/atm9:/data/backups
     labels:
       - "compose2nix.settings.autoStart=false"
+      
+
+volumes:
+  mc-data: {}
