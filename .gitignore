@@ -4,4 +4,3 @@
 *.secret.txt
 **/home-assistant/config
 .env
-docker-compose.nix
