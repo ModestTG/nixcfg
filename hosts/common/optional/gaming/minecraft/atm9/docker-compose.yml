@@ -12,8 +12,6 @@ services:
       CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/all-the-mods-9
       # Optional: select a specific version/file
       CF_FILENAME_MATCHER: "1.0.4"
-      CURSEFORGE_FILES: |
-        simple-backups:5658734
       MEMORY: 8G
       DIFFICULTY: normal
       TZ: America/Chicago
@@ -22,7 +20,6 @@ services:
       - /mnt/k8s-nfs/backups/minecraft/atm9:/data/backups
     labels:
       - "compose2nix.settings.autoStart=false"
-      
 
 volumes:
   mc-data: {}

@@ -25,8 +25,6 @@
     environment = {
       "CF_FILENAME_MATCHER" = "1.0.4";
       "CF_PAGE_URL" = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9";
-      "CURSEFORGE_FILES" = "simple-backups:5658734
-  ";
       "DIFFICULTY" = "normal";
       "EULA" = "true";
       "MEMORY" = "8G";
