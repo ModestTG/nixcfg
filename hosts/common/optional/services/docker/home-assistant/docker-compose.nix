@@ -21,7 +21,7 @@
 
   # Containers
   virtualisation.oci-containers.containers."esphome" = {
-    image = "ghcr.io/esphome/esphome:2024.12.2";
+    image = "ghcr.io/esphome/esphome:2025.2.0";
     environment = {
       "ESPHOME_DASHBOARD_USE_PING" = "true";
     };
@@ -53,7 +53,7 @@
     ];
   };
   virtualisation.oci-containers.containers."home-assistant" = {
-    image = "ghcr.io/onedr0p/home-assistant:2024.12.4";
+    image = "ghcr.io/onedr0p/home-assistant:2025.2.4";
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "/home/eweishaar/nixcfg/hosts/common/optional/services/docker/home-assistant/config:/config:rw"
@@ -78,7 +78,7 @@
     ];
   };
   virtualisation.oci-containers.containers."node-red" = {
-    image = "nodered/node-red:4.0.8";
+    image = "nodered/node-red:4.0.9";
     environment = {
       "TZ" = "America/Chicago";
     };
