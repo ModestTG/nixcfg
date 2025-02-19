@@ -7,6 +7,7 @@
     "home/eweishaar/common/optional/desktop"
     "home/eweishaar/common/optional/kubernetes.nix"
     "home/eweishaar/common/optional/neovim/nixvim.nix"
+    "home/eweishaar/common/optional/prusa-slicer.nix"
     "home/eweishaar/common/optional/services/syncthing.nix"
   ];
 
