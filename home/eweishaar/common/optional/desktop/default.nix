@@ -30,6 +30,7 @@ in
       kolourpaint
       libreoffice
       makemkv
+      mqtt-explorer
       obsidian
       python3
       qflipper
