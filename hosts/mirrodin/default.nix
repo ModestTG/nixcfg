@@ -21,6 +21,7 @@
       "hosts/common/optional/nfs.nix"
       # "hosts/common/optional/services/ai"
       "hosts/common/optional/services/docker"
+      "hosts/common/optional/services/mosquitto.nix"
       "hosts/common/optional/services/openssh.nix"
       "hosts/common/optional/sops.nix"
       "hosts/common/users/eweishaar/mirrodin.nix"
