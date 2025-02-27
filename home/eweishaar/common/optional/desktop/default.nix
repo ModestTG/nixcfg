@@ -28,7 +28,7 @@ in
       handbrake
       immich-go
       jellyfin-media-player
-      kolourpaint
+      kdePackages.kolourpaint
       libreoffice
       makemkv
       mqtt-explorer
