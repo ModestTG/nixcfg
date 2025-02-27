@@ -24,6 +24,8 @@ in
     enable = true;
     extraPackages = with pkgs; [
       gamescope
+      gamemode
+      mangohud
     ];
   };
   hardware.xone.enable = true;
