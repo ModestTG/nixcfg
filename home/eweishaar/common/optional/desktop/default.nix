@@ -24,6 +24,7 @@ in
       feh
       (flameshot.override { enableWlrSupport = true; })
       ghostty
+      gthumb
       handbrake
       immich-go
       jellyfin-media-player
@@ -39,6 +40,7 @@ in
       vesktop
       wireshark
       xfce.thunar
+      xfce.tumbler
       yt-dlp
       zathura
     ];
