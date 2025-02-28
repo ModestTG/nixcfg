@@ -1,4 +1,6 @@
+{ pkgs, ... }:
 {
+  home.packages = with pkgs; [ ghostty ];
   xdg.configFile."ghostty/config".text = ''
     font-family = "FiraCode Nerd Font Propo"
     theme = tokyonight

@@ -23,7 +23,6 @@ in
       discord
       feh
       (flameshot.override { enableWlrSupport = true; })
-      ghostty
       gthumb
       handbrake
       immich-go
