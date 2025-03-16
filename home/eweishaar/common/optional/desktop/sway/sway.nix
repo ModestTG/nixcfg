@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   pkgs,
   lib,
@@ -176,7 +175,6 @@
           "3" = [ { class = "^Spotify$"; } ];
           "4" = [
             { class = "^discord$"; }
-            { class = "^vesktop$"; }
           ];
         };
         startup = [
@@ -188,7 +186,7 @@
             command = "${pkgs.spotify}/bin/spotify";
           }
           {
-            command = "${pkgs.vesktop}/bin/vesktop";
+            command = "${pkgs.discord}/bin/discord";
           }
         ];
       };

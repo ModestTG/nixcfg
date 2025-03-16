@@ -37,7 +37,6 @@ in
       qflipper
       spotify
       swappy
-      vesktop
       wireshark
       xfce.thunar
       xfce.tumbler
