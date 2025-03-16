@@ -23,6 +23,7 @@ in
       discord
       feh
       (flameshot.override { enableWlrSupport = true; })
+      freecad-wayland
       gthumb
       handbrake
       immich-go

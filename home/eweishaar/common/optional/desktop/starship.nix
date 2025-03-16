@@ -27,19 +27,13 @@ in
     enableBashIntegration = true;
     settings = {
       format = ''
-        [░▒▓](${base06})[ 󱄅 ](bg:${base06} fg:${base00})[](bg:${base0D} fg:${base06})$directory[](fg:${base0D} bg:${base03})$git_branch$git_status[](fg:${base03} bg:${base02})$nodejs$rust$golang$php[](fg:${base02})$time
+        [░▒▓](${base06})[ 󱄅 ](bg:${base06} fg:${base00})[](bg:${base0D} fg:${base06})$directory[](fg:${base0D} bg:${base03})$git_branch$git_status[](fg:${base03} bg:${base02})$nodejs$rust$golang$php[](fg:${base02}) $nix_shell $time
         $character'';
       directory = {
         style = "fg:${base07} bg:${base0D}";
         format = "[ $path ]($style)";
         truncation_length = 3;
         truncation_symbol = "…/";
-      };
-      directory.substitutions = {
-        "Documents" = "󰈙 ";
-        "Downloads" = " ";
-        "Music" = " ";
-        "Pictures" = " ";
       };
       git_branch = {
         symbol = "";
@@ -74,6 +68,10 @@ in
         disabled = false;
         time_format = "%R"; # Hour:Minute Format;
         format = ''[[  $time ](fg:${base07})]($style)'';
+      };
+      nix_shell = {
+        style = "fg:${base0C}";
+        format = ''via [$state( \($name\))]($style)'';
       };
     };
   };
