@@ -23,7 +23,7 @@
   virtualisation.oci-containers.containers."atm9-mc" = {
     image = "itzg/minecraft-server";
     environment = {
-      "CF_FILENAME_MATCHER" = "1.0.4";
+      "CF_FILENAME_MATCHER" = "1.0.6";
       "CF_PAGE_URL" = "https://www.curseforge.com/minecraft/modpacks/all-the-mods-9";
       "DIFFICULTY" = "normal";
       "EULA" = "true";

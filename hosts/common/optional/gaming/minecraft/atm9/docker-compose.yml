@@ -11,7 +11,7 @@ services:
       MODPACK_PLATFORM: AUTO_CURSEFORGE
       CF_PAGE_URL: https://www.curseforge.com/minecraft/modpacks/all-the-mods-9
       # Optional: select a specific version/file
-      CF_FILENAME_MATCHER: "1.0.4"
+      CF_FILENAME_MATCHER: "1.0.6"
       MEMORY: 8G
       DIFFICULTY: normal
       TZ: America/Chicago
