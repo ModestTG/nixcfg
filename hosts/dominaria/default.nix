@@ -42,11 +42,15 @@
       efiSupport = true;
     };
   };
-  # hardware.amdgpu.amdvlk = {
-  #   enable = true;
-  #   support32Bit.enable = true;
-  # };
 
+  environment.variables = {
+    # Force GPU selection
+    VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
+
+    # Additional environment variables to prefer dedicated GPU
+    __GLX_VENDOR_LIBRARY_NAME = "amdgpu";
+    LIBGL_DRIVERS_PATH = "/run/opengl-driver/lib/dri";
+  };
   networking = {
     hostName = "dominaria";
     firewall.enable = false;
