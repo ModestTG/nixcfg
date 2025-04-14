@@ -26,6 +26,7 @@
       "hosts/common/optional/services/printing.nix"
       "hosts/common/optional/services/tailscale.nix"
       "hosts/common/optional/sway.nix"
+      "hosts/common/optional/usb.nix"
       "hosts/common/users/eweishaar/dominaria.nix"
     ]);
 
