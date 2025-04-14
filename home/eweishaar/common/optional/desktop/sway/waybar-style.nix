@@ -86,7 +86,7 @@
           color: @base0E;
       }
 
-      #clock, #tray, #pulseaudio, #custom-media, #custom-power {
+      #clock, #tray, #pulseaudio, #custom-media, #custom-power, #idle_inhibitor {
         background-color: @base00;
         font-size: 18px;
         color: @base0E;

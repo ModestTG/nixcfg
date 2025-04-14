@@ -30,7 +30,6 @@ in
       jellyfin-media-player
       kdePackages.kolourpaint
       libreoffice
-      makemkv
       mqtt-explorer
       obsidian
       python3

@@ -20,6 +20,7 @@
           "pulseaudio"
           "tray"
           "clock"
+          "idle_inhibitor"
           "custom/power"
           "custom/space"
         ];
@@ -103,6 +104,13 @@
           format = "";
           tooltip = false;
           on-click = "wlogout -p layer-shell";
+        };
+        idle_inhibitor = {
+          format = "{icon}";
+          format-icons = {
+            activated = "󱙲";
+            deactivated = "󰍁";
+          };
         };
       };
     };
