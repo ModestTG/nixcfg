@@ -13,6 +13,7 @@
       inputs.hardware.nixosModules.common-cpu-amd-pstate
       inputs.hardware.nixosModules.common-gpu-amd
       inputs.hardware.nixosModules.common-pc-ssd
+      inputs.determinate.nixosModules.default
     ]
     ++ (map userlib.relativeToRoot [
       "hosts/common/core"
