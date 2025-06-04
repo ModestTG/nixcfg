@@ -53,7 +53,7 @@
     ];
   };
   virtualisation.oci-containers.containers."home-assistant" = {
-    image = "ghcr.io/onedr0p/home-assistant:2025.2.4";
+    image = "ghcr.io/home-operations/home-assistant:2025.3.4";
     volumes = [
       "/etc/localtime:/etc/localtime:ro"
       "/home/eweishaar/nixcfg/hosts/common/optional/services/docker/home-assistant/config:/config:rw"
