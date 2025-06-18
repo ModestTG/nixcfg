@@ -45,5 +45,7 @@
       extraArgs = "--keep-since 10d --keep 3";
     };
   };
+  # Workaround of https://github.com/nix-community/nh/issues/236
+  environment.systemPackages = [ (pkgs.writeShellScriptBin "sudo" "doas $@") ];
   nixpkgs.config.allowUnfree = lib.mkForce true;
 }
