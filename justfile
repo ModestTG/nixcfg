@@ -13,4 +13,4 @@ rbt: rebuild-pre
   scripts/system-flake-rebuild-test.sh
 
 clean:
-  doas nh clean all --keep-since 10d --keep 3
+  nh clean all --keep-since 10d --keep 3
