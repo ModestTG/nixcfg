@@ -8,6 +8,10 @@ let
   tokyonight-gtk-icon-theme = pkgs.tokyonight-gtk-theme.override {
     iconVariants = [ "Dark" ];
   };
+  vimix-cursors = pkgs.vimix-cursors.overrideAttrs (oldAttrs: {
+    # This forces a rebuild by changing the derivation
+    preferLocalBuild = true;
+  });
 in
 {
   imports = (
@@ -44,7 +48,7 @@ in
     ];
     pointerCursor = {
       gtk.enable = true;
-      package = pkgs.vimix-cursors;
+      package = vimix-cursors;
       name = "Vimix-cursors";
       size = 22;
     };
