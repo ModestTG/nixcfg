@@ -16,16 +16,19 @@
       inputs.hardware.nixosModules.common-pc-ssd
     ]
     ++ (map userlib.relativeToRoot [
-      "hosts/common/core"
-      "hosts/common/optional/gaming/minecraft/atm9"
-      "hosts/common/optional/nfs.nix"
-      # "hosts/common/optional/services/ai"
-      "hosts/common/optional/services/docker"
-      # "hosts/common/optional/services/mosquitto.nix"
-      "hosts/common/optional/services/openssh.nix"
-      "hosts/common/optional/sops.nix"
-      "hosts/common/users/eweishaar/mirrodin.nix"
+      "nixosModules"
     ]);
+
+  nixosModule = {
+    doas.enable = true;
+    svc = {
+      sops.enable = true;
+      ssh.enable = true;
+    };
+    virt.docker.enable = true;
+    fs.nfs.enable = true;
+  };
+
   hardware = {
     nvidia = {
       open = true;

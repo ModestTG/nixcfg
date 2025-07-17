@@ -1,4 +1,0 @@
-{ userlib, ... }:
-{
-  imports = userlib.scanPaths ./.;
-}
