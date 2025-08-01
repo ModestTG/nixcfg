@@ -19,9 +19,6 @@ let
 in
 {
   config = lib.mkIf (config.networking.hostName == "dominaria") {
-    home-manager.users.eweishaar = import (userlib.relativeToRoot "home/eweishaar/dominaria.nix");
-    home-manager.backupFileExtension = "hmbackup";
-
     users = {
       mutableUsers = false;
       users.eweishaar = {

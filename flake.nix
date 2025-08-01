@@ -30,7 +30,7 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3.6.2";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
   };
 
   outputs =
@@ -54,43 +54,37 @@
         config.allowUnfree = true;
       };
       userlib = import ./lib { inherit lib; };
-      uservars = import ./vars { inherit lib; };
       specialArgs = {
         inherit
           inputs
           userlib
-          uservars
           pkgs-stable
           ;
       };
     in
     {
-
       nixosConfigurations = {
         dominaria = lib.nixosSystem {
           inherit specialArgs system;
           modules = [
             ./hosts/dominaria
-            home-manager.nixosModules.home-manager
-            { home-manager.extraSpecialArgs = specialArgs; }
+            ./nixosModules
           ];
         };
         lorwyn = lib.nixosSystem {
           inherit specialArgs system;
           modules = [
             ./hosts/lorwyn
+            ./nixosModules
             disko.nixosModules.disko
-            home-manager.nixosModules.home-manager
-            { home-manager.extraSpecialArgs = specialArgs; }
           ];
         };
         mirrodin = lib.nixosSystem {
           inherit specialArgs system;
           modules = [
             ./hosts/mirrodin
+            ./nixosModules
             disko.nixosModules.disko
-            home-manager.nixosModules.home-manager
-            { home-manager.extraSpecialArgs = specialArgs; }
           ];
         };
       };

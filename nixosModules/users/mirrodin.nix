@@ -1,8 +1,8 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
-  userlib,
   ...
 }:
 
@@ -20,8 +20,6 @@ let
 in
 {
   config = lib.mkIf (config.networking.hostName == "mirrodin") {
-    home-manager.users.eweishaar = import (userlib.relativeToRoot "home/eweishaar/mirrodin.nix");
-
     users = {
       mutableUsers = false;
       users.eweishaar = {

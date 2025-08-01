@@ -20,8 +20,6 @@ let
 in
 {
   config = lib.mkIf (config.networking.hostName == "lorwyn") {
-    home-manager.users.eweishaar = import (userlib.relativeToRoot "home/eweishaar/lorwyn.nix");
-
     users = {
       mutableUsers = false;
       users.eweishaar = {
