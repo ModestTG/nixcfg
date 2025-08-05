@@ -21,7 +21,7 @@ in
   options = {
     homeModule.desktop = {
       enable = lib.mkEnableOption "Enable the desktop";
-      desktop.wm = lib.mkOption {
+      wm = lib.mkOption {
         type = lib.types.str;
         default = "sway";
         description = "Define the window manager used on a desktop";

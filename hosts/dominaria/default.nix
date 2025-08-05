@@ -6,31 +6,35 @@
 }:
 
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      inputs.hardware.nixosModules.common-cpu-amd
-      inputs.hardware.nixosModules.common-cpu-amd-pstate
-      inputs.hardware.nixosModules.common-gpu-amd
-      inputs.hardware.nixosModules.common-pc-ssd
-      inputs.determinate.nixosModules.default
-    ]
-    ++ (map userlib.relativeToRoot [
-      "hosts/common/core"
-      "hosts/common/optional/bluetooth.nix"
-      "hosts/common/optional/epsonscan2.nix"
-      "hosts/common/optional/gaming/core"
-      "hosts/common/optional/gaming/minecraft/atm9"
-      "hosts/common/optional/nfs.nix"
-      "hosts/common/optional/pipewire.nix"
-      "hosts/common/optional/services/openssh.nix"
-      "hosts/common/optional/services/printing.nix"
-      "hosts/common/optional/services/tailscale.nix"
-      "hosts/common/optional/sway.nix"
-      "hosts/common/optional/usb.nix"
-      "hosts/common/users/eweishaar/dominaria.nix"
-    ]);
+  imports = [
+    ./hardware-configuration.nix
+    inputs.hardware.nixosModules.common-cpu-amd
+    inputs.hardware.nixosModules.common-cpu-amd-pstate
+    inputs.hardware.nixosModules.common-gpu-amd
+    inputs.hardware.nixosModules.common-pc-ssd
+    inputs.determinate.nixosModules.default
+  ];
 
+  nixosModule = {
+    doas.enable = true;
+    fs.nfs.enable = true;
+    desktop = {
+      audio.enable = true;
+      bluetooth.enable = true;
+      brother-printer.enable = true;
+      scanner.enable = true;
+      sway.enable = true;
+      usb.enable = true;
+    };
+    gaming = {
+      misc.enable = true;
+      steam.enable = true;
+    };
+    svc = {
+      ssh.enable = true;
+      tailscale.enable = true;
+    };
+  };
   boot.loader = {
     systemd-boot.enable = false;
     efi = {

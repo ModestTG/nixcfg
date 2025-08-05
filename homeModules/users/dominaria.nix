@@ -2,9 +2,26 @@
 
 {
   config = lib.mkIf (osConfig.networking.hostName == "dominaria") {
+
+    homeModule = {
+      pkgs = {
+        audible2m4b.enable = true;
+        kube-tools.enable = true;
+        nvim.enable = true;
+        prusa-slicr.enable = true;
+      };
+      desktop = {
+        enable = true;
+        wm = "sway";
+      };
+      svc = {
+        syncthing.enable = true;
+      };
+    };
     home = rec {
       username = "eweishaar";
       homeDirectory = "/home/${username}";
+      stateVersion = "25.05";
     };
     xdg.mimeApps = {
       enable = true;

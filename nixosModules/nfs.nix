@@ -12,6 +12,7 @@
 
   config = lib.mkIf config.nixosModule.fs.nfs.enable {
     environment.systemPackages = with pkgs; [ nfs-utils ];
+    services.rpcbind.enable = true;
     fileSystems =
       let
         nfsServer = "10.0.0.8";
