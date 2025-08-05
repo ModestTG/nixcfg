@@ -18,6 +18,7 @@
   };
   config = {
     services.dunst = lib.mkIf (config.homeModule.desktop.notifier == "dunst") {
+      enable = true;
       configFile = "${inputs.theme_tokyonight}/extras/dunst/tokyonight_night.dunstrc";
       iconTheme = {
         name = "Tokyonight-Dark";

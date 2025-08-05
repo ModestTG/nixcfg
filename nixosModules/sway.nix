@@ -25,17 +25,13 @@
     environment.systemPackages = with pkgs; [
       autotiling
       dconf
-      dunst
       glib
       libnotify
       playerctl
       swayfx
       swww
-      waybar
       wayland
       wl-clipboard
-      wlogout
-      wofi
       xdg-utils
     ];
     programs.dconf.enable = true;
