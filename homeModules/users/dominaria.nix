@@ -4,6 +4,8 @@
   config = lib.mkIf (osConfig.networking.hostName == "dominaria") {
 
     homeModule = {
+      terminal = "ghostty";
+      shell = "bash";
       pkgs = {
         audible2m4b.enable = true;
         kube-tools.enable = true;
