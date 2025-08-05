@@ -8,12 +8,19 @@
       shell = "bash";
       pkgs = {
         audible2m4b.enable = true;
+        git.enable = true;
         kube-tools.enable = true;
         nvim.enable = true;
         prusa-slicr.enable = true;
+        starship.enable = true;
+        ssh.enable = true;
       };
       desktop = {
         enable = true;
+        bar = "waybar";
+        launcher = "wofi";
+        notifier = "dunst";
+        sessionManager = "wlogout";
         wm = "sway";
       };
       svc = {
@@ -23,7 +30,7 @@
     home = rec {
       username = "eweishaar";
       homeDirectory = "/home/${username}";
-      stateVersion = "25.05";
+      stateVersion = "24.11";
     };
     xdg.mimeApps = {
       enable = true;

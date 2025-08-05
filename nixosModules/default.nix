@@ -39,6 +39,7 @@
     pre-commit
     pwgen
     sops
+    terminator
     tldr
     tmux
     tree
@@ -75,8 +76,8 @@
     enable = true;
     clean = {
       enable = true;
-      extraArgs = "--keep-since 10d --keep 3";
+      extraArgs = "--keep-since 10d --keep 20";
     };
   };
-  nixpkgs.config.allowUnfree = lib.mkForce true;
+  nixpkgs.config.allowUnfree = true;
 }

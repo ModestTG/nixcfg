@@ -14,17 +14,17 @@
     ncdu # TUI disk usage
     nix-tree # nix package tree viewer
   ];
-  programs.home-manager.enable = true;
-  programs.btop.enable = true;
-  programs.fastfetch.enable = true;
-  programs.mpv.enable = true;
-  programs.ripgrep.enable = true;
   programs.bat = {
-    enabled = true;
-    extraPackages = with pkgs; [
+    enable = true;
+    extraPackages = with pkgs.bat-extras; [
       batman
     ];
   };
+  programs.btop.enable = true;
+  programs.fastfetch.enable = true;
+  programs.home-manager.enable = true;
+  programs.mpv.enable = true;
+  programs.ripgrep.enable = true;
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
 }

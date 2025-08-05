@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs-stable,
+  ...
+}:
 
 with config.scheme.withHashtag;
 let
@@ -30,6 +35,7 @@ in
     programs.starship = {
       enable = true;
       enableBashIntegration = true;
+      package = pkgs-stable.starship;
       settings = {
         format = ''
           [░▒▓](${base06})[ 󱄅 ](bg:${base06} fg:${base00})[](bg:${base0D} fg:${base06})$directory[](fg:${base0D} bg:${base03})$git_branch$git_status[](fg:${base03} bg:${base02})$nodejs$rust$golang$php[](fg:${base02}) $nix_shell $time

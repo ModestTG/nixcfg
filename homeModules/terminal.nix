@@ -2,6 +2,7 @@
   config,
   lib,
   inputs,
+  pkgs-stable,
   ...
 }:
 
@@ -36,6 +37,7 @@
         enable = true;
         enableBashIntegration = if config.homeModule.shell == "bash" then true else false;
         installBatSyntax = true;
+        package = pkgs-stable.ghostty;
         settings = {
           inherit font-family;
           theme = "tokyonight";

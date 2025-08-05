@@ -10,11 +10,10 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs userlib pkgs-stable; };
-    useGlobalPkgs = true;
-    useUserPackages = true;
+    backupFileExtension = "hmbackup";
     users.eweishaar = {
-      imports = userlib.scanPaths ../homeModules;
-
+      imports = [ ../homeModules/default.nix ];
+      nixpkgs.config.allowUnfree = true;
     };
   };
 }
