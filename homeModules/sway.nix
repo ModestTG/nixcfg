@@ -193,60 +193,16 @@
         };
         extraConfig = ''for_window [title="ghostty-BC"] floating enable, resize set 600 800'';
       };
-    systemd.user =
-      let
-        dir = userlib.relativeToRoot "config/wallpapers/2560x1440";
-        rndWallpaper = pkgs.writeShellApplication {
-          name = "rndWallpaper";
-          runtimeInputs = with pkgs; [
-            coreutils
-            findutils
-            procps
-            swww
-          ];
-          text = # bash
-            ''
-              swww img "$(find ${dir} | shuf -n 1 | xargs realpath)" --transition-type simple;
-            '';
-        };
-      in
-      {
-        services.wallpaper-daemon = {
-          Unit = {
-            Description = "Wallpaper Daemon";
-            Requires = [ "swww-daemon.service" ];
-            After = "swww-daemon.service";
-          };
-          Service = {
-            Type = "oneshot";
-            ExecStart = ''${rndWallpaper}/bin/rndWallpaper'';
-          };
-          Install = {
-            WantedBy = [ "graphical.target" ];
-          };
-        };
-        timers.wallpaper-daemon = {
-          Timer = {
-            Unit = "wallpaper-daemon.service";
-            OnCalendar = "*:0/10";
-            Persistent = true;
-          };
-          Install = {
-            WantedBy = [ "timers.target" ];
-          };
-        };
-        services.swww-daemon = {
-          Unit = {
-            Description = "SWWW Daemon";
-          };
-          Service = {
-            Type = "simple";
-            ExecStart = "${pkgs.swww}/bin/swww-daemon";
-          };
-          Install = {
-            WantedBy = [ "graphical.target" ];
-          };
+    services.wpaperd = {
+      enable = true;
+      settings = {
+        DP-1 = {
+          path = userlib.relativeToRoot "config/wallpapers/2560x1440";
+          duration = "10m";
+          sorting = "random";
+          mode = "fit";
         };
       };
+    };
   };
 }
