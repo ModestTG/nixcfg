@@ -6,6 +6,7 @@
     homeModule = {
       terminal = "ghostty";
       shell = "bash";
+      browser = "zen";
       pkgs = {
         audible2m4b.enable = true;
         git.enable = true;

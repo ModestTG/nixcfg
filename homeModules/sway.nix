@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   userlib,
@@ -100,71 +101,80 @@
                 childBorder = unfocused;
               };
             };
-          keybindings = lib.mkOptionDefault {
-            "${modifier}+0" = "nop";
-            "${modifier}+1" = "workspace number 1";
-            "${modifier}+2" = "workspace number 2";
-            "${modifier}+3" = "workspace number 3";
-            "${modifier}+4" = "workspace number 4";
-            "${modifier}+5" = "workspace number 5";
-            "${modifier}+6" = "nop";
-            "${modifier}+7" = "nop";
-            "${modifier}+8" = "nop";
-            "${modifier}+9" = "nop";
-            # "${modifier}+Down" = "focus down";
-            # "${modifier}+Left" = "focus left";
-            "${modifier}+Return" = "exec ${pkgs.ghostty}/bin/ghostty";
-            # "${modifier}+Right" = "focus right";
-            # "${modifier}+Shift+0" = "move container to workspace number 10";
-            # "${modifier}+Shift+1" = "move container to workspace number 1";
-            # "${modifier}+Shift+2" = "move container to workspace number 2";
-            # "${modifier}+Shift+3" = "move container to workspace number 3";
-            # "${modifier}+Shift+4" = "move container to workspace number 4";
-            # "${modifier}+Shift+5" = "move container to workspace number 5";
-            # "${modifier}+Shift+6" = "move container to workspace number 6";
-            # "${modifier}+Shift+7" = "move container to workspace number 7";
-            # "${modifier}+Shift+8" = "move container to workspace number 8";
-            # "${modifier}+Shift+9" = "move container to workspace number 9";
-            # "${modifier}+Shift+Down" = "move down";
-            # "${modifier}+Shift+Left" = "move left";
-            # "${modifier}+Shift+Right" = "move right";
-            # "${modifier}+Shift+Up" = "move up";
-            "${modifier}+Shift+q" = "reload";
-            # "${modifier}+Shift+e" =
-            #   "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
-            # "${modifier}+Shift+h" = "move left";
-            # "${modifier}+Shift+j" = "move down";
-            # "${modifier}+Shift+k" = "move up";
-            # "${modifier}+Shift+l" = "move right";
-            # "${modifier}+Shift+minus" = "move scratchpad";
-            "${modifier}+q" = "kill";
-            # "${modifier}+Shift+space" = "floating toggle";
-            # "${modifier}+Up" = "focus up";
-            # "${modifier}+a" = "focus parent";
-            "${modifier}+b" = "exec ${pkgs.brave}/bin/brave";
-            "${modifier}+d" = "nop";
-            "${modifier}+r" = "exec ${pkgs.wofi}/bin/wofi";
-            "${modifier}+e" = "exec ${pkgs.xfce.thunar}/bin/thunar";
-            # "${modifier}+c" = "exec ${pkgs.ghostty}/bin/ghostty --title ghostty-BC -e ${pkgs.bc}/bin/bc -q";
-            # "${modifier}+f" = "fullscreen toggle";
-            # "${modifier}+h" = "focus left";
-            # "${modifier}+j" = "focus down";
-            # "${modifier}+k" = "focus up";
-            "${modifier}+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock";
-            # "${modifier}+minus" = "scratchpad show";
-            # "${modifier}+Shift+r" = "mode resize";
-            # "${modifier}+s" = "layout stacking";
-            # "${modifier}+space" = "focus mode_toggle";
-            # "${modifier}+v" = "splitv";
-            # "${modifier}+w" = "layout tabbed";
+          keybindings =
+            let
+              zen-package = inputs.zen-browser.packages."${pkgs.system}".twilight-official;
+              browserCommand =
+                if (config.homeModule.browser == "zen") then
+                  "exec ${zen-package}/bin/zen"
+                else
+                  "exec ${pkgs.firefox}/bin/firefox";
+            in
+            {
+              "${modifier}+0" = "nop";
+              "${modifier}+1" = "workspace number 1";
+              "${modifier}+2" = "workspace number 2";
+              "${modifier}+3" = "workspace number 3";
+              "${modifier}+4" = "workspace number 4";
+              "${modifier}+5" = "workspace number 5";
+              "${modifier}+6" = "nop";
+              "${modifier}+7" = "nop";
+              "${modifier}+8" = "nop";
+              "${modifier}+9" = "nop";
+              # "${modifier}+Down" = "focus down";
+              # "${modifier}+Left" = "focus left";
+              "${modifier}+Return" = "exec ${pkgs.ghostty}/bin/ghostty";
+              # "${modifier}+Right" = "focus right";
+              # "${modifier}+Shift+0" = "move container to workspace number 10";
+              # "${modifier}+Shift+1" = "move container to workspace number 1";
+              # "${modifier}+Shift+2" = "move container to workspace number 2";
+              # "${modifier}+Shift+3" = "move container to workspace number 3";
+              # "${modifier}+Shift+4" = "move container to workspace number 4";
+              # "${modifier}+Shift+5" = "move container to workspace number 5";
+              # "${modifier}+Shift+6" = "move container to workspace number 6";
+              # "${modifier}+Shift+7" = "move container to workspace number 7";
+              # "${modifier}+Shift+8" = "move container to workspace number 8";
+              # "${modifier}+Shift+9" = "move container to workspace number 9";
+              # "${modifier}+Shift+Down" = "move down";
+              # "${modifier}+Shift+Left" = "move left";
+              # "${modifier}+Shift+Right" = "move right";
+              # "${modifier}+Shift+Up" = "move up";
+              "${modifier}+Shift+q" = "reload";
+              # "${modifier}+Shift+e" =
+              #   "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
+              # "${modifier}+Shift+h" = "move left";
+              # "${modifier}+Shift+j" = "move down";
+              # "${modifier}+Shift+k" = "move up";
+              # "${modifier}+Shift+l" = "move right";
+              # "${modifier}+Shift+minus" = "move scratchpad";
+              "${modifier}+q" = "kill";
+              # "${modifier}+Shift+space" = "floating toggle";
+              # "${modifier}+Up" = "focus up";
+              # "${modifier}+a" = "focus parent";
+              "${modifier}+b" = browserCommand;
+              "${modifier}+d" = "nop";
+              "${modifier}+r" = "exec ${pkgs.wofi}/bin/wofi";
+              "${modifier}+e" = "exec ${pkgs.xfce.thunar}/bin/thunar";
+              # "${modifier}+c" = "exec ${pkgs.ghostty}/bin/ghostty --title ghostty-BC -e ${pkgs.bc}/bin/bc -q";
+              # "${modifier}+f" = "fullscreen toggle";
+              # "${modifier}+h" = "focus left";
+              # "${modifier}+j" = "focus down";
+              # "${modifier}+k" = "focus up";
+              "${modifier}+l" = "exec ${pkgs.swaylock-effects}/bin/swaylock";
+              # "${modifier}+minus" = "scratchpad show";
+              # "${modifier}+Shift+r" = "mode resize";
+              # "${modifier}+s" = "layout stacking";
+              # "${modifier}+space" = "focus mode_toggle";
+              # "${modifier}+v" = "splitv";
+              # "${modifier}+w" = "layout tabbed";
 
-            # Workaround for https://github.com/flameshot-org/flameshot/issues/3329
-            "${modifier}+Shift+s" =
-              "exec ${pkgs.flameshot}/bin/flameshot gui --raw > /tmp/screenshot.png && ${pkgs.wl-clipboard}/bin/wl-copy < /tmp/screenshot.png";
-            "${modifier}+p" = "exec playerctl -p spotify play-pause";
-            "${modifier}+Ctrl+Right" = "exec playerctl -p spotify next";
-            "${modifier}+Ctrl+Left" = "exec playerctl -p spotify previous";
-          };
+              # Workaround for https://github.com/flameshot-org/flameshot/issues/3329
+              "${modifier}+Shift+s" =
+                "exec ${pkgs.flameshot}/bin/flameshot gui --raw > /tmp/screenshot.png && ${pkgs.wl-clipboard}/bin/wl-copy < /tmp/screenshot.png";
+              "${modifier}+p" = "exec playerctl -p spotify play-pause";
+              "${modifier}+Ctrl+Right" = "exec playerctl -p spotify next";
+              "${modifier}+Ctrl+Left" = "exec playerctl -p spotify previous";
+            };
           bars = [
             {
               command = "${pkgs.waybar}/bin/waybar";
@@ -172,7 +182,6 @@
             }
           ];
           assigns = {
-            "2" = [ { app_id = "brave-browser"; } ];
             "3" = [ { class = "^Spotify$"; } ];
             "4" = [
               { class = "^discord$"; }

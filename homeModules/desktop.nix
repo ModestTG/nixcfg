@@ -51,7 +51,6 @@ in
   config = lib.mkIf config.homeModule.desktop.enable {
     home = {
       packages = with pkgs; [
-        brave
         discord
         freecad-wayland
         gthumb
