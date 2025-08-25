@@ -126,19 +126,19 @@
               "${modifier}+Return" = "exec ${pkgs.ghostty}/bin/ghostty";
               # "${modifier}+Right" = "focus right";
               # "${modifier}+Shift+0" = "move container to workspace number 10";
-              # "${modifier}+Shift+1" = "move container to workspace number 1";
-              # "${modifier}+Shift+2" = "move container to workspace number 2";
-              # "${modifier}+Shift+3" = "move container to workspace number 3";
-              # "${modifier}+Shift+4" = "move container to workspace number 4";
-              # "${modifier}+Shift+5" = "move container to workspace number 5";
+              "${modifier}+Shift+1" = "move container to workspace number 1";
+              "${modifier}+Shift+2" = "move container to workspace number 2";
+              "${modifier}+Shift+3" = "move container to workspace number 3";
+              "${modifier}+Shift+4" = "move container to workspace number 4";
+              "${modifier}+Shift+5" = "move container to workspace number 5";
               # "${modifier}+Shift+6" = "move container to workspace number 6";
               # "${modifier}+Shift+7" = "move container to workspace number 7";
               # "${modifier}+Shift+8" = "move container to workspace number 8";
               # "${modifier}+Shift+9" = "move container to workspace number 9";
-              # "${modifier}+Shift+Down" = "move down";
-              # "${modifier}+Shift+Left" = "move left";
-              # "${modifier}+Shift+Right" = "move right";
-              # "${modifier}+Shift+Up" = "move up";
+              "${modifier}+Shift+Down" = "move down";
+              "${modifier}+Shift+Left" = "move left";
+              "${modifier}+Shift+Right" = "move right";
+              "${modifier}+Shift+Up" = "move up";
               "${modifier}+Shift+q" = "reload";
               # "${modifier}+Shift+e" =
               #   "exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'";
@@ -148,7 +148,7 @@
               # "${modifier}+Shift+l" = "move right";
               # "${modifier}+Shift+minus" = "move scratchpad";
               "${modifier}+q" = "kill";
-              # "${modifier}+Shift+space" = "floating toggle";
+              "${modifier}+Shift+space" = "floating toggle";
               # "${modifier}+Up" = "focus up";
               # "${modifier}+a" = "focus parent";
               "${modifier}+b" = browserCommand;
