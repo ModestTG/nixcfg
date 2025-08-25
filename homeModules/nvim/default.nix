@@ -5,6 +5,10 @@
   inputs,
   ...
 }:
+
+let
+  cfg = config.homeModule.pkgs.nvim;
+in
 {
   imports = [
     # NOTE: The first thing you will want to do is uncommented on of the three imports below
@@ -120,11 +124,11 @@
 
     P.S. You can delete this when you're done too. It's your config now! :)
   */
-  options = {
-    homeModule.pkgs.nvim.enable = lib.mkEnableOption "Enable Nixvim and config";
+  options.homeModule.pkgs.nvim = {
+    enable = lib.mkEnableOption "Enable Nixvim and config";
   };
 
-  config = lib.mkIf config.homeModule.pkgs.nvim.enable {
+  config = lib.mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
       defaultEditor = true;

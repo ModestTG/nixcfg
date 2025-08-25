@@ -5,12 +5,15 @@
   ...
 }:
 
+let
+  cfg = config.nixosModule.nix.autoupgrade;
+in
 {
-  options = {
-    nixosModule.nix.autoupgrade.enable = lib.mkEnableOption "enable nix automatic upgrades";
+  options.nixosModule.nix.autoupgrade = {
+    enable = lib.mkEnableOption "enable nix automatic upgrades";
   };
 
-  config = lib.mkIf config.nixosModule.nix.autoupgrade.enable {
+  config = lib.mkIf cfg.enable {
     system.autoUpgrade = {
       enable = true;
       dates = "01:00";

@@ -6,12 +6,15 @@
   ...
 }:
 
+let
+  cfg = config.homeModule.pkgs.git;
+in
 {
-  options = {
-    homeModule.pkgs.git.enable = lib.mkEnableOption "Enable Git";
+  options.homeModule.pkgs.git = {
+    enable = lib.mkEnableOption "Enable Git";
   };
 
-  config = lib.mkIf config.homeModule.pkgs.git.enable {
+  config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
       package = pkgs.gitAndTools.gitFull;

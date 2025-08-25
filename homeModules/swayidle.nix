@@ -7,9 +7,10 @@
 
 let
   lockCmd = "${pkgs.swaylock-effects}/bin/swaylock -fF";
+  cfg = config.homeModule.desktop;
 in
 {
-  config = lib.mkIf (config.homeModule.desktop.wm == "sway") {
+  config = lib.mkIf (cfg.wm == "sway") {
     services.swayidle = {
       enable = true;
       timeouts = [

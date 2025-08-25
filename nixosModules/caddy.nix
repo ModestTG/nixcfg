@@ -5,12 +5,15 @@
   ...
 }:
 
+let
+  cfg = config.nixosModule.svc.caddy;
+in
 {
-  options = {
-    nixosModule.svc.caddy.enable = lib.mkEnableOption "enable Caddy service";
+  options.nixosModule.svc.caddy = {
+    enable = lib.mkEnableOption "enable Caddy service";
   };
 
-  config = lib.mkIf config.nixosModule.svc.caddy.enable {
+  config = lib.mkIf cfg.enable {
     services.caddy = {
       enable = true;
       package = pkgs.caddy.withPlugins {

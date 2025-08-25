@@ -1,18 +1,19 @@
 { config, lib, ... }:
 
+let
+  cfg = config.homeModule;
+in
 {
-  options = {
-    homeModule.shell = lib.mkOption {
-      type = lib.types.enum [
-        "bash"
-      ];
-      default = "bash";
-      description = "Specify which shell to use";
-    };
+  options.homeModule.shell = lib.mkOption {
+    type = lib.types.enum [
+      "bash"
+    ];
+    default = "bash";
+    description = "Specify which shell to use";
   };
 
   config = {
-    programs.bash = lib.mkIf (config.homeModule.shell == "bash") {
+    programs.bash = lib.mkIf (cfg.shell == "bash") {
       enable = true;
       shellAliases = {
         cat = "bat";

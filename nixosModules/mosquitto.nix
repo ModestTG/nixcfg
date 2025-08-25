@@ -4,12 +4,15 @@
   ...
 }:
 
+let
+  cfg = config.nixosModule.svc.mosquitto;
+in
 {
-  options = {
-    nixosModule.svc.mosquitto.enable = lib.mkEnableOption "enable Mosquitto MQTT service";
+  options.nixosModule.svc.mosquitto = {
+    enable = lib.mkEnableOption "enable Mosquitto MQTT service";
   };
 
-  config = lib.mkIf config.nixosModule.svc.mosquitto.enable {
+  config = lib.mkIf cfg.enable {
     sops.secrets.mosquitto-password = {
       owner = config.users.users.eweishaar.name;
     };

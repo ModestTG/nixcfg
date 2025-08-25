@@ -1,11 +1,14 @@
 { config, lib, ... }:
 
+let
+  cfg = config.nixosModule.svc.ssh;
+in
 {
-  options = {
-    nixosModule.svc.ssh.enable = lib.mkEnableOption "enable SSH Server";
+  options.nixosModule.svc.ssh = {
+    enable = lib.mkEnableOption "enable SSH Server";
   };
 
-  config = lib.mkIf config.nixosModule.svc.ssh.enable {
+  config = lib.mkIf cfg.enable {
     services.openssh = {
       enable = true;
       openFirewall = true;

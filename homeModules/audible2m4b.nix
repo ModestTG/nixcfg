@@ -5,12 +5,15 @@
   ...
 }:
 
+let
+  cfg = config.homeModule.pkgs.audible2m4b;
+in
 {
-  options = {
-    homeModule.pkgs.audible2m4b.enable = lib.mkEnableOption "Install audible2m4b program";
+  options.homeModule.pkgs.audible2m4b = {
+    enable = lib.mkEnableOption "Install audible2m4b program";
   };
 
-  config = lib.mkIf config.homeModule.pkgs.audible2m4b.enable {
+  config = lib.mkIf cfg.enable {
     home.packages =
       let
         audible2m4b = pkgs.writeShellApplication {

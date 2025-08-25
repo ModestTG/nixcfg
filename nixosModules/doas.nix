@@ -4,11 +4,16 @@
   pkgs,
   ...
 }:
+
+let
+  cfg = config.nixosModule.doas;
+in
 {
-  options = {
-    nixosModule.doas.enable = lib.mkEnableOption "replaces sudo with doas";
+  options.nixosModule.doas = {
+    enable = lib.mkEnableOption "replaces sudo with doas";
   };
-  config = lib.mkIf config.nixosModule.doas.enable {
+
+  config = lib.mkIf cfg.enable {
     security.doas = {
       enable = true;
       extraRules = [

@@ -6,14 +6,17 @@
   ...
 }:
 
+let
+  cfg = config.nixosModule.svc.sops;
+in
 {
   imports = [ inputs.sops-nix.nixosModules.sops ];
 
-  options = {
-    nixosModule.svc.sops.enable = lib.mkEnableOption "enables sops";
+  options.nixosModule.svc.sops = {
+    enable = lib.mkEnableOption "enables sops";
   };
 
-  config = lib.mkIf config.nixosModule.svc.sops.enable {
+  config = lib.mkIf cfg.enable {
 
     sops = {
       defaultSopsFile = (userlib.relativeToRoot "secrets/secrets.yaml");

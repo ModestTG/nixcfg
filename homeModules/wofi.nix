@@ -2,6 +2,7 @@
 
 with config.scheme.withHashtag;
 let
+  cfg = config.homeModule.desktop;
   inherit
     base00
     base01
@@ -22,7 +23,7 @@ let
     ;
 in
 {
-  config = lib.mkIf (config.homeModule.desktop.launcher == "wofi") {
+  config = lib.mkIf (cfg.launcher == "wofi") {
     programs.wofi = {
       enable = true;
       settings = {

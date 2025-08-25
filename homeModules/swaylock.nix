@@ -5,8 +5,11 @@
   ...
 }:
 
+let
+  cfg = config.homeModule.desktop;
+in
 {
-  config = lib.mkIf (config.homeModule.desktop.wm == "sway") {
+  config = lib.mkIf (cfg.wm == "sway") {
     programs.swaylock = {
       enable = true;
       package = pkgs.swaylock-effects;

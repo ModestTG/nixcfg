@@ -5,12 +5,15 @@
   ...
 }:
 
+let
+  cfg = config.homeModule.pkgs.kube-tools;
+in
 {
-  options = {
-    homeModule.pkgs.kube-tools.enable = lib.mkEnableOption "Enable Kubernetes Tooling";
+  options.homeModule.pkgs.kube-tools = {
+    enable = lib.mkEnableOption "Enable Kubernetes Tooling";
   };
 
-  config = lib.mkIf config.homeModule.pkgs.kube-tools.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       kubectl
       kubectl-cnpg

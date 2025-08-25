@@ -1,7 +1,10 @@
 { config, lib, ... }:
 
+let
+  cfg = config.homeModule.desktop;
+in
 {
-  config = lib.mkIf (config.homeModule.desktop.bar == "waybar") {
+  config = lib.mkIf (cfg.bar == "waybar") {
     programs.waybar.style =
       with config.scheme.withHashtag;
       let

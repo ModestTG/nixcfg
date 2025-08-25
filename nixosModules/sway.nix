@@ -5,12 +5,15 @@
   ...
 }:
 
+let
+  cfg = config.nixosModule.desktop.sway;
+in
 {
-  options = {
-    nixosModule.desktop.sway.enable = lib.mkEnableOption "enable Sway desktop";
+  options.nixosModule.desktop.sway = {
+    enable = lib.mkEnableOption "enable Sway desktop";
   };
 
-  config = lib.mkIf config.nixosModule.desktop.sway.enable {
+  config = lib.mkIf cfg.enable {
     security.polkit.enable = true;
     services.dbus.enable = true;
     services.greetd = {

@@ -1,11 +1,14 @@
 { config, lib, ... }:
 
+let
+  cfg = config.nixosModule.svc.syncthing;
+in
 {
-  options = {
-    nixosModule.svc.syncthing.enable = lib.mkEnableOption "enables Syncthing service";
+  options.nixosModule.svc.syncthing = {
+    enable = lib.mkEnableOption "enables Syncthing service";
   };
 
-  config = lib.mkIf config.nixosModule.svc.syncthing.enable {
+  config = lib.mkIf cfg.enable {
     services.syncthing = {
       enable = true;
       user = "root";

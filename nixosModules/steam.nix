@@ -5,12 +5,15 @@
   ...
 }:
 
+let
+  cfg = config.nixosModule.gaming.steam;
+in
 {
-  options = {
-    nixosModule.gaming.steam.enable = lib.mkEnableOption "enable Steam";
+  options.nixosModule.gaming.steam = {
+    enable = lib.mkEnableOption "enable Steam";
   };
 
-  config = lib.mkIf config.nixosModule.gaming.steam.enable {
+  config = lib.mkIf cfg.enable {
     programs.steam = {
       enable = true;
       extraPackages = with pkgs; [

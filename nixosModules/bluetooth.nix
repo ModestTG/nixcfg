@@ -1,11 +1,14 @@
 { config, lib, ... }:
 
+let
+  cfg = config.nixosModule.desktop.bluetooth;
+in
 {
-  options = {
-    nixosModule.desktop.bluetooth.enable = lib.mkEnableOption "enable Bluetooth";
+  options.nixosModule.desktop.bluetooth = {
+    enable = lib.mkEnableOption "enable Bluetooth";
   };
 
-  config = lib.mkIf config.nixosModule.desktop.bluetooth.enable {
+  config = lib.mkIf cfg.enable {
     hardware.bluetooth = {
       enable = true;
       powerOnBoot = true;

@@ -5,12 +5,15 @@
   ...
 }:
 
+let
+  cfg = config.nixosModule.desktop.audio;
+in
 {
-  options = {
-    nixosModule.desktop.audio.enable = lib.mkEnableOption "enables Pipewire audio";
+  options.nixosModule.desktop.audio = {
+    enable = lib.mkEnableOption "enables Pipewire audio";
   };
 
-  config = lib.mkIf config.nixosModule.desktop.audio.enable {
+  config = lib.mkIf cfg.enable {
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {

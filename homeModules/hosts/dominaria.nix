@@ -17,8 +17,9 @@
         ssh.enable = true;
       };
       desktop = {
-        enable = true;
         bar = "waybar";
+        enable = true;
+        nerdFonts.enable = true;
         launcher = "wofi";
         notifier = "dunst";
         sessionManager = "wlogout";

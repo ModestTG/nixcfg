@@ -6,18 +6,19 @@
   ...
 }:
 
+let
+  cfg = config.homeModule.desktop;
+in
 {
-  options = {
-    homeModule.desktop.notifier = lib.mkOption {
-      type = lib.types.enum [
-        "dunst"
-      ];
-      default = "";
-      description = "Specify which notifier to use";
-    };
+  options.homeModule.desktop.notifier = lib.mkOption {
+    type = lib.types.enum [
+      "dunst"
+    ];
+    default = "";
+    description = "Specify which notifier to use";
   };
   config = {
-    services.dunst = lib.mkIf (config.homeModule.desktop.notifier == "dunst") {
+    services.dunst = lib.mkIf (cfg.notifier == "dunst") {
       enable = true;
       configFile = "${inputs.theme_tokyonight}/extras/dunst/tokyonight_night.dunstrc";
       iconTheme = {

@@ -7,8 +7,11 @@
   ...
 }:
 
+let
+  cfg = config.homeModule.desktop;
+in
 {
-  config = lib.mkIf (config.homeModule.desktop.wm == "sway") {
+  config = lib.mkIf (cfg.wm == "sway") {
     xdg.portal = {
       enable = true;
       configPackages = [ pkgs.xdg-desktop-portal-wlr ];

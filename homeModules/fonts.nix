@@ -4,12 +4,16 @@
   pkgs-stable,
   ...
 }:
+
+let
+  cfg = config.homeModule.desktop.nerdFonts;
+in
 {
-  options = {
-    homeModule.desktop.fonts.enable = lib.mkEnableOption "Enable Nerdfonts";
+  options.homeModule.desktop.nerdFonts = {
+    enable = lib.mkEnableOption "Enable Nerdfonts";
   };
 
-  config = lib.mkIf config.homeModule.desktop.enable {
+  config = lib.mkIf cfg.enable {
     fonts.fontconfig.enable = true;
     home.packages = with pkgs-stable; [
       noto-fonts

@@ -1,7 +1,10 @@
 { config, lib, ... }:
 
+let
+  cfg = config.homeModule.desktop;
+in
 {
-  config = lib.mkIf (config.homeModule.desktop.sessionManager == "wlogout") {
+  config = lib.mkIf (cfg.sessionManager == "wlogout") {
     programs.wlogout = {
       enable = true;
       # style =

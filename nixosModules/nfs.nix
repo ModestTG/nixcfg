@@ -5,12 +5,15 @@
   ...
 }:
 
+let
+  cfg = config.nixosModule.fs.nfs;
+in
 {
-  options = {
-    nixosModule.fs.nfs.enable = lib.mkEnableOption "enable NFS access";
+  options.nixosModule.fs.nfs = {
+    enable = lib.mkEnableOption "enable NFS access";
   };
 
-  config = lib.mkIf config.nixosModule.fs.nfs.enable {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [ nfs-utils ];
     services.rpcbind.enable = true;
     boot.supportedFilesystems = [ "nfs" ];
