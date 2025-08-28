@@ -19,10 +19,5 @@
         FLAKE = "$HOME/nixcfg";
       };
     };
-    programs.ssh = {
-      extraConfig = ''
-        IdentityFile = ~/.ssh/id_mirrodin
-      '';
-    };
   };
 }

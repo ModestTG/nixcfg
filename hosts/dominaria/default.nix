@@ -31,6 +31,7 @@
       steam.enable = true;
     };
     svc = {
+      sops.enable = true;
       ssh.enable = true;
       tailscale.enable = true;
     };
