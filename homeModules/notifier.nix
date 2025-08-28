@@ -11,9 +11,7 @@ let
 in
 {
   options.homeModule.desktop.notifier = lib.mkOption {
-    type = lib.types.enum [
-      "dunst"
-    ];
+    type = lib.types.str;
     default = "";
     description = "Specify which notifier to use";
   };

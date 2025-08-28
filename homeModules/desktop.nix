@@ -18,30 +18,22 @@ in
   options.homeModule.desktop = {
     enable = lib.mkEnableOption "Enable the desktop";
     wm = lib.mkOption {
-      type = lib.types.enum [
-        "sway"
-      ];
+      type = lib.types.str;
       default = "";
       description = "Define the window manager used on a desktop";
     };
     bar = lib.mkOption {
-      type = lib.types.enum [
-        "waybar"
-      ];
+      type = lib.types.str;
       default = "";
       description = "Set the bar for the desktop";
     };
     sessionManager = lib.mkOption {
-      type = lib.types.enum [
-        "wlogout"
-      ];
+      type = lib.types.str;
       default = "";
       description = "Set the session manager for logout, restart, shutdown, etc.";
     };
     launcher = lib.mkOption {
-      type = lib.types.enum [
-        "wofi"
-      ];
+      type = lib.types.str;
       default = "";
       description = "Set the program launcher";
     };
