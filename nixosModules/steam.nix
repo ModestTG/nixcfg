@@ -22,7 +22,5 @@ in
         mangohud
       ];
     };
-    hardware.xone.enable = true;
-
   };
 }

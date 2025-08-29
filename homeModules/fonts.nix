@@ -18,7 +18,7 @@ in
     home.packages = with pkgs-stable; [
       noto-fonts
       font-awesome
-      fira-code-nerdfont
+      nerd-fonts.fira-code
       fira-code-symbols
     ];
   };

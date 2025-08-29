@@ -47,7 +47,7 @@ in
         gthumb
         handbrake
         immich-go
-        jellyfin-media-player
+        # jellyfin-media-player #qtweb-5 marked as insecure. Must be fixed upstream
         kdePackages.kolourpaint
         libreoffice
         mqtt-explorer
