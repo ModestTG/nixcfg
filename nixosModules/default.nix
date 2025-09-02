@@ -15,6 +15,7 @@
 
   environment.systemPackages = with pkgs; [
     age
+    alacritty
     bash
     bc
     coreutils

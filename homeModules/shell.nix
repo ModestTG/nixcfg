@@ -27,5 +27,8 @@ in
         v = "nvim";
       };
     };
+    programs.nushell = lib.mkIf (cfg.shell == "nushell") {
+      enable = true;
+    };
   };
 }
