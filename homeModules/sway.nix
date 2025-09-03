@@ -8,10 +8,10 @@
 }:
 
 let
-  cfg = config.homeModule.desktop;
+  cfg = config.homeModule;
 in
 {
-  config = lib.mkIf (cfg.wm == "sway") {
+  config = lib.mkIf (cfg.desktop.wm == "sway") {
     xdg.portal = {
       enable = true;
       configPackages = [ pkgs.xdg-desktop-portal-wlr ];
@@ -107,11 +107,17 @@ in
           keybindings =
             let
               zen-package = inputs.zen-browser.packages."${pkgs.system}".twilight-official;
+              calcCommand = "exec ${pkgs.alacritty}/bin/alacritty --title alacritty-BC -e ${pkgs.bc}/bin/bc -q -l";
               browserCommand =
-                if (config.homeModule.browser == "zen") then
+                if (cfg.browser == "zen") then
                   "exec ${zen-package}/bin/zen"
                 else
                   "exec ${pkgs.firefox}/bin/firefox";
+              termCommand =
+                if (cfg.terminal == "ghostty") then
+                  "exec ${pkgs.ghostty}/bin/ghostty"
+                else
+                  "exec ${pkgs.alacritty}/bin/alacritty";
             in
             {
               "${modifier}+0" = "nop";
@@ -126,7 +132,7 @@ in
               "${modifier}+9" = "nop";
               # "${modifier}+Down" = "focus down";
               # "${modifier}+Left" = "focus left";
-              "${modifier}+Return" = "exec ${pkgs.ghostty}/bin/ghostty";
+              "${modifier}+Return" = termCommand;
               # "${modifier}+Right" = "focus right";
               # "${modifier}+Shift+0" = "move container to workspace number 10";
               "${modifier}+Shift+1" = "move container to workspace number 1";
@@ -158,8 +164,8 @@ in
               "${modifier}+d" = "nop";
               "${modifier}+r" = "exec ${pkgs.wofi}/bin/wofi";
               "${modifier}+e" = "exec ${pkgs.xfce.thunar}/bin/thunar";
-              # "${modifier}+c" = "exec ${pkgs.ghostty}/bin/ghostty --title ghostty-BC -e ${pkgs.bc}/bin/bc -q";
-              # "${modifier}+f" = "fullscreen toggle";
+              "${modifier}+c" = calcCommand;
+              "${modifier}+f" = "fullscreen toggle";
               # "${modifier}+h" = "focus left";
               # "${modifier}+j" = "focus down";
               # "${modifier}+k" = "focus up";
@@ -203,7 +209,7 @@ in
             }
           ];
         };
-        extraConfig = ''for_window [title="ghostty-BC"] floating enable, resize set 600 800'';
+        extraConfig = ''for_window [title="alacritty-BC"] floating enable, resize set 600 800'';
       };
     services.wpaperd = {
       enable = true;

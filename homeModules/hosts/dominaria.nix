@@ -3,7 +3,6 @@
 {
   config = lib.mkIf (osConfig.networking.hostName == "dominaria") {
     homeModule = {
-      terminal = "ghostty";
       shell = "bash";
       browser = "zen";
       pkgs = {
