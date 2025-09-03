@@ -1,9 +1,12 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }:
-
+let
+  cfg = config.home-manager.users.eweishaar.homeModule;
+in
 {
   config = lib.mkIf (config.networking.hostName == "dominaria") {
     users = {
@@ -19,6 +22,7 @@
           "wheel"
         ];
         uid = 1000;
+        shell = if cfg.shell == "nushell" then pkgs.nushell else pkgs.bash;
       };
     };
     # Add udev rules for Flipper Zero

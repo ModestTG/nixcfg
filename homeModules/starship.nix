@@ -7,7 +7,7 @@
 
 with config.scheme.withHashtag;
 let
-  cfg = config.homeModule.pkgs.starship;
+  cfg = config.homeModule;
   inherit
     base00
     base01
@@ -32,10 +32,9 @@ in
     enable = lib.mkEnableOption "Enable starship";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.pkgs.starship.enable {
     programs.starship = {
       enable = true;
-      enableBashIntegration = true;
       package = pkgs-stable.starship;
       settings = {
         format = ''

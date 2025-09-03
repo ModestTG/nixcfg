@@ -23,6 +23,7 @@ in
       settings = {
         general.import = [ "${inputs.theme_tokyonight}/extras/alacritty/tokyonight_night.toml" ];
         font = {
+          size = 12;
           normal = {
             family = font-family;
             style = "Regular";
@@ -33,7 +34,6 @@ in
     };
     programs.ghostty = lib.mkIf (cfg.terminal == "ghostty") {
       enable = true;
-      enableBashIntegration = if cfg.shell == "bash" then true else false;
       installBatSyntax = true;
       package = pkgs-stable.ghostty;
       settings = {

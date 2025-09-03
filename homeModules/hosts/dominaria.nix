@@ -1,9 +1,17 @@
-{ osConfig, lib, ... }:
+{
+  config,
+  osConfig,
+  lib,
+  ...
+}:
 
+let
+  cfg = config.homeModule;
+in
 {
   config = lib.mkIf (osConfig.networking.hostName == "dominaria") {
     homeModule = {
-      shell = "bash";
+      shell = "nushell";
       browser = "zen";
       pkgs = {
         audible2m4b.enable = true;

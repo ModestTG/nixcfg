@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  userlib,
   ...
 }:
 
@@ -17,6 +16,7 @@ let
       )
     )
   );
+  cfg = config.home-manager.users.eweishaar.homeModule;
 in
 {
   config = lib.mkIf (config.networking.hostName == "lorwyn") {
@@ -34,7 +34,7 @@ in
           "docker"
         ];
         uid = 1000;
-        shell = pkgs.bash;
+        shell = if cfg.shell == "nushell" then pkgs.nushell else pkgs.bash;
         openssh.authorizedKeys.keys = sshKeys;
       };
       groups = {
