@@ -29,6 +29,9 @@ in
     programs.nushell = lib.mkIf (cfg.shell == "nushell") {
       enable = true;
       inherit shellAliases;
+      settings = {
+        edit_mode = "vi";
+      };
     };
   };
 }
