@@ -30,5 +30,8 @@
         #    - Treesitter + textobjects: https://nix-community.github.io/nixvim/plugins/treesitter-textobjects/index.html
       };
     };
+    plugins.treesitter-textobjects = {
+      enable = true;
+    };
   };
 }

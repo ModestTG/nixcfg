@@ -91,7 +91,7 @@
         # tsserver = {
         #  enable = true;
         #}
-        nil_ls = {
+        nixd = {
           enable = true;
         };
 
