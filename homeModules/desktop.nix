@@ -48,7 +48,6 @@ in
         handbrake
         immich-go
         # jellyfin-media-player #qtweb-5 marked as insecure. Must be fixed upstream
-        kdePackages.kolourpaint
         libreoffice
         mqtt-explorer
         qflipper

@@ -11,7 +11,7 @@ in
 {
   config = lib.mkIf (osConfig.networking.hostName == "dominaria") {
     homeModule = {
-      shell = "nushell";
+      shell = "bash";
       browser = "zen";
       pkgs = {
         audible2m4b.enable = true;
