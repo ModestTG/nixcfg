@@ -30,7 +30,10 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+    determinate = {
+      url = "https://flakehub.com/f/DeterminateSystems/determinate/*";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,19 +43,12 @@
   outputs =
     {
       disko,
-      home-manager,
-      nixpkgs,
       nixpkgs-stable,
-      self,
       ...
     }@inputs:
     let
-      inherit (inputs.nixpkgs) lib;
+      lib = inputs.nixpkgs.lib;
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
       pkgs-stable = import nixpkgs-stable {
         inherit system;
         config.allowUnfree = true;
