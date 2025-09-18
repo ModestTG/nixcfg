@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  userlib,
   ...
 }:
 
@@ -23,12 +24,10 @@ in
         ];
         uid = 1000;
         shell = if cfg.shell == "nushell" then pkgs.nushell else pkgs.bash;
+        openssh.authorizedKeys.keys = [
+          (builtins.readFile (userlib.relativePath "config/keys/dominaria.pub"))
+        ];
       };
-    };
-    sops.secrets."sshKeys/mirrodin/public" = {
-      path = "/home/eweishaar/.ssh/id_ed25519.pub";
-      owner = config.users.users.eweishaar.name;
-      group = config.users.users.eweishaar.group;
     };
     sops.secrets."sshKeys/mirrodin/private" = {
       path = "/home/eweishaar/.ssh/id_ed25519";
