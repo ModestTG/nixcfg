@@ -29,11 +29,6 @@ in
     services.udev.extraRules = ''
       SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE="0666", GROUP="plugdev"
     '';
-    sops.secrets."sshKeys/dominaria/public" = {
-      path = "/home/eweishaar/.ssh/id_ed25519.pub";
-      owner = config.users.users.eweishaar.name;
-      group = config.users.users.eweishaar.group;
-    };
     sops.secrets."sshKeys/dominaria/private" = {
       path = "/home/eweishaar/.ssh/id_ed25519";
       owner = config.users.users.eweishaar.name;

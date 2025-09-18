@@ -25,7 +25,7 @@ in
         uid = 1000;
         shell = if cfg.shell == "nushell" then pkgs.nushell else pkgs.bash;
         openssh.authorizedKeys.keys = [
-          (builtins.readFile (userlib.relativePath "config/keys/dominaria.pub"))
+          (builtins.readFile (userlib.relativeToRoot "config/keys/dominaria.pub"))
         ];
       };
     };
