@@ -22,7 +22,10 @@
       sops.enable = true;
       ssh.enable = true;
     };
-    virt.docker.enable = true;
+    virt.platforms = [
+      "docker"
+      "podman"
+    ];
     fs.nfs.enable = true;
   };
 
@@ -30,6 +33,7 @@
     nvidia = {
       open = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
+      nvidiaPersistenced = true;
     };
     graphics = {
       enable = true;
@@ -37,6 +41,7 @@
         cudatoolkit
       ];
     };
+    nvidia-container-toolkit.enable = true;
   };
   environment.systemPackages = with pkgs; [
     cudatoolkit
