@@ -330,13 +330,7 @@ in
 
       # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html
       autoGroups = {
-        kickstart-highlight-yank = {
-          clear = true;
-        };
-        golang-indent = {
-          clear = true;
-        };
-        yaml-spaces = {
+        ew-autogroup = {
           clear = true;
         };
       };
@@ -351,7 +345,7 @@ in
         {
           event = [ "TextYankPost" ];
           desc = "Highlight when yanking (copying) text";
-          group = "kickstart-highlight-yank";
+          group = "ew-autogroup";
           callback.__raw = ''
             function()
               vim.highlight.on_yank()
@@ -362,7 +356,7 @@ in
           event = [ "FileType" ];
           pattern = [ "go" ];
           desc = "Set golang shiftwidth to 2 instead of 8";
-          group = "golang-indent";
+          group = "ew-autogroup";
           callback.__raw = # lua
             ''
               function()
@@ -376,11 +370,33 @@ in
           event = [ "FileType" ];
           pattern = [ "yaml" ];
           desc = "Set yaml files to use spaces";
-          group = "yaml-spaces";
+          group = "ew-autogroup";
           callback.__raw = # lua
             ''
               function()
                 vim.bo.expandtab = true
+                end
+            '';
+        }
+        {
+          event = [
+            "BufNewFile"
+            "BufRead"
+          ];
+          pattern = [
+            "*.container"
+            "*.network"
+            "*.pod"
+            "*.service"
+            "*.timer"
+            "*.volume"
+          ];
+          desc = "Associate these files with systemd";
+          group = "ew-autogroup";
+          callback.__raw = # lua
+            ''
+              function()
+                vim.bo.filetype = "systemd"
                 end
             '';
         }
