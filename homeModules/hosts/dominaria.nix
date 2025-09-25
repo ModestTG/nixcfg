@@ -21,6 +21,7 @@ in
         prusa-slicr.enable = true;
         starship.enable = true;
         ssh.enable = true;
+        tmux.enable = true;
       };
       desktop = {
         bar = "waybar";
@@ -47,5 +48,8 @@ in
         "inode/directory" = "thunar.desktop"; # File Browser
       };
     };
+    # Force overwrite mimeapps.list to avoid backup conflicts
+    # https://github.com/nix-community/home-manager/issues/4199
+    xdg.configFile."mimeapps.list".force = true;
   };
 }
