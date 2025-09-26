@@ -21,7 +21,10 @@ in
         prusa-slicr.enable = true;
         starship.enable = true;
         ssh.enable = true;
-        tmux.enable = true;
+        tmux = {
+          enable = true;
+          sessions = [ "quadlets" ];
+        };
       };
       desktop = {
         bar = "waybar";
