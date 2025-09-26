@@ -7,7 +7,8 @@
 }:
 
 let
-  cfg = config.home-manager.users.eweishaar.homeModule;
+  hcfg = config.home-manager.users.eweishaar.homeModule;
+  cfg = config.nixosModule;
 in
 {
   config = lib.mkIf (config.networking.hostName == "mirrodin") {
@@ -23,10 +24,11 @@ in
           "docker"
         ];
         uid = 1000;
-        shell = if cfg.shell == "nushell" then pkgs.nushell else pkgs.bash;
+        shell = if hcfg.shell == "nushell" then pkgs.nushell else pkgs.bash;
         openssh.authorizedKeys.keys = [
           (builtins.readFile (userlib.relativeToRoot "config/keys/dominaria.pub"))
         ];
+        linger = lib.mkIf (lib.elem "podman" cfg.virt.platforms) true;
       };
     };
     sops.secrets."sshKeys/mirrodin/private" = {

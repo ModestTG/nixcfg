@@ -12,6 +12,8 @@ let
     sudo = "doas";
     vim = "nvim";
     v = "nvim";
+    sctl = "systemctl";
+    sctlu = "systemctl --user";
   };
 in
 {
