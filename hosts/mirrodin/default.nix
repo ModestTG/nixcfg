@@ -2,7 +2,6 @@
   config,
   inputs,
   pkgs,
-  userlib,
   ...
 }:
 
@@ -18,6 +17,7 @@
 
   nixosModule = {
     doas.enable = true;
+    etc-timezone = true;
     svc = {
       sops.enable = true;
       ssh.enable = true;
