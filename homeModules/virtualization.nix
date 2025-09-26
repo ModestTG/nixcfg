@@ -1,0 +1,11 @@
+{ osConfig, lib, ... }:
+
+let
+  cfg = osConfig.nixosModule;
+in
+{
+  services.podman = lib.mkIf (lib.elem "podman" cfg.virt.platforms) {
+    enable = true;
+    autoUpdate.enable = true;
+  };
+}
