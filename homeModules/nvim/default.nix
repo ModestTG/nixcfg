@@ -400,6 +400,26 @@ in
                 end
             '';
         }
+        {
+          event = [
+            "BufWritePost"
+          ];
+          pattern = [
+            "*.container"
+            "*.network"
+            "*.pod"
+            "*.timer"
+            "*.volume"
+          ];
+          desc = "Reload user systemd units of systemd file write";
+          group = "ew-autogroup";
+          callback.__raw = # lua
+            ''
+              function()
+                vim.system({"systemctl", "--user", "daemon-reload"})
+                end
+            '';
+        }
       ];
 
       plugins = {
