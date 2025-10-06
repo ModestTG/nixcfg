@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  osConfig,
   pkgs,
   ...
 }:
@@ -13,6 +14,7 @@ let
     enableWlrSupport = true;
   };
   cfg = config.homeModule.desktop;
+  ncfg = osConfig.nixosModule;
 in
 {
   options.homeModule.desktop = {
@@ -41,22 +43,25 @@ in
 
   config = lib.mkIf cfg.enable {
     home = {
-      packages = with pkgs; [
-        discord
-        freecad-wayland
-        gthumb
-        handbrake
-        immich-go
-        # jellyfin-media-player #qtweb-5 marked as insecure. Must be fixed upstream
-        libreoffice
-        mqtt-explorer
-        qflipper
-        signal-desktop
-        spotify
-        xfce.thunar
-        xfce.tumbler
-        wireshark
-      ];
+      packages =
+        with pkgs;
+        [
+          discord
+          freecad-wayland
+          gthumb
+          handbrake
+          immich-go
+          # jellyfin-media-player #qtweb-5 marked as insecure. Must be fixed upstream
+          libreoffice
+          mqtt-explorer
+          qflipper
+          signal-desktop
+          spotify
+          xfce.thunar
+          xfce.tumbler
+          wireshark
+        ]
+        ++ lib.optionals (lib.elem "podman" ncfg.virt.platforms) [ podman-desktop ];
       pointerCursor = {
         gtk.enable = true;
         package = pkgs.vimix-cursors;
