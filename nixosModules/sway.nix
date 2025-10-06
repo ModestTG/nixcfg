@@ -20,7 +20,7 @@ in
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --time --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' --cmd ${pkgs.swayfx}/bin/sway";
+          command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' --cmd ${pkgs.swayfx}/bin/sway";
           user = "eweishaar";
         };
       };
