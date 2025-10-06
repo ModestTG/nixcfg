@@ -35,6 +35,9 @@
       ssh.enable = true;
       tailscale.enable = true;
     };
+    virt.platforms = [
+      "podman"
+    ];
   };
   boot.loader = {
     systemd-boot.enable = false;
