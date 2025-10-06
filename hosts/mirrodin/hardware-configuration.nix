@@ -8,7 +8,9 @@
   modulesPath,
   ...
 }:
-
+let
+  cfg = config.nixosModule;
+in
 {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -24,6 +26,8 @@
     "sr_mod"
   ];
   boot.initrd.kernelModules = [ ];
+  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" =
+    lib.mkIf (lib.elem "podman" cfg.virt.platforms) 80;
   boot.kernelModules = [
     "kvm-intel"
     "nvidia_uvm"
