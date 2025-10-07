@@ -12,12 +12,14 @@ in
   imports = [ inputs.zen-browser.homeModules.twilight ];
 
   options.homeModule.browser = lib.mkOption {
-    type = lib.types.enum [
-      "firefox"
-      "zen"
-    ];
+    type = lib.types.nullOr (
+      lib.types.enum [
+        "firefox"
+        "zen"
+      ]
+    );
     description = "Enable a web browser";
-    default = "firefox";
+    default = null;
   };
 
   config = {

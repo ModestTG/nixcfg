@@ -15,7 +15,7 @@ in
     description = "A list of container platforms to enable";
   };
 
-  config = lib.mkIf (cfg.platforms != [ ]) {
+  config = {
     virtualisation.docker = lib.mkIf (lib.elem "docker" cfg.platforms) {
       enable = true;
       storageDriver = "overlay2";
