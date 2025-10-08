@@ -111,6 +111,8 @@ in
               browserCommand =
                 if (cfg.browser == "zen") then
                   "exec ${zen-package}/bin/zen"
+                else if (cfg.browser == "helium") then
+                  "exec ${pkgs.helium-browser}/bin/helium-browser"
                 else
                   "exec ${pkgs.firefox}/bin/firefox";
               termCommand =

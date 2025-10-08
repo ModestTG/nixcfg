@@ -51,7 +51,6 @@
       system = "x86_64-linux";
       pkgs-stable = import nixpkgs-stable {
         inherit system;
-        config.allowUnfree = true;
       };
       userlib = import ./lib { inherit lib; };
       specialArgs = {

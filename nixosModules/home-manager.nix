@@ -1,7 +1,8 @@
 {
   inputs,
-  userlib,
+  lib,
   pkgs-stable,
+  userlib,
   ...
 }:
 
@@ -13,7 +14,20 @@
     backupFileExtension = "hmbackup";
     users.eweishaar = {
       imports = [ ../homeModules/default.nix ];
-      nixpkgs.config.allowUnfree = true;
+      nixpkgs = {
+        config = {
+          allowUnfree = true;
+        };
+        overlays = [
+          (
+            self: super:
+            lib.packagesFromDirectoryRecursive {
+              callPackage = super.callPackage;
+              directory = userlib.relativeToRoot "pkgs";
+            }
+          )
+        ];
+      };
     };
   };
 }

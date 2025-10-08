@@ -12,7 +12,7 @@ in
   config = lib.mkIf (osConfig.networking.hostName == "dominaria") {
     homeModule = {
       shell = "bash";
-      browser = "zen";
+      browser = "helium";
       pkgs = {
         audible2m4b.enable = true;
         git.enable = true;

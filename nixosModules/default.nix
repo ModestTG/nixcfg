@@ -15,7 +15,6 @@
 
   environment.systemPackages = with pkgs; [
     age
-    alacritty
     bash
     bc
     coreutils
@@ -80,5 +79,18 @@
       extraArgs = "--keep-since 10d --keep 20";
     };
   };
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+    overlays = [
+      (
+        self: super:
+        lib.packagesFromDirectoryRecursive {
+          callPackage = super.callPackage;
+          directory = userlib.relativeToRoot "pkgs";
+        }
+      )
+    ];
+  };
 }

@@ -2,6 +2,7 @@
   config,
   inputs,
   lib,
+  pkgs,
   ...
 }:
 
@@ -15,6 +16,7 @@ in
     type = lib.types.nullOr (
       lib.types.enum [
         "firefox"
+        "helium"
         "zen"
       ]
     );
@@ -29,5 +31,6 @@ in
     programs.zen-browser = lib.mkIf (cfg.browser == "zen") {
       enable = true;
     };
+    home.packages = lib.mkIf (cfg.browser == "helium") [ pkgs.helium-browser ];
   };
 }
