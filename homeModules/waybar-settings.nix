@@ -1,12 +1,21 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   cfg = config.homeModule.desktop;
+  waybar-experimental = pkgs.waybar.overrideAttrs (oldAttrs: {
+    mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+  });
 in
 {
   config = lib.mkIf (cfg.bar == "waybar") {
     programs.waybar = {
       enable = true;
+      package = waybar-experimental;
       settings = {
         mainBar = {
           position = "top"; # Waybar position (top|bottom|left|right)
@@ -119,13 +128,5 @@ in
         };
       };
     };
-    # Needed for some features
-    nixpkgs.overlays = [
-      (self: super: {
-        waybar = super.waybar.overrideAttrs (oldAttrs: {
-          mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-        });
-      })
-    ];
   };
 }
