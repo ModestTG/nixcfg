@@ -178,8 +178,7 @@ in
               # "${modifier}+w" = "layout tabbed";
 
               # Workaround for https://github.com/flameshot-org/flameshot/issues/3329
-              "${modifier}+Shift+s" =
-                "exec ${pkgs.flameshot}/bin/flameshot gui --raw > /tmp/screenshot.png && ${pkgs.wl-clipboard}/bin/wl-copy < /tmp/screenshot.png";
+              "${modifier}+Shift+s" = "exec ${pkgs.flameshot}/bin/flameshot gui";
               "${modifier}+p" = "exec playerctl -p spotify play-pause";
               "${modifier}+Ctrl+Right" = "exec playerctl -p spotify next";
               "${modifier}+Ctrl+Left" = "exec playerctl -p spotify previous";

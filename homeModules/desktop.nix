@@ -87,6 +87,14 @@ in
     services.flameshot = {
       enable = true;
       package = flameshot-wlr;
+      settings = {
+        General = {
+          useGrimAdapter = true;
+          showStartupLaunchMessage = false;
+          disabledTrayIcon = true;
+          disabledGrimWarning = true;
+        };
+      };
     };
   };
 }
