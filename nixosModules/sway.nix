@@ -6,16 +6,15 @@
 }:
 
 let
-  cfg = config.nixosModule.desktop.sway;
+  cfg = config.home-manager.users.eweishaar.homeModule.desktop;
 in
 {
-  options.nixosModule.desktop.sway = {
-    enable = lib.mkEnableOption "enable Sway desktop";
-  };
-
-  config = lib.mkIf cfg.enable {
-    security.polkit.enable = true;
-    services.dbus.enable = true;
+  config = lib.mkIf (cfg.wm == "sway") {
+    programs.sway = {
+      enable = true;
+      wrapperFeatures.gtk = true;
+      package = pkgs.swayfx;
+    };
     services.greetd = {
       enable = true;
       settings = {
@@ -37,7 +36,6 @@ in
       wl-clipboard
       xdg-utils
     ];
-    programs.dconf.enable = true;
     security.pam.services.swaylock = { };
   };
 }

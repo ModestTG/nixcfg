@@ -23,7 +23,6 @@
       bluetooth.enable = true;
       brother-printer.enable = true;
       scanner.enable = true;
-      sway.enable = true;
       usb.enable = true;
     };
     gaming = {
