@@ -12,38 +12,28 @@ let
 in
 {
   config = lib.mkIf (cfg.desktop.wm == "sway") {
-    xdg.portal = {
-      enable = true;
-      configPackages = [ pkgs.xdg-desktop-portal-wlr ];
-      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-    };
-
     wayland.systemd.target = "sway-session.target";
     wayland.windowManager.sway =
       let
         modifier = "Mod4";
         border = 2;
         titlebar = false;
-        fontName = "FiraCodeNerdFont";
+        fonts = {
+          names = [ "FiraCodeNerdFont" ];
+          style = "Medium";
+          size = 10.0;
+        };
       in
-      # schema = pkgs.gsettings-desktop-schemas;
-      # datadir = "${schema}/share/gsettings-schemas/${schema.name}";
       {
         enable = true;
         package = pkgs.swayfx;
         wrapperFeatures.gtk = true;
         checkConfig = false;
-        # extraSessionCommands = ''XDG_DATA_DIRS=${datadir}:$XDG_DATA_DIRS'';
         config = {
-          inherit modifier;
+          inherit modifier fonts;
           defaultWorkspace = "workspace number 1";
           workspaceLayout = "default";
           workspaceAutoBackAndForth = false;
-          fonts = {
-            names = [ fontName ];
-            style = "Medium";
-            size = 10.0;
-          };
           gaps = {
             inner = 6;
             top = -6;
@@ -179,8 +169,6 @@ in
               # "${modifier}+space" = "focus mode_toggle";
               # "${modifier}+v" = "splitv";
               # "${modifier}+w" = "layout tabbed";
-
-              # Workaround for https://github.com/flameshot-org/flameshot/issues/3329
               "${modifier}+Shift+s" = "exec ${pkgs.flameshot}/bin/flameshot gui";
               "${modifier}+p" = "exec playerctl -p spotify play-pause";
               "${modifier}+Ctrl+Right" = "exec playerctl -p spotify next";
@@ -188,8 +176,8 @@ in
             };
           bars = [
             {
+              inherit fonts;
               command = "${pkgs.waybar}/bin/waybar";
-              fonts = config.wayland.windowManager.sway.config.fonts;
             }
           ];
           assigns = {
