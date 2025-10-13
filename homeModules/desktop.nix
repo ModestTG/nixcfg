@@ -39,6 +39,11 @@ in
       default = "";
       description = "Set the program launcher";
     };
+    displayManager = lib.mkOption {
+      type = lib.types.str;
+      default = "ly";
+      description = "Set the display manager";
+    };
   };
 
   config = lib.mkIf cfg.enable {

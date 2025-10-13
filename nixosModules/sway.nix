@@ -15,15 +15,15 @@ in
       wrapperFeatures.gtk = true;
       package = pkgs.swayfx;
     };
-    services.greetd = {
-      enable = true;
-      settings = {
-        default_session = {
-          command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' --cmd ${pkgs.swayfx}/bin/sway";
-          user = "eweishaar";
-        };
-      };
-    };
+    # services.greetd = {
+    #   enable = true;
+    #   settings = {
+    #     default_session = {
+    #       command = "${pkgs.tuigreet}/bin/tuigreet --remember --time --theme 'border=magenta;text=cyan;prompt=green;time=red;action=blue;button=yellow;container=black;input=red' --cmd ${pkgs.swayfx}/bin/sway";
+    #       user = "eweishaar";
+    #     };
+    #   };
+    # };
     environment.systemPackages = with pkgs; [
       autotiling
       dconf

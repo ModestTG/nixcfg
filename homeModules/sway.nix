@@ -18,6 +18,7 @@ in
       extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     };
 
+    wayland.systemd.target = "sway-session.target";
     wayland.windowManager.sway =
       let
         modifier = "Mod4";
