@@ -23,7 +23,7 @@
             self: super:
             lib.packagesFromDirectoryRecursive {
               callPackage = super.callPackage;
-              directory = userlib.relativeToRoot "pkgs";
+              directory = userlib.relativeToRoot "pkgs/home";
             }
           )
         ];
