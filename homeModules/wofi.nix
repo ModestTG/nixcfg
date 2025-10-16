@@ -27,7 +27,7 @@ in
     programs.wofi = {
       enable = true;
       settings = {
-        mode = "run";
+        mode = "drun";
         allow_images = true;
         width = "35%";
         key_expand = "space";
