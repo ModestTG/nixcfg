@@ -54,24 +54,30 @@
     zstd
   ];
 
-  nix = {
-    settings = {
-      connect-timeout = 5;
-      log-lines = 25;
-      min-free = 128000000; # 128MB
-      max-free = 1000000000; # 1GB
-      warn-dirty = false;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
+  nix =
+    let
+      flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
+    in
+    {
+      settings = {
+        connect-timeout = 5;
+        log-lines = 25;
+        min-free = 128000000; # 128MB
+        max-free = 1000000000; # 1GB
+        warn-dirty = false;
+        experimental-features = [
+          "nix-command"
+          "flakes"
+        ];
 
+      };
+      nixPath = lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}") flakeInputs;
+      registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      optimise = {
+        automatic = true;
+        dates = [ "03:00" ];
+      };
     };
-    optimise = {
-      automatic = true;
-      dates = [ "03:00" ];
-    };
-  };
   programs.nh = {
     enable = true;
     clean = {
