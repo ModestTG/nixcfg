@@ -12,26 +12,45 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
-  boot.initrd.availableKernelModules = [
-    "xhci_pci"
-    "nvme"
-    "ahci"
-    "usbhid"
-    "sd_mod"
-  ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [
-    "kvm-amd"
-    "tcp_bbr"
-    "sg" # need for USB CDROM support
-  ];
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-  boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "pcie_port_pm=off" ];
+  boot = {
+    initrd = {
+      availableKernelModules = [
+        "xhci_pci"
+        "nvme"
+        "ahci"
+        "usbhid"
+        "sd_mod"
+      ];
+      kernelModules = [ ];
+    };
+    # Enable BBR congestion control
+    # see https://news.ycombinator.com/item?id=14814530
+    kernel.sysctl = {
+      "net.ipv4.tcp_congestion_control" = "bbr";
+      "net.core.default_qdisc" = "fq";
+    };
+    kernelModules = [
+      "kvm-amd"
+      "tcp_bbr"
+      "sg" # need for USB CDROM support
+    ];
+    kernelPackages = pkgs.linuxPackages_latest;
+    kernelParams = [ "pcie_port_pm=off" ];
+    loader = {
+      systemd-boot.enable = false;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      grub = {
+        enable = true;
+        device = "nodev";
+        useOSProber = true;
+        efiSupport = true;
+      };
+    };
+  };
 
-  # Enable BBR congestion control
-  boot.kernel.sysctl."net.ipv4.tcp_congestion_control" = "bbr";
-  boot.kernel.sysctl."net.core.default_qdisc" = "fq"; # see https://news.ycombinator.com/item?id=14814530
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/3b290d30-5602-4b04-8855-ac05eaabc28e";
     fsType = "ext4";

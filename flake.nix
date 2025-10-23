@@ -67,23 +67,21 @@
           inherit specialArgs system;
           modules = [
             ./hosts/dominaria
-            ./nixosModules
+            ./modules/nixos
           ];
         };
-        lorwyn = lib.nixosSystem {
-          inherit specialArgs system;
-          modules = [
-            ./hosts/lorwyn
-            ./nixosModules
-            disko.nixosModules.disko
-          ];
-        };
+        # lorwyn = lib.nixosSystem {
+        #   inherit specialArgs system;
+        #   modules = [
+        #     ./hosts/lorwyn
+        #     ./modules/nixos
+        #   ];
+        # };
         mirrodin = lib.nixosSystem {
           inherit specialArgs system;
           modules = [
             ./hosts/mirrodin
-            ./nixosModules
-            disko.nixosModules.disko
+            ./modules/nixos
           ];
         };
       };

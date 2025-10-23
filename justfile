@@ -12,5 +12,8 @@ rbs: rebuild-pre
 rbt: rebuild-pre
   scripts/system-flake-rebuild-test.sh
 
+rbd: rebuild-pre
+  scripts/system-flake-rebuild-dry.sh
+  
 clean:
   nh clean all --keep-since 10d --keep 20

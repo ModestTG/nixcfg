@@ -1,29 +1,58 @@
 {
-  lib,
-  userlib,
+  config,
   inputs,
+  lib,
+  pkgs-stable,
+  userlib,
   ...
 }:
-
+let
+  cfg = config.ewhsModule;
+in
 {
   imports = [
     ./hardware-configuration.nix
+    ../users
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-cpu-amd-pstate
     inputs.hardware.nixosModules.common-gpu-amd
     inputs.hardware.nixosModules.common-pc-ssd
     inputs.determinate.nixosModules.default
+    inputs.home-manager.nixosModules.home-manager
   ];
 
-  nixosModule = {
+  ### Option declaration
+  ewhsModule = {
+    browser = "helium";
     doas.enable = true;
+    homeManager.enable = true;
+    shell = "bash";
+    pkgs = {
+      audible2m4b.enable = true;
+      git.enable = true;
+      kube-tools.enable = true;
+      nvim.enable = true;
+      prusa-slicr.enable = true;
+      starship.enable = true;
+      ssh.enable = true;
+      tmux = {
+        enable = true;
+        sessions = [ "quadlets" ];
+      };
+    };
     fs.nfs.enable = true;
     desktop = {
       audio.enable = true;
+      bar = "waybar";
       bluetooth.enable = true;
       brother-printer.enable = true;
+      enable = true;
+      launcher = "wofi";
+      nerdFonts.enable = true;
+      notifier = "dunst";
       scanner.enable = true;
-      usb.enable = true;
+      sessionManager = "wlogout";
+      wm = "sway";
     };
     gaming = {
       misc.enable = true;
@@ -38,28 +67,8 @@
       "podman"
     ];
   };
-  boot.loader = {
-    systemd-boot.enable = false;
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
-    };
-    grub = {
-      enable = true;
-      device = "nodev";
-      useOSProber = true;
-      efiSupport = true;
-    };
-  };
 
-  # environment.variables = {
-  #   # Force GPU selection
-  #   VK_ICD_FILENAMES = "/run/opengl-driver/share/vulkan/icd.d/radeon_icd.x86_64.json";
-  #
-  #   # Additional environment variables to prefer dedicated GPU
-  #   __GLX_VENDOR_LIBRARY_NAME = "amdgpu";
-  #   LIBGL_DRIVERS_PATH = "/run/opengl-driver/lib/dri";
-  # };
+  ### NixOS configuration
   networking = {
     hostName = "dominaria";
     firewall.enable = false;
@@ -71,5 +80,56 @@
   systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
 
+  # Add udev rules for Flipper Zero
+  services.udev.extraRules = ''
+    SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE="0666", GROUP="plugdev"
+  '';
+
+  #SSH key
+  sops.secrets."sshKeys/dominaria/private" = {
+    path = "/home/eweishaar/.ssh/id_ed25519";
+    owner = config.users.users.eweishaar.name;
+    group = config.users.users.eweishaar.group;
+    mode = "0600";
+  };
+
   system.stateVersion = "24.11";
+
+  ###Home-manager configuration
+  home-manager = lib.mkIf cfg.homeManager.enable {
+    extraSpecialArgs = { inherit inputs userlib pkgs-stable; };
+    backupFileExtension = "hmbackup";
+    users.eweishaar = {
+      imports = [ ../../modules/home/default.nix ];
+      home = {
+        username = "eweishaar";
+        homeDirectory = "/home/eweishaar";
+        stateVersion = config.system.stateVersion;
+      };
+      xdg.mimeApps = {
+        enable = true;
+        defaultApplications = {
+          "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" = "calc.desktop";
+          "inode/directory" = "thunar.desktop"; # File Browser
+        };
+      };
+      # Force overwrite mimeapps.list to avoid backup conflicts
+      # https://github.com/nix-community/home-manager/issues/4199
+      xdg.configFile."mimeapps.list".force = true;
+      nixpkgs = {
+        config = {
+          allowUnfree = true;
+        };
+        overlays = [
+          (
+            self: super:
+            lib.packagesFromDirectoryRecursive {
+              callPackage = super.callPackage;
+              directory = userlib.relativeToRoot "pkgs/home";
+            }
+          )
+        ];
+      };
+    };
+  };
 }
