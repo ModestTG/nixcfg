@@ -52,7 +52,10 @@ in
       notifier = "dunst";
       scanner.enable = true;
       sessionManager = "wlogout";
-      wm = "sway";
+      wm = [
+        "cosmic"
+        "sway"
+      ];
     };
     gaming = {
       misc.enable = true;

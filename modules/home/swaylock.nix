@@ -10,7 +10,7 @@ let
   cfg = osConfig.ewhsModule.desktop;
 in
 {
-  config = lib.mkIf (cfg.wm == "sway") {
+  config = lib.mkIf (lib.elem "sway" cfg.wm) {
     programs.swaylock = {
       enable = true;
       package = pkgs.swaylock-effects;

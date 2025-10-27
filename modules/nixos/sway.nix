@@ -9,7 +9,7 @@ let
   cfg = config.ewhsModule.desktop;
 in
 {
-  config = lib.mkIf (cfg.wm == "sway") {
+  config = lib.mkIf (lib.elem "sway" cfg.wm) {
     ewhsModule.desktop.displayProtocol = "wayland";
     programs.sway = {
       enable = true;

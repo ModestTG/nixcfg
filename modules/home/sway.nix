@@ -12,7 +12,7 @@ let
   cfg = osConfig.ewhsModule;
 in
 {
-  config = lib.mkIf (cfg.desktop.wm == "sway") {
+  config = lib.mkIf (lib.elem "sway" cfg.desktop.wm) {
     wayland.systemd.target = "sway-session.target";
     wayland.windowManager.sway =
       let

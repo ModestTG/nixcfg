@@ -72,8 +72,13 @@
         description = "Set the session manager for logout, restart, shutdown, etc.";
       };
       wm = lib.mkOption {
-        type = lib.types.str;
-        default = "";
+        type = lib.types.listOf (
+          lib.types.enum [
+            "cosmic"
+            "sway"
+          ]
+        );
+        default = [ ];
         description = "Define the window manager used on a desktop";
       };
     };
