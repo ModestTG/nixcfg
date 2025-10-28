@@ -15,19 +15,13 @@ in
       enable = true;
       wrapperFeatures.gtk = true;
       package = pkgs.swayfx;
+      extraPackages = with pkgs; [
+        autotiling
+        playerctl
+        wl-clipboard
+        xdg-utils
+      ];
     };
-    environment.systemPackages = with pkgs; [
-      autotiling
-      dconf
-      glib
-      libnotify
-      playerctl
-      swayfx
-      swww
-      wayland
-      wl-clipboard
-      xdg-utils
-    ];
     security.pam.services.swaylock = { };
   };
 }
