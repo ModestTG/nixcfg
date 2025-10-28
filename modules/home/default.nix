@@ -29,6 +29,7 @@ in
   programs.fastfetch.enable = true;
   programs.home-manager.enable = lib.mkIf cfg.homeManager.enable true;
   programs.mpv.enable = true;
+  programs.nushell.enable = true;
   programs.ripgrep.enable = true;
   # Nicely reload system units when changing configs
   systemd.user.startServices = "sd-switch";
