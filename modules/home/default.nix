@@ -17,8 +17,8 @@ in
     pkgs.ncdu # TUI disk usage
     pkgs.nix-tree # nix package tree viewer
   ]
-  ++ lib.optionals cfg.pkgs.audible2m4b.enable [ pkgs.audible2m4b ]
-  ++ lib.optionals cfg.pkgs.prusa-slicr.enable [ pkgs.prusa-slicer ];
+  ++ lib.optional cfg.pkgs.audible2m4b.enable pkgs.audible2m4b
+  ++ lib.optional cfg.pkgs.prusa-slicr.enable pkgs.prusa-slicer;
   programs.bat = {
     enable = true;
     extraPackages = [

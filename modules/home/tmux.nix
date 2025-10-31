@@ -55,6 +55,6 @@ in
       keyMode = "vi";
       mouse = true;
     };
-    home.packages = lib.optionals (lib.elem "quadlets" cfg.sessions) [ quadlets ];
+    home.packages = lib.optional (lib.elem "quadlets" cfg.sessions) quadlets;
   };
 }

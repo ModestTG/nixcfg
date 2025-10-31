@@ -12,7 +12,6 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ../users
     inputs.hardware.nixosModules.common-cpu-amd
     inputs.hardware.nixosModules.common-cpu-amd-pstate
     inputs.hardware.nixosModules.common-gpu-amd
@@ -63,7 +62,6 @@ in
     };
     svc = {
       sops.enable = true;
-      ssh.enable = true;
       tailscale.enable = true;
     };
     virt.platforms = [

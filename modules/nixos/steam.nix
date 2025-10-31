@@ -14,9 +14,8 @@ in
       enable = true;
       extraPackages = with pkgs; [
         gamescope
-        gamemode
-        mangohud
       ];
     };
+    programs.gamemode.enable = true;
   };
 }

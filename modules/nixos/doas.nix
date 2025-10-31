@@ -22,6 +22,6 @@ in
     };
     security.sudo.enable = false;
     # Workaround of https://github.com/nix-community/nh/issues/236
-    environment.systemPackages = [ (pkgs.writeShellScriptBin "sudo" "doas $@") ];
+    # environment.systemPackages = [ (pkgs.writeShellScriptBin "sudo" "doas $@") ];
   };
 }
