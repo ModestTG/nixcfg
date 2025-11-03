@@ -9,7 +9,7 @@ in
       enable = true;
       enableDefaultConfig = false;
       matchBlocks = {
-        "mirrodin" = {
+        "kaladesh" = {
           hostname = "10.0.20.22";
           user = "eweishaar";
           addKeysToAgent = "yes";
