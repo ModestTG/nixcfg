@@ -14,23 +14,26 @@ in
 {
   config = lib.mkIf cfg.desktop.enable {
     home = {
-      packages = with pkgs; [
-        discord
-        freecad-wayland
-        gthumb
-        handbrake
-        immich-go
-        # jellyfin-media-player #qtweb-5 marked as insecure. Must be fixed upstream
-        libreoffice
-        mqtt-explorer
-        podman-desktop
-        qflipper
-        signal-desktop
-        spotify
-        wireshark
-        xfce.thunar
-        xfce.tumbler
-      ];
+      packages =
+        with pkgs;
+        [
+          discord
+          freecad-wayland
+          gthumb
+          handbrake
+          immich-go
+          # jellyfin-media-player #qtweb-5 marked as insecure. Must be fixed upstream
+          libreoffice
+          mqtt-explorer
+          podman-desktop
+          qflipper
+          signal-desktop
+          spotify
+          wireshark
+          xfce.thunar
+          xfce.tumbler
+        ]
+        ++ lib.optional cfg.deployNode colmena;
       pointerCursor = {
         gtk.enable = true;
         package = pkgs.vimix-cursors;

@@ -24,6 +24,7 @@ in
   ewhsModule = {
     browser = "helium";
     doas.enable = true;
+    deployNode = true;
     homeManager.enable = true;
     shell = "bash";
     pkgs = {

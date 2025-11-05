@@ -19,6 +19,11 @@
       default = "tokyonight";
       description = "Define which colorscheme you want to use";
     };
+    deployNode = lib.mkOption {
+      type = lib.types.bool;
+      default = false;
+      description = "Set this machine as a node to deploy remote nix configs via Colmena";
+    };
     desktop = {
       audio = {
         enable = lib.mkEnableOption "enables Pipewire audio";
