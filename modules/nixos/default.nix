@@ -69,6 +69,7 @@
             "nix-command"
             "flakes"
           ];
+          trusted-users = [ "eweishaar" ];
 
         };
         nixPath = lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}") flakeInputs;
