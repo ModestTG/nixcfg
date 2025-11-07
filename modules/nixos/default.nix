@@ -1,12 +1,16 @@
 {
-  pkgs,
+  config,
   inputs,
   lib,
+  pkgs,
   userlib,
   ...
 }:
 
 # Core configuration, installed on all systems
+let
+  cfg = config.ewhsModule;
+in
 {
   imports = [ inputs.nix-index-database.nixosModules.nix-index ] ++ (userlib.scanPaths ./.);
 
@@ -70,6 +74,14 @@
             "flakes"
           ];
           trusted-users = [ "eweishaar" ];
+          substituters = [
+            "https://cache.nixos.org"
+          ]
+          ++ lib.optional cfg.deployNode "https://colmena.cachix.org";
+          trusted-substituters = [ ] ++ lib.optional cfg.deployNode "https://colmena.cachix.org";
+          trusted-public-keys =
+            [ ]
+            ++ lib.optional cfg.deployNode "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg=";
 
         };
         nixPath = lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}") flakeInputs;
