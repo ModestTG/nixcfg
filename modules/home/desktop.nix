@@ -37,6 +37,7 @@ in
         ++ lib.optionals cfg.deployNode [
           inputs.colmena.packages.${pkgs.system}.colmena
           inputs.agenix.packages.${pkgs.system}.agenix
+          borgbackup
         ];
       pointerCursor = {
         gtk.enable = true;
