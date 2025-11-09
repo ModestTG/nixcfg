@@ -34,7 +34,10 @@ in
           xfce.thunar
           xfce.tumbler
         ]
-        ++ lib.optional cfg.deployNode inputs.colmena.packages.${pkgs.system}.colmena;
+        ++ lib.optionals cfg.deployNode [
+          inputs.colmena.packages.${pkgs.system}.colmena
+          inputs.agenix.packages.${pkgs.system}.agenix
+        ];
       pointerCursor = {
         gtk.enable = true;
         package = pkgs.vimix-cursors;
