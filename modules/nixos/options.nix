@@ -135,15 +135,6 @@
       };
       tmux = {
         enable = lib.mkEnableOption "Enable tmux configuration";
-        sessions = lib.mkOption {
-          type = lib.types.listOf (
-            lib.types.enum [
-              "quadlets"
-            ]
-          );
-          default = [ ];
-          description = "List of sessions to enable";
-        };
       };
     };
     shell = lib.mkOption {

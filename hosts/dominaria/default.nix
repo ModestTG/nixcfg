@@ -37,7 +37,6 @@ in
       ssh.enable = true;
       tmux = {
         enable = true;
-        sessions = [ "quadlets" ];
       };
     };
     fs.nfs.enable = true;
