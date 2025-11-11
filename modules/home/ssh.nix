@@ -1,43 +1,43 @@
 { osConfig, lib, ... }:
 
 let
-  cfg = osConfig.ewhsModule.pkgs.ssh;
+  cfg = osConfig.ewhsModule;
+  user = "eweishaar";
+  addKeysToAgent = "yes";
 in
 {
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.pkgs.ssh.enable {
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
       matchBlocks = {
-        "kaladesh" = {
-          hostname = "10.0.20.22";
-          user = "eweishaar";
-          addKeysToAgent = "yes";
-        };
         "jace-master-0" = {
           hostname = "10.0.20.10";
-          user = "eweishaar";
-          addKeysToAgent = "yes";
+          inherit user addKeysToAgent;
         };
         "jace-master-1" = {
           hostname = "10.0.20.11";
-          user = "eweishaar";
-          addKeysToAgent = "yes";
+          inherit user addKeysToAgent;
         };
         "jace-master-2" = {
           hostname = "10.0.20.12";
-          user = "eweishaar";
-          addKeysToAgent = "yes";
+          inherit user addKeysToAgent;
         };
         "jace-worker-0" = {
           hostname = "10.0.20.13";
-          user = "eweishaar";
-          addKeysToAgent = "yes";
+          inherit user addKeysToAgent;
         };
         "jace-worker-1" = {
           hostname = "10.0.20.14";
-          user = "eweishaar";
-          addKeysToAgent = "yes";
+          inherit user addKeysToAgent;
+        };
+        "kaladesh" = lib.mkIf cfg.deployNode {
+          hostname = "10.0.20.22";
+          inherit user addKeysToAgent;
+        };
+        "vryn" = lib.mkIf cfg.deployNode {
+          hostname = "172.238.173.160";
+          inherit user addKeysToAgent;
         };
       };
     };
