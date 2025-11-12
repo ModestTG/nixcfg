@@ -36,7 +36,7 @@ in
           inherit user addKeysToAgent;
         };
         "vryn" = lib.mkIf cfg.deployNode {
-          hostname = "172.238.173.160";
+          hostname = "172.239.193.130";
           inherit user addKeysToAgent;
         };
       };
