@@ -52,7 +52,6 @@ in
       scanner.enable = true;
       sessionManager = "wlogout";
       wm = [
-        "cosmic"
         "sway"
       ];
     };

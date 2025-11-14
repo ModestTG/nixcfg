@@ -13,7 +13,6 @@ in
   config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      package = pkgs.gitAndTools.gitFull;
       settings = {
         user.name = "ModestTG";
         user.email = "ssh@mailserver.com";

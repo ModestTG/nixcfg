@@ -27,7 +27,7 @@ in
           libreoffice
           mqtt-explorer
           podman-desktop
-          qflipper
+          qFlipper
           signal-desktop
           spotify
           wireshark
