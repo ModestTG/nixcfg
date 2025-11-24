@@ -84,6 +84,7 @@ in
             ++ lib.optional cfg.deployNode "colmena.cachix.org-1:7BzpDnjjH8ki2CT3f6GdOk7QAzPOl+1t3LvTLXqYcSg=";
 
         };
+        channel.enable = false;
         nixPath = lib.mapAttrsToList (flakeName: _: "${flakeName}=flake:${flakeName}") flakeInputs;
         registry = lib.mapAttrs (_: flake: { inherit flake; }) flakeInputs;
         optimise = {
