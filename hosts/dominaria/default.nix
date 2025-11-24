@@ -61,7 +61,6 @@ in
     };
     svc = {
       sops.enable = true;
-      tailscale.enable = true;
     };
     virt.platforms = [
       "podman"
