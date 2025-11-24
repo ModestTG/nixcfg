@@ -35,8 +35,8 @@ in
           xfce.tumbler
         ]
         ++ lib.optionals cfg.deployNode [
-          inputs.colmena.packages.${pkgs.system}.colmena
-          inputs.agenix.packages.${pkgs.system}.agenix
+          inputs.colmena.packages.${pkgs.stdenv.hostPlatform.system}.colmena
+          inputs.agenix.packages.${pkgs.stdenv.hostPlatform.system}.agenix
           restic
           restic-browser
         ];

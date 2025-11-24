@@ -99,7 +99,7 @@ in
           keybindings =
             let
               isAlacritty = cfg.terminal == "alacritty";
-              zen-package = inputs.zen-browser.packages."${pkgs.system}".twilight-official;
+              zen-package = inputs.zen-browser.packages."${pkgs.stdenv.hostPlatform.system}".twilight-official;
               calcCommand = lib.mkIf isAlacritty "exec ${pkgs.alacritty}/bin/alacritty --title alacritty-BC -e ${pkgs.bc}/bin/bc -q -l";
               browserCommand =
                 if (cfg.browser == "zen") then
