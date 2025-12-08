@@ -19,15 +19,17 @@ in
       extraGroups = [
         "dialout" # Serial connection support
         "wheel"
+        config.users.groups.media.name
       ]
       ++ lib.optional config.networking.networkmanager.enable "networkmanager"
       ++ lib.optional (lib.elem "docker" cfg.virt.platforms) "docker";
       uid = 1000;
       shell = if cfg.shell == "nushell" then pkgs.nushell else pkgs.bash;
-      openssh.authorizedKeys.keys = lib.mkIf cfg.svc.ssh.enable [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIElkoT9GhRczgqRRpdC4gfw/z1eShyqto4AKQnk3nka6" # dominaria
-      ];
       linger = lib.mkIf (lib.elem "podman" cfg.virt.platforms) true;
+    };
+    groups.media = {
+      gid = 1100;
+      name = "media";
     };
   };
 }
