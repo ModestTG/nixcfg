@@ -24,12 +24,9 @@ in
           resumeCommand = "${pkgs.swayfx}/bin/swaymsg 'output * dpms on'";
         }
       ];
-      events = [
-        {
-          event = "before-sleep";
-          command = lockCmd;
-        }
-      ];
+      events = {
+        "before-sleep" = lockCmd;
+      };
     };
   };
 }
