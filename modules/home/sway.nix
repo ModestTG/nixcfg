@@ -201,7 +201,11 @@ in
             }
           ];
         };
-        extraConfig = ''for_window [title="alacritty-BC"] floating enable, resize set 600 800'';
+        extraConfig = ''
+          for_window [title="alacritty-BC"] floating enable, resize set 600 800
+          input type:keyboard repeat_delay 300
+          input type:keyboard repeat_rate 50
+        '';
       };
     services.wpaperd = {
       enable = true;
