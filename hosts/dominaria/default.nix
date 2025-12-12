@@ -98,6 +98,7 @@ in
   home-manager = lib.mkIf cfg.homeManager.enable {
     extraSpecialArgs = { inherit inputs userlib pkgs-stable; };
     backupFileExtension = "hmbackup";
+    useGlobalPkgs = true;
     users.eweishaar = {
       imports = [ ../../modules/home/default.nix ];
       home = {
@@ -115,20 +116,6 @@ in
       # Force overwrite mimeapps.list to avoid backup conflicts
       # https://github.com/nix-community/home-manager/issues/4199
       xdg.configFile."mimeapps.list".force = true;
-      nixpkgs = {
-        config = {
-          allowUnfree = true;
-        };
-        overlays = [
-          (
-            self: super:
-            lib.packagesFromDirectoryRecursive {
-              callPackage = super.callPackage;
-              directory = userlib.relativeToRoot "pkgs/home";
-            }
-          )
-        ];
-      };
     };
   };
 }

@@ -105,14 +105,14 @@ in
       };
       overlays = [
         (
-          self: super:
+          final: prev:
           lib.packagesFromDirectoryRecursive {
-            callPackage = super.callPackage;
-            directory = userlib.relativeToRoot "pkgs/nixos";
+            callPackage = prev.callPackage;
+            directory = userlib.relativeToRoot "pkgs";
           }
         )
-        (self: super: {
-          tokyonight-gtk-theme = pkgs.tokyonight-gtk-theme.override {
+        (final: prev: {
+          tokyonight-gtk-theme = prev.tokyonight-gtk-theme.override {
             iconVariants = [ "Dark" ];
           };
         })
