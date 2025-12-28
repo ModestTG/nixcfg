@@ -1,30 +1,11 @@
 {
   programs.nixvim = {
-    # Linting
-    # https://nix-community.github.io/nixvim/plugins/lint/index.html
     plugins.lint = {
       enable = true;
-
-      # NOTE: Enabling these will cause errors unless these tools are installed
       lintersByFt = {
-        nix = ["nix"];
-        markdown = [
-          "markdownlint"
-          #vale
-        ];
-        #clojure = ["clj-kondo"];
-        #dockerfile = ["hadolint"];
-        #inko = ["inko"];
-        #janet = ["janet"];
-        #json = ["jsonlint"];
-        #rst = ["vale"];
-        #ruby = ["ruby"];
-        #terraform = ["tflint"];
-        #text = ["vale"];
+        nix = [ "nix" ];
+        markdown = [ "markdownlint" ];
       };
-
-      # Create autocommand which carries out the actual linting
-      # on the specified events.
       autoCmd = {
         callback.__raw = ''
           function()
@@ -39,8 +20,6 @@
         ];
       };
     };
-
-    # https://nix-community.github.io/nixvim/NeovimOptions/autoGroups/index.html
     autoGroups = {
       lint = {
         clear = true;
