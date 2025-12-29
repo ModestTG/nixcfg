@@ -23,7 +23,6 @@ in
           gthumb
           handbrake
           immich-go
-          # jellyfin-media-player #qtweb-5 marked as insecure. Must be fixed upstream
           libreoffice
           mqtt-explorer
           podman-desktop
@@ -40,22 +39,19 @@ in
           restic
           restic-browser
         ];
-      pointerCursor = {
-        gtk.enable = true;
-        package = pkgs.vimix-cursors;
-        name = "Vimix-cursors";
-        size = 22;
-      };
     };
-    gtk = {
-      enable = true;
-      theme = {
-        name = "Tokyonight-Dark";
-        package = pkgs.tokyonight-gtk-theme;
-      };
+    stylix = {
       iconTheme = {
-        name = "Tokyonight-Dark";
+        enable = true;
         package = pkgs.tokyonight-gtk-theme;
+        dark = "Tokyonight-Dark";
+      };
+      targets = {
+        nixvim.transparentBackground = {
+          main = true;
+          numberLine = true;
+          signColumn = true;
+        };
       };
     };
     programs.feh.enable = true;

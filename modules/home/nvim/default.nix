@@ -17,19 +17,6 @@ in
     programs.nixvim = {
       enable = true;
       defaultEditor = true;
-      colorschemes = {
-        tokyonight = {
-          enable = true;
-          settings = {
-            style = "night";
-            styles = {
-              sidebars = "transparent";
-              floats = "transparent";
-            };
-            transparent = true;
-          };
-        };
-      };
       globals = {
         mapleader = " ";
         maplocalleader = " ";

@@ -14,11 +14,6 @@
       description = "Enable a web browser";
       default = null;
     };
-    colorscheme = lib.mkOption {
-      type = lib.types.str;
-      default = "tokyonight";
-      description = "Define which colorscheme you want to use";
-    };
     deployNode = lib.mkOption {
       type = lib.types.bool;
       default = false;

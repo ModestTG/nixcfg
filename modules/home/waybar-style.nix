@@ -11,7 +11,7 @@ in
 {
   config = lib.mkIf (cfg.bar == "waybar") {
     programs.waybar.style =
-      with config.scheme.withHashtag;
+      with config.lib.stylix.colors.withHashtag;
       let
         inherit
           base00
