@@ -46,12 +46,10 @@ in
         package = pkgs.tokyonight-gtk-theme;
         dark = "Tokyonight-Dark";
       };
-      targets = {
-        nixvim.transparentBackground = {
-          main = true;
-          numberLine = true;
-          signColumn = true;
-        };
+      targets.nixvim.transparentBackground = {
+        main = true;
+        numberLine = true;
+        signColumn = true;
       };
     };
     programs.feh.enable = true;

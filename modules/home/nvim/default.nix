@@ -1,8 +1,8 @@
 {
+  config,
   inputs,
   lib,
   osConfig,
-  pkgs,
   ...
 }:
 let
@@ -17,6 +17,7 @@ in
     programs.nixvim = {
       enable = true;
       defaultEditor = true;
+      useGlobalPackages = true;
       globals = {
         mapleader = " ";
         maplocalleader = " ";
