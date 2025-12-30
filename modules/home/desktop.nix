@@ -25,6 +25,7 @@ in
           immich-go
           libreoffice
           mqtt-explorer
+          picard
           podman-desktop
           qFlipper
           signal-desktop
