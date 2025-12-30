@@ -14,7 +14,6 @@ in
       enable = true;
       plugins = with pkgs.tmuxPlugins; [
         sensible
-        tmux-powerline
         vim-tmux-navigator
       ];
       keyMode = "vi";
