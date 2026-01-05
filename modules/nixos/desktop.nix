@@ -19,6 +19,11 @@ in
     services.devmon.enable = true;
     services.gvfs.enable = true;
     services.udisks2.enable = true;
+    # Yubikey support
+    services.pcscd.enable = true;
+    programs.yubikey-manager.enable = true;
+    services.udev.packages = [ pkgs.yubikey-personalization ];
+
     stylix = {
       enable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/eighties.yaml";
