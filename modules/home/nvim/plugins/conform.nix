@@ -3,7 +3,7 @@
   programs.nixvim = {
     extraPackages = with pkgs; [
       gofumpt
-      nixfmt-rfc-style
+      nixfmt
       stylua
     ];
     plugins.conform-nvim = {

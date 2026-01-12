@@ -31,8 +31,8 @@ in
           signal-desktop
           spotify
           wireshark
-          xfce.thunar
-          xfce.tumbler
+          thunar
+          tumbler
         ]
         ++ lib.optionals cfg.deployNode [
           inputs.colmena.packages.${pkgs.stdenv.hostPlatform.system}.colmena
@@ -42,7 +42,7 @@ in
         ];
     };
     stylix = {
-      iconTheme = {
+      icons = {
         enable = true;
         package = pkgs.tokyonight-gtk-theme;
         dark = "Tokyonight-Dark";

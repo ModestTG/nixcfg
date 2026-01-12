@@ -18,7 +18,6 @@
         gopls.enable = true;
         nixd.enable = true;
         yamlls.enable = true;
-        systemd_ls.enable = true;
         lua_ls = {
           enable = true;
           settings = {
