@@ -6,14 +6,15 @@ let
     cat = "bat";
     k = "kubectl";
     lg = "lazygit";
-    ll = "ls -alh";
+    ll = "eza -lg";
+    ls = "eza";
     man = "batman";
+    sctl = "systemctl";
+    sctlu = "systemctl --user";
     s = "systemctl";
     sudo = "doas";
     vim = "nvim";
     v = "nvim";
-    sctl = "systemctl";
-    sctlu = "systemctl --user";
   };
 in
 {

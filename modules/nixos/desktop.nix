@@ -24,6 +24,8 @@ in
     programs.yubikey-manager.enable = true;
     services.udev.packages = [ pkgs.yubikey-personalization ];
 
+    environment.systemPackages = with pkgs; [ feishin ];
+
     stylix = {
       enable = true;
       base16Scheme = "${pkgs.base16-schemes}/share/themes/eighties.yaml";
