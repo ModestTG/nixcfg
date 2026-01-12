@@ -119,7 +119,7 @@ in
               "${modifier}+b" = browserCommand;
               "${modifier}+d" = "nop";
               "${modifier}+r" = "exec ${pkgs.wofi}/bin/wofi";
-              "${modifier}+e" = "exec ${pkgs.xfce.thunar}/bin/thunar";
+              "${modifier}+e" = "exec ${pkgs.thunar}/bin/thunar";
               "${modifier}+c" = lib.mkIf isAlacritty calcCommand;
               "${modifier}+f" = "fullscreen toggle";
               # "${modifier}+h" = "focus left";
@@ -133,9 +133,9 @@ in
               # "${modifier}+v" = "splitv";
               # "${modifier}+w" = "layout tabbed";
               "${modifier}+Shift+s" = "exec ${pkgs.flameshot}/bin/flameshot gui";
-              "${modifier}+p" = "exec playerctl -p spotify play-pause";
-              "${modifier}+Ctrl+Right" = "exec playerctl -p spotify next";
-              "${modifier}+Ctrl+Left" = "exec playerctl -p spotify previous";
+              "${modifier}+p" = "exec playerctl -p Feishin play-pause";
+              "${modifier}+Ctrl+Right" = "exec playerctl -p Feishin next";
+              "${modifier}+Ctrl+Left" = "exec playerctl -p Feishin previous";
             };
           bars = [
             {
@@ -144,7 +144,7 @@ in
             }
           ];
           assigns = {
-            "3" = [ { class = "^Spotify$"; } ];
+            "3" = [ { class = "^feishin$"; } ];
             "4" = [
               { class = "^discord$"; }
             ];
@@ -155,7 +155,7 @@ in
               always = true;
             }
             {
-              command = "${pkgs.spotify}/bin/spotify";
+              command = "${pkgs.feishin}/bin/feishin";
             }
             {
               command = "${pkgs.discord}/bin/discord";

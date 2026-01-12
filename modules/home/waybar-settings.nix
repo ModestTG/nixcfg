@@ -111,7 +111,7 @@ in
               default = "🎜";
             };
             escape = true;
-            exec = ''playerctl -p spotify metadata -f "{{artist}} - {{title}}" -F'';
+            exec = ''playerctl -p Feishin metadata -f "{{artist}} - {{title}}" -F'';
           };
           "custom/power" = {
             format = "";
