@@ -1,5 +1,6 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
@@ -14,6 +15,7 @@ in
       prismlauncher
       r2modman
       xmage
+      (inputs.hytale-launcher.packages.${pkgs.stdenv.hostPlatform.system}.hytale-launcher)
     ];
   };
 }
