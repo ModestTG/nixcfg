@@ -144,7 +144,7 @@ in
             }
           ];
           assigns = {
-            "3" = [ { class = "^feishin$"; } ];
+            "3" = [ { app_id = "^feishin$"; } ];
             "4" = [
               { class = "^discord$"; }
             ];
