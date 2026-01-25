@@ -21,7 +21,6 @@ in
           discord
           freecad-wayland
           gthumb
-          handbrake
           immich-go
           libreoffice
           mqtt-explorer
