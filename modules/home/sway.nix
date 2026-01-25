@@ -72,6 +72,8 @@ in
               termCommand =
                 if (cfg.terminal == "ghostty") then
                   "exec ${pkgs.ghostty}/bin/ghostty"
+                else if (cfg.terminal == "kitty") then
+                  "exec ${pkgs.kitty}/bin/kitty"
                 else
                   "exec ${pkgs.alacritty}/bin/alacritty";
             in

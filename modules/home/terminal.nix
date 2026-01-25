@@ -15,6 +15,9 @@ in
     programs.alacritty = lib.mkIf (cfg.terminal == "alacritty") {
       enable = true;
     };
+    programs.kitty = lib.mkIf (cfg.terminal == "kitty") {
+      enable = true;
+    };
     programs.ghostty = lib.mkIf (cfg.terminal == "ghostty") {
       enable = true;
       installBatSyntax = true;

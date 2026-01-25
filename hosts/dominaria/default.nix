@@ -27,6 +27,7 @@ in
     deployNode = true;
     homeManager.enable = true;
     shell = "bash";
+    terminal = "kitty";
     pkgs = {
       audible2m4b.enable = true;
       git.enable = true;
