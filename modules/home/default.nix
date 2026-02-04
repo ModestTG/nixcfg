@@ -13,6 +13,7 @@ in
   home.packages =
     with pkgs;
     [
+      define
       exiftool # image metadata manipulation
       exiv2
       ffmpeg
