@@ -19,6 +19,7 @@ in
       ffmpeg
       ncdu # TUI disk usage
       nix-tree # nix package tree viewer
+      teamspeak6-client
     ]
     ++ lib.optional cfg.pkgs.audible2m4b.enable pkgs.audible2m4b
     ++ lib.optional cfg.pkgs.prusa-slicr.enable pkgs.prusa-slicer;
@@ -30,6 +31,7 @@ in
       ];
     };
     btop.enable = true;
+    element-desktop.enable = true;
     eza = {
       enable = true;
       colors = "auto";
