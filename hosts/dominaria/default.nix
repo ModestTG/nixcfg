@@ -74,6 +74,7 @@ in
     firewall.enable = false;
     networkmanager.enable = true;
     enableIPv6 = false;
+    timeServers = [ "10.0.0.1" ];
   };
 
   # https://github.com/NixOS/nixpkgs/issues/180175
@@ -84,6 +85,8 @@ in
   services.udev.extraRules = ''
     SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="5740", MODE="0666", GROUP="plugdev"
   '';
+
+  services.ntp.enable = true;
 
   #SSH key
   sops.secrets."sshKeys/dominaria/private" = {
