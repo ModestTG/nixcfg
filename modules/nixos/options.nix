@@ -55,6 +55,9 @@
         default = "";
         description = "Set the program launcher";
       };
+      mullvad = {
+        enable = lib.mkEnableOption "Enable Mullvad VPN";
+      };
       nerdFonts = {
         enable = lib.mkEnableOption "Enable Nerdfonts";
       };

@@ -48,6 +48,7 @@ in
       brother-printer.enable = true;
       enable = true;
       launcher = "wofi";
+      mullvad.enable = true;
       nerdFonts.enable = true;
       notifier = "dunst";
       scanner.enable = true;
