@@ -92,11 +92,17 @@ in
           dates = [ "03:00" ];
         };
       };
-    programs.nh = {
-      enable = true;
-      clean = {
+    programs = {
+      nh = {
         enable = true;
-        extraArgs = "--keep-since 10d --keep 20";
+        clean = {
+          enable = true;
+          extraArgs = "--keep-since 10d --keep 20";
+        };
+      };
+      appimage = {
+        enable = true;
+        binfmt = true;
       };
     };
     nixpkgs = {
