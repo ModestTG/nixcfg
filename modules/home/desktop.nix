@@ -29,6 +29,7 @@ in
           qFlipper
           signal-desktop
           spotify
+          spotiflac
           wireshark
           thunar
           tumbler
