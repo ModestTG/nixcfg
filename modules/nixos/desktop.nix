@@ -12,17 +12,28 @@ in
 {
   imports = [ inputs.stylix.nixosModules.stylix ];
   config = lib.mkIf cfg.enable {
-    programs.dconf.enable = true;
-    security.polkit.enable = true;
-    services.dbus.enable = true;
-    # USB Support
-    services.devmon.enable = true;
-    services.gvfs.enable = true;
-    services.udisks2.enable = true;
-    # Yubikey support
-    services.pcscd.enable = true;
-    programs.yubikey-manager.enable = true;
-    services.udev.packages = [ pkgs.yubikey-personalization ];
+    programs = {
+      dconf.enable = true;
+      yubikey-manager.enable = true;
+    };
+    security = {
+      pam.services.login.enableGnomeKeyring = true;
+      polkit.enable = true;
+    };
+    services = {
+      dbus.enable = true;
+
+      # USB Support
+      devmon.enable = true;
+      gvfs.enable = true;
+      udisks2.enable = true;
+
+      # Yubikey support
+      pcscd.enable = true;
+      udev.packages = [ pkgs.yubikey-personalization ];
+
+      gnome.gnome-keyring.enable = true;
+    };
 
     environment.systemPackages = with pkgs; [ feishin ];
 
