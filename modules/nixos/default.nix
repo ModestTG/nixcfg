@@ -119,7 +119,10 @@ in
         )
         (final: prev: {
           tokyonight-gtk-theme = prev.tokyonight-gtk-theme.override {
-            iconVariants = [ "Dark" ];
+            iconVariants = [
+              "Dark"
+              "Light"
+            ];
           };
         })
       ];

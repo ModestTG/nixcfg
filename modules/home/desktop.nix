@@ -46,6 +46,7 @@ in
         enable = true;
         package = pkgs.tokyonight-gtk-theme;
         dark = "Tokyonight-Dark";
+        light = "Tokyonight-Light";
       };
       targets.nixvim.transparentBackground = {
         main = true;

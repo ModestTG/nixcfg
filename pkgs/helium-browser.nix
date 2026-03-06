@@ -1,11 +1,11 @@
 { appimageTools }:
 let
   pname = "helium-browser";
-  version = "0.8.2.1";
+  version = "0.9.4.1";
   arch = "x86_64";
   src = builtins.fetchurl {
     url = "https://github.com/imputnet/helium-linux/releases/download/${version}/helium-${version}-${arch}.AppImage";
-    sha256 = "0vvmk8ljhql10mlx8mhlyza534155cqxkf6ii4m66iwshnklgcv9";
+    sha256 = "1s4yhbzcmh9wwg5mnk19m72r48px7259vy0z4yfqpb2fxid1v61p";
   };
   appImageContents = appimageTools.extract { inherit pname version src; };
 in
