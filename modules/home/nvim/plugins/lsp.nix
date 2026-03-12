@@ -12,11 +12,15 @@
         clear = true;
       };
     };
+    plugins.lspconfig = {
+      enable = true;
+    };
     plugins.lsp = {
       enable = true;
       servers = {
         gopls.enable = true;
         nixd.enable = true;
+        pylsp.enable = true;
         yamlls.enable = true;
         lua_ls = {
           enable = true;
